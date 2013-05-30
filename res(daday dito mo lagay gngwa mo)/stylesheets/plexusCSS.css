@@ -1,0 +1,115 @@
+body
+{
+	margin: 0 auto;
+	overflow: hidden; 
+	background-image: url(@routes.Assets.at("images/plexusBgMainpage.png"));
+}
+.wholeCss
+{
+	max-height:100%;
+	max-width:100%;
+}
+.fpWholeCss
+{
+	padding: 75px;
+}
+.upperCss, .lowerCss
+{
+	max-width:100%;
+	height: 160px;
+}
+.middleCss
+{
+	max-width;
+	height: 300px;
+}
+.inputCss
+{
+	-webkit-border-radius: 10px;
+	height: 30px; 
+	width: 250px;
+	background-color: lightblue;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+.logoCss
+{
+	margin:0 35%;
+	background-color: transparent;
+	width: 400px;
+	height: 200px
+}
+.middleUser
+{
+	float: left;
+	padding: 25px 0 50px 0;
+}
+.signUpCss, .signInCss
+{
+	width: 300px;
+	height: 200px;
+	float:left;
+	padding: 50px 150px;
+}
+.signInCss
+{
+	margin-left: 150px; 
+}
+.signinButton
+{
+	-webkit-border-radius: 10px;
+	width: 100px;
+	height: 50px;
+	padding:0px 100px; 
+}
+.fpImageCss
+{
+	width: 100px;
+	height: 150px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 10px;
+	margin-right: 20px;
+}
+.fpUpperCss
+{
+	height: 150px;
+	max-width: 100%;
+	border: 3px solid black;
+	border-bottom: 0px;
+}
+.fpLowerCss
+{
+	height: 250px;
+	max-width: 100%;
+	border: 3px solid black;
+	border-top: 0px;
+	padding: 20px 30px;
+}
+h3
+{
+	margin-top: 0px;
+}
+.fpH3
+{
+	height:25px;
+}
+.emailInput
+{
+	padding: 20px 60px;
+	height: 50px;
+	max-width: 100%;
+}
+.beige
+{
+	background-color: lightblue;
+}
+.colorBeige
+{
+	background-color: beige;
+}
+.sendButtonCss
+{
+	padding-left: 100px;
+}
