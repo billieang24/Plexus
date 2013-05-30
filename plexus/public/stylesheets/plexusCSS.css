@@ -6,8 +6,12 @@ body
 }
 .wholeCss
 {
-	height:660px;
-	max-width;
+	max-height:100%;
+	max-width:100%;
+}
+.fpWholeCss
+{
+	padding: 75px;
 }
 .upperCss, .lowerCss
 {
@@ -58,4 +62,54 @@ body
 	width: 100px;
 	height: 50px;
 	padding:0px 100px; 
+}
+.fpImageCss
+{
+	width: 100px;
+	height: 150px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 10px;
+	margin-right: 20px;
+}
+.fpUpperCss
+{
+	height: 150px;
+	max-width: 100%;
+	border: 3px solid black;
+	border-bottom: 0px;
+}
+.fpLowerCss
+{
+	height: 250px;
+	max-width: 100%;
+	border: 3px solid black;
+	border-top: 0px;
+	padding: 20px 30px;
+}
+h3
+{
+	margin-top: 0px;
+}
+.fpH3
+{
+	height:25px;
+}
+.emailInput
+{
+	padding: 20px 60px;
+	height: 50px;
+	max-width: 100%;
+}
+.beige
+{
+	background-color: lightblue;
+}
+.colorBeige
+{
+	background-color: beige;
+}
+.sendButtonCss
+{
+	padding-left: 100px;
 }
