@@ -1,0 +1,61 @@
+body
+{
+	margin: 0 auto;
+	overflow: hidden; 
+	background-image: url(/home/majusto/Documents/plexus/images/plexusBgMainpage.png);
+}
+.wholeCss
+{
+	height:660px;
+	max-width;
+}
+.upperCss, .lowerCss
+{
+	max-width:100%;
+	height: 160px;
+}
+.middleCss
+{
+	max-width;
+	height: 300px;
+}
+.inputCss
+{
+	-webkit-border-radius: 10px;
+	height: 30px; 
+	width: 250px;
+	background-color: lightblue;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+.logoCss
+{
+	margin:0 35%;
+	background-color: transparent;
+	width: 400px;
+	height: 200px
+}
+.middleUser
+{
+	float: left;
+	padding: 25px 0 50px 0;
+}
+.signUpCss, .signInCss
+{
+	width: 300px;
+	height: 200px;
+	float:left;
+	padding: 50px 150px;
+}
+.signInCss
+{
+	margin-left: 150px; 
+}
+.signinButton
+{
+	-webkit-border-radius: 10px;
+	width: 100px;
+	height: 50px;
+	padding:0px 100px; 
+}
