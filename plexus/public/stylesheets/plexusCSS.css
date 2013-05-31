@@ -11,8 +11,11 @@ body
 	max-width:100%;
 }
 .fpWholeCss
-{
-	padding: 75px;
+{	
+	padding: 0 75px 75px 35%;
+	max-height:100%;
+	max-width:100%;
+	float: left;	
 }
 .upperCss, .lowerCss
 {
@@ -36,10 +39,15 @@ body
 }
 .logoCss
 {
-	margin:0 35%;
 	background-color: transparent;
 	width: 400px;
-	height: 200px
+	height: 200px;
+	margin-left: 35%;
+	float: left;
+}
+.fplogo
+{
+	margin-left: 8%;
 }
 .middleUser
 {
@@ -79,6 +87,7 @@ body
 	max-width: 100%;
 	border: 3px solid black;
 	border-bottom: 0px;
+	margin-top: 30px;
 }
 .fpLowerCss
 {
@@ -102,9 +111,9 @@ h3
 	height: 50px;
 	max-width: 100%;
 }
-.beige
+.bgLightblue
 {
-	background-color: lightblue;
+	background-color: #CC66CC;
 }
 .colorBeige
 {
