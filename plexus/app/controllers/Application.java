@@ -12,6 +12,12 @@ public class Application extends Controller {
   }
   public static Result forgotPassword() {
 	    return ok(ForgotPasswordPage.render());
-	  }
+  }
+  public static Result signUp() {
+	    return ok(SignupPage.render());
+  }
+  public static Result profile() {
+		return ok(P	rofilePage.render());
+  }
 	  
 }
