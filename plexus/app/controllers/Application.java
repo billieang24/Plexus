@@ -7,8 +7,11 @@ import views.html.*;
 
 public class Application extends Controller {
   
-  public static Result index() {
+  public static Result main() {
     return ok(MainPage.render());
   }
-  
+  public static Result forgotPassword() {
+	    return ok(ForgotPasswordPage.render());
+	  }
+	  
 }
