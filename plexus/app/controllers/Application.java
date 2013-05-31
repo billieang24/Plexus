@@ -17,7 +17,7 @@ public class Application extends Controller {
 	    return ok(SignupPage.render());
   }
   public static Result profile() {
-		return ok(P	rofilePage.render());
+		return ok(ProfilePage.render());
   }
 	  
 }
