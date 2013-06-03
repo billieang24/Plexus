@@ -31,16 +31,11 @@ body
 .fpWholeCss
 {	
 	padding: 0 75px 75px 35%;
-	max-height:100%;
-	max-width:100%;
 	float: left;
-	position: relative;
 }
 .logoMain
 {
-<<<<<<< HEAD
 	max-width:100%;
-=======
 	max-width:50%;
 	height: 100px;
 	padding:150px 450px;
@@ -50,7 +45,6 @@ body
 .upperCss
 {
 	max-width:100%;	
->>>>>>> d181171ab6eb6ee5934f6eee875a70fdcf5806f1
 	height: 80px;
 }
 .lowerCss
