@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Bar;
 import play.*;
 import play.api.data.Form;
 import play.mvc.*;
