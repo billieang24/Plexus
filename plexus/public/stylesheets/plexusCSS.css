@@ -3,14 +3,11 @@ body
 	margin: 0 auto;
 	background-image: url('../images/plexusBgMainpage.png');
 	overflow: hidden;
-<<<<<<< HEAD
 	display: block;
 	background-size: 100%;
 =======
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-position: realtive;
->>>>>>> b06c6df08c1ce7de4f032bfed2cc3ec99f5127da
 }
 .of
 {
@@ -30,7 +27,6 @@ body
 	max-height:100%;
 	max-width:100%;
 	float: left;
-	overflow: hidden;
 	position: relative;
 }
 .upperCss
@@ -225,7 +221,6 @@ h1.signup
 	margin-right: 50px;
 	margin-bottom: 50px;
 }
-<<<<<<< HEAD
 .profileUpper
 {
 	max-width: 100%;
@@ -293,8 +288,6 @@ h3.profilePage
 {
 	margin-top: -5px;
 }
-
-=======
 p
 {
 	-webkit-border-radius: 10px;
@@ -303,4 +296,7 @@ p
 	padding:20px 55px 5px; 
 	float: left;
 }
->>>>>>> b06c6df08c1ce7de4f032bfed2cc3ec99f5127da
+.profilePageOf
+{
+	overflow-y: scroll;
+}
