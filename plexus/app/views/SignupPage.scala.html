@@ -11,7 +11,10 @@
 	<div class="middleCss middleSignup">
 		<div class="userInfo fl of divborder">
 			<h3>Personal Information</h3>
-			<input id="firstName" class="firstNameCss" value="" placeholder="Given Name"/>
+			<form action="/signUp" method="post">
+			<input name="firstName" class="firstNameCss" value="" placeholder="Given Name"/>
+			<input type="submit"/>
+			</form>
 			<input id="middleName" class="middleNameCss" value="" placeholder="Middle Name"/>
 			<input id="lastName" class="lastNameCss" value="" placeholder="Last Name"/>
 			<select class="inputCss maleFemale" value="Gender">
