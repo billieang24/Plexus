@@ -1,26 +1,17 @@
 body
 {
 	margin: 0 auto;
-	background-image: url('../images/plexusBgMainpage.png');
+	background-image: url("../images/plexusBgMainpage.png");
 	overflow: hidden;
 	display: block;
 	background-size: 100%;
-=======
 	background-repeat: no-repeat;
-<<<<<<< HEAD
 	width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-	
-=======
+  	position: absolute;
+  	top: 0;
+  	left: 0;
 	background-size: contain;
-<<<<<<< HEAD
-=======
-	background-position: realtive;
->>>>>>> b06c6df08c1ce7de4f032bfed2cc3ec99f5127da
->>>>>>> e75ac1a2f4b88bb81f447d290ac72f8d12a5e31a
->>>>>>> 5be7729b24d666bd382951bcb01949c5389f7415
+	background-position: relative;
 }
 .of
 {
