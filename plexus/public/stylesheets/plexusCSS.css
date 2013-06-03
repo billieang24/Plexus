@@ -42,7 +42,7 @@ body
 }
 .inputCss, .firstNameCss, .middleNameCss, .lastNameCss, .address
 {
-	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	height: 30px; 
 	width: 250px;
 	background-color: beige;
@@ -146,8 +146,8 @@ h1
 }
 .userInfo
 {
-	height: 300px;
-	width: 300px;
+	max-height: 100%;
+	width: 550px;
 	padding-left: 20px;
 }
 .upperSU
@@ -155,17 +155,22 @@ h1
 	max-width:100%;
 	height: 200px;
 }
-.firstNameCss, .middleNameCss, .lastNameCss, .maleFemale, .address
-{
-	margin-bottom: 50px;
-}
 .maleFemale
 {
 	width: 100px;
+	margin-bottom: 50px;
 }
-.dateBottom, .UPBottom
+.dayInput
+{
+	width: 80px;
+}
+.dateBottom, .UPBottom, .address
 {
 	margin-bottom: 25px;
+}
+.address
+{
+	width: 510px;
 }
 .monthBday
 {
@@ -180,19 +185,19 @@ h1
 	height: 70px;
 	width: 900px;
 }
-.bdayInfo, .emailInfo
-{
-	margin-left: 25px;
-	height: 230px;
-	width: 300px;
-	margin-left: 100px;
-	padding-left: 20px;
-}
 h1.signup
 {
 	margin: 0 150px;
 }
 .middleSignup
 {
-	padding: 0 60px;
+	padding: 0 380px;
+	height: 500px;
+}
+.h3SignUp
+{
+	height: 80px;
+	max-width: 100%;
+	margin-right: 50px;
+	margin-bottom: 50px;
 }
