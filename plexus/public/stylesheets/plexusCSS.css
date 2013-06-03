@@ -3,6 +3,14 @@ body
 	margin: 0 auto;
 	background-image: url('../images/plexusBgMainpage.png');
 	overflow: hidden;
+<<<<<<< HEAD
+	display: block;
+	background-size: 100%;
+=======
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: realtive;
+>>>>>>> b06c6df08c1ce7de4f032bfed2cc3ec99f5127da
 }
 .of
 {
@@ -12,6 +20,9 @@ body
 {
 	max-height:100%;
 	max-width:100%;
+	position: absolute;
+	display: block;
+	margin: 0px auto;
 }
 .fpWholeCss
 {	
@@ -19,12 +30,15 @@ body
 	max-height:100%;
 	max-width:100%;
 	float: left;
-	overflow: hidden;	
+	overflow: hidden;
+	position: relative;
 }
 .upperCss
 {
-	max-width:100%;
-	height: 160px;
+	max-width:50%;
+	height: 100px;
+	padding-top: 120px;
+	float:right;
 }
 .lowerCss
 {
@@ -42,7 +56,7 @@ body
 }
 .inputCss, .firstNameCss, .middleNameCss, .lastNameCss, .address
 {
-	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	height: 30px; 
 	width: 250px;
 	background-color: beige;
@@ -53,10 +67,11 @@ body
 .logoCss
 {
 	background-color: transparent;
-	width: 400px;
-	height: 200px;
+	width: 250px;
+	height: 80px;
 	margin-left: 35%;
 	float: left;
+
 }
 .fplogo
 {
@@ -65,14 +80,19 @@ body
 .middleUser
 {
 	float: left;
-	padding: 25px 0 50px 0;
+	padding: 25px 0 25px 0;
 }
-.signCss, .worldCss
+.middlePass
+{
+	float: left;
+	padding: 0px 0 50px 0;
+}
+.signCss
 {
 	width: 300px;
 	height: 200px;
-	float:left;
-	padding: 50px 150px;
+	float:right;
+	padding:100px 40px;
 }
 .pad
 {
@@ -86,14 +106,18 @@ body
 .signinButton
 {
 	-webkit-border-radius: 10px;
-	width: 100px;
-	height: 50px;
-	padding:0px 25px; 
+	width: 100%;
+	height: 10px;
+	padding:10px 25px 5px; 
 	float: left;
 }
 .signupButton
 {
-	padding-left: 0px;
+	-webkit-border-radius: 10px;
+	width: 100%;
+	height: 10px;
+	padding:20px 25px 5px; 
+	float: left;
 }
 .fpImageCss
 {
@@ -104,11 +128,15 @@ body
 	padding-left: 10px;
 	margin-right: 20px;
 }
+.divborder
+{
+	border-radius: 15px;
+	border: 3px dashed #9866C0;
+}
 .fpUpperCss
 {
 	height: 150px;
 	max-width: 100%;
-	border: 3px solid black;
 	border-bottom: 0px;
 	margin-top: 30px;
 }
@@ -116,8 +144,6 @@ body
 {
 	height: 250px;
 	max-width: 100%;
-	border: 3px solid black;
-	border-top: 0px;
 	padding: 20px 30px;
 }
 h1
@@ -134,22 +160,18 @@ h1
 	height: 50px;
 	max-width: 100%;
 }
-.bgLightblue
-{
-	background-color: #CC66CC;
-}
 .colorBeige
 {
 	background-color: beige;
 }
 .sendButtonCss
 {
-	padding-left: 100px;
+	padding-left: 150px;
 }
 .userInfo
 {
-	height: 300px;
-	width: 300px;
+	max-height: 100%;
+	width: 550px;
 	padding-left: 20px;
 }
 .upperSU
@@ -157,17 +179,22 @@ h1
 	max-width:100%;
 	height: 200px;
 }
-.firstNameCss, .middleNameCss, .lastNameCss, .maleFemale, .address
-{
-	margin-bottom: 50px;
-}
 .maleFemale
 {
 	width: 100px;
+	margin-bottom: 50px;
 }
-.dateBottom, .UPBottom
+.dayInput
+{
+	width: 80px;
+}
+.dateBottom, .UPBottom, .address
 {
 	margin-bottom: 25px;
+}
+.address
+{
+	width: 510px;
 }
 .monthBday
 {
@@ -177,23 +204,10 @@ h1
 {
 	visibility: hidden;
 }
-.divborder
-{
-	border-radius: 15px;
-	border: 5px dashed #9866C0;
-}
 .signUpText
 {
 	height: 70px;
 	width: 900px;
-}
-.bdayInfo, .emailInfo
-{
-	margin-left: 25px;
-	height: 230px;
-	width: 300px;
-	margin-left: 100px;
-	padding-left: 20px;
 }
 h1.signup
 {
@@ -201,5 +215,92 @@ h1.signup
 }
 .middleSignup
 {
-	padding: 0 60px;
+	padding: 0 380px;
+	height: 500px;
 }
+.h3SignUp
+{
+	height: 80px;
+	max-width: 100%;
+	margin-right: 50px;
+	margin-bottom: 50px;
+}
+<<<<<<< HEAD
+.profileUpper
+{
+	max-width: 100%;
+	height: 80px;
+	background-color: black;
+
+}
+.userInfoProfile
+{
+	max-width: 100%;
+	height: 180px;
+	margin:30px 100px;
+	padding: 30px 50px;
+}
+.dP
+{
+	height: 170px;
+	width: 170px;
+}
+.usersName
+{
+	max-height: 100%;
+	max-width: 100%;
+	margin-left:50px;
+	margin-top: 100px;
+	padding: 0px 10px 0px 10px;
+}
+div
+{
+	display: block;
+}
+h1.profileName
+{
+	margin: 0px;
+}
+li
+{
+	display: list-item;
+}
+li.font
+{
+	font-size: 20px;
+}
+.otherInfoProfile
+{
+	height: 170px;
+	width: 300px;
+	border-left: 3px dashed #9866C0;
+}
+.nameMiddle
+{
+	height: 170px;
+	width: 565px;
+}
+.liProfileDiv
+{
+	padding: 0px 20px;
+	border: 1px solid white;
+}
+h3.profilePage
+{
+	margin: 0px 20px;
+}
+.divInfoProfile
+{
+	margin-top: -5px;
+}
+
+=======
+p
+{
+	-webkit-border-radius: 10px;
+	width: 100%;
+	height: 10px;
+	padding:20px 55px 5px; 
+	float: left;
+}
+>>>>>>> b06c6df08c1ce7de4f032bfed2cc3ec99f5127da
