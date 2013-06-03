@@ -5,13 +5,8 @@ body
 	overflow: hidden;
 	display: block;
 	background-size: 100%;
-	background-repeat: no-repeat;
-	width: 100%;
-  	position: absolute;
-  	top: 0;
-  	left: 0;
-	background-size: contain;
-	background-position: relative;
+  	background-repeat: no-repeat;
+  	background-position: center center absolute;
 }
 .of
 {
