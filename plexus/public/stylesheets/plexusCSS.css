@@ -3,6 +3,8 @@ body
 	margin: 0 auto;
 	background-image: url('../images/plexusBgMainpage.png');
 	overflow: hidden;
+	display: block;
+	background-size: 100%;
 }
 .of
 {
@@ -12,6 +14,9 @@ body
 {
 	max-height:100%;
 	max-width:100%;
+	position: absolute;
+	display: block;
+	margin: 0px auto;
 }
 .fpWholeCss
 {	
@@ -19,7 +24,8 @@ body
 	max-height:100%;
 	max-width:100%;
 	float: left;
-	overflow: hidden;	
+	overflow: hidden;
+	position: relative;
 }
 .upperCss
 {
@@ -107,7 +113,7 @@ body
 .divborder
 {
 	border-radius: 15px;
-	border: 5px dashed #9866C0;
+	border: 3px dashed #9866C0;
 }
 .fpUpperCss
 {
@@ -201,3 +207,71 @@ h1.signup
 	margin-right: 50px;
 	margin-bottom: 50px;
 }
+.profileUpper
+{
+	max-width: 100%;
+	height: 80px;
+	background-color: black;
+
+}
+.userInfoProfile
+{
+	max-width: 100%;
+	height: 180px;
+	margin:30px 100px;
+	padding: 30px 50px;
+}
+.dP
+{
+	height: 170px;
+	width: 170px;
+}
+.usersName
+{
+	max-height: 100%;
+	max-width: 100%;
+	margin-left:50px;
+	margin-top: 100px;
+	padding: 0px 10px 0px 10px;
+}
+div
+{
+	display: block;
+}
+h1.profileName
+{
+	margin: 0px;
+}
+li
+{
+	display: list-item;
+}
+li.font
+{
+	font-size: 20px;
+}
+.otherInfoProfile
+{
+	height: 170px;
+	width: 300px;
+	border-left: 3px dashed #9866C0;
+}
+.nameMiddle
+{
+	height: 170px;
+	width: 565px;
+}
+.liProfileDiv
+{
+	padding: 0px 20px;
+	border: 1px solid white;
+}
+h3.profilePage
+{
+	margin: 0px 20px;
+}
+.divInfoProfile
+{
+	margin-top: -5px;
+}
+
