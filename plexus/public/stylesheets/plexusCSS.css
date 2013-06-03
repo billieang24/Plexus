@@ -4,8 +4,11 @@ body
 	background-image: url('../images/plexusBgMainpage.png');
 	overflow: hidden;
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: realtive;
+	width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+	
 }
 .of
 {
