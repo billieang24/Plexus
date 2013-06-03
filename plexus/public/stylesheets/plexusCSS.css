@@ -104,11 +104,15 @@ body
 	padding-left: 10px;
 	margin-right: 20px;
 }
+.divborder
+{
+	border-radius: 15px;
+	border: 5px dashed #9866C0;
+}
 .fpUpperCss
 {
 	height: 150px;
 	max-width: 100%;
-	border: 3px solid black;
 	border-bottom: 0px;
 	margin-top: 30px;
 }
@@ -116,8 +120,6 @@ body
 {
 	height: 250px;
 	max-width: 100%;
-	border: 3px solid black;
-	border-top: 0px;
 	padding: 20px 30px;
 }
 h1
@@ -134,17 +136,13 @@ h1
 	height: 50px;
 	max-width: 100%;
 }
-.bgLightblue
-{
-	background-color: #CC66CC;
-}
 .colorBeige
 {
 	background-color: beige;
 }
 .sendButtonCss
 {
-	padding-left: 100px;
+	padding-left: 150px;
 }
 .userInfo
 {
@@ -176,11 +174,6 @@ h1
 .gender
 {
 	visibility: hidden;
-}
-.divborder
-{
-	border-radius: 15px;
-	border: 5px dashed #9866C0;
 }
 .signUpText
 {
