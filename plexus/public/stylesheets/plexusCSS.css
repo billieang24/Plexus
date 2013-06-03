@@ -1,3 +1,13 @@
+html
+{
+	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+		overflow-y: scroll;
+}
 body
 {
 	margin: 0 auto;
@@ -5,8 +15,6 @@ body
 	overflow: hidden;
 	display: block;
 	background-size: 100%;
-  	background-repeat: no-repeat;
-  	background-position: center center absolute;
 }
 .of
 {
@@ -28,9 +36,21 @@ body
 	float: left;
 	position: relative;
 }
+.logoMain
+{
+<<<<<<< HEAD
+	max-width:100%;
+=======
+	max-width:50%;
+	height: 100px;
+	padding:150px 450px;
+	float:right;
+	position: fixed;
+}
 .upperCss
 {
-	max-width:100%;
+	max-width:100%;	
+>>>>>>> d181171ab6eb6ee5934f6eee875a70fdcf5806f1
 	height: 80px;
 }
 .lowerCss
@@ -93,7 +113,10 @@ body
 	width: 300px;
 	height: 200px;
 	float:right;
-	padding:100px 40px;
+	position: fixed;	
+	padding-top:50px;
+	padding-left:800px;
+
 }
 .pad
 {
