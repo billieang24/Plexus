@@ -6,8 +6,58 @@
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
 </head>
 <body>
-	<div id="leftCol" class="leftColumn">
+	<div id="hpCon" class="wholeCss">
+			<div class="profileUpper">
+				<div class="logoProfile fl">
+					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
+				</div>
+			</div>
+		<div id="leftCol" class="leftColumn divborder">
+			<div id="namePic" class="picName">
+				<div class="hPdP divborder">
+					display picture
+				</div>
+				<div class="hpName">
+					<h2>PUP BSCoE 4-1</h2>
+				</div>
+			</div>
+			<div id="options" class="options">
+				<div id="hpProfile" class="hpProfile divborder divhomePage">
+					<h3 class="linkProfile"><a href="/profile ">Profile</a></h3>
+				</div>
+				<div id="hpProfile" class="hpFriendslist divborder divhomePage">
+					<h3 class="linkProfile"><a href="/profile ">FriendsList</a></h3>
+				</div>
+				<div id="hpProfile" class="hpMessages divborder divhomePage">
+					<h3 class="linkProfile"><a href="/profile ">Messages</a></h3>
+				</div>
+				<div id="hpProfile" class="hpNotifs divborder divhomePage">
+					<h3 class="linkProfile"><a href="/profile ">Notifications</a></h3>
+				</div>
+			</div>
+			<div id="divSearch" class="divSearch">
+				<input id="search" class="searchInput" value="" placeholder="Search"/>
+				<h4><button>Search</button></h4>
+			</div>
+		</div>
+		<div id="rightCol" class="rightColumn divborder">
+			<div id="rightColUp" class="rightColUpper">
+				<div class="headerHP">
+					<h1>News Feed</h1>
+				</div>
+				<div class="signOut">
+					<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
+				</div>
+			</div>
+			<div id="newsFeed" class="newsFeeds divborder">
+				<div id="postHp" class="postsHp divborder">
+					Ang ganda ko :)
+				</div>
+				<div id="showMoreHp" class="showmoreHp postsHp divborder">
+					<h3>Show More</h3>
+				</div>
+			</div>
+		</div>
 	</div>
-	<a href="/profile ">profilePage</a>
 </body>
 </html>

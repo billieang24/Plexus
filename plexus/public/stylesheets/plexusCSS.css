@@ -112,8 +112,6 @@ body
     width:300px;
     height:200px;
     padding: 0 75px;
-
-
 }
 .containerCss
 {
@@ -335,14 +333,111 @@ p
 {
 	overflow-y: scroll;
 }
-<<<<<<< HEAD
 .leftColumn
 {
-	max-width: 100%;
-	height: 80px;
-	background-color: black;
+	width: 400px;
+	height: auto;
+	margin: 25 0px 25px 50px;
+	padding: 10px;
+	float:left;
 }
-=======
+.rightColumn
+{
+	max-height: 100%;
+	width: 900px;
+	margin: 25 50px;
+	padding: 0px 0px 0 0px;
+	float:right;
+}
+.newsFeeds
+{
+	height: 100%;
+	width: 800px;
+	margin: 20px;
+	padding: 0 30px;
+	text-align: center;
+}
+.options
+{
+	float: left;
+	height: auto;
+	width: auto;
+
+}
+.picName
+{
+	float:left;
+	height: auto;
+	width: auto;
+}
+.hpDp
+{
+	float: left;
+	height: 150px;
+	width: 150px;
+	padding: 10px 10px;
+	margin: 10px;
+}
+.hpName
+{
+	text-align: center;
+	height: 50px;
+	width: 250px;
+	margin: 20px;
+	padding:20px 10px 0px 100px;
+}
+.divhomePage
+{
+	height: 30px;
+	width: 100%;
+	float:left;
+	text-align: center;
+	margin:10px auto; 
+}
+h3.linkProfile
+{
+	margin:0 10px;
+}
+.divSearch
+{
+	padding-top: 200px;
+	float:right;
+	text-align: center;
+}
+.searchInput
+{
+	height: 30px;
+	width: 200px;
+	float: left;
+	text-align: center;
+	margin:10px auto;
+}
+.rightColUpper
+{
+	width: 100%;
+	height:150px;
+	border-bottom: 3px dashed black;
+}
+.headerHP
+{
+	width:300px;
+	float: left;
+	margin: 20px auto;
+	padding: 0px 100px;
+}
+.signOut
+{
+
+	float: right;
+	height: 50%;
+	width:80px;
+	border-left: 3px dashed black;
+	border-bottom: 3px dashed black;
+}
+.postsHp
+{
+	margin: 10px auto;
+}
 .relative;
 {
 	position: relative;
@@ -370,4 +465,4 @@ p
 	width: 100%;
 	margin-top: 10px;
 }
->>>>>>> 9ab9cd54a4faaa9f482848266df158929152a25b
+
