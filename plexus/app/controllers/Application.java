@@ -29,7 +29,7 @@ public class Application extends Controller {
   public static Result addFriend() {
 		return ok(AddFriend.render());
   }
-  public static Result uploadPhotoPage() {
+  public static Result photoUploadPage() {
 		return ok(PhotoUploadPage.render());
   }
 }
