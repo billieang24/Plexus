@@ -4,9 +4,12 @@
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
 </head>
-<body class="of">
+<body>
 <div class="wholeCss">
-	<div id="upper" class="upperCss"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="SUlogoCss" height="100px" width="300px" alt="plexusLogo"/>
+	<div id="upper" class="upperCss">
+		<div class="logoSignUp">
+			<img src="@routes.Assets.at("images/plexusLogo2.png")" height="100px" width="300px" alt="plexusLogo"/>
+		</div>
 	</div>
 	<div class="middleCss middleSignup">
 		<div class="userInfo fl divborder">
@@ -15,6 +18,8 @@
 			<br>
 			<input class="inputCss UPBottom" type="password" name="user_name" value="" placeholder="password"/>
 			<input class="inputCss UPBottom" type="password" name="user_name" value="" placeholder="re-type password"/>
+			<div class="signUpError">
+			</div>
 			<h3>Personal Information</h3>
 			<input id="firstName" class="firstNameCss" value="" placeholder="Given Name"/>
 			<input id="lastName" class="lastNameCss" value="" placeholder="Last Name"/>
@@ -139,7 +144,10 @@
 		</div>
 	</div>
 	<div class="lowerCss">
-	<div id="signUp" class="signinButton signupButton"><a href="/verification" height="25px"><img src="@routes.Assets.at("images/signUp.png")" height="90px" width="235px"></a>
+	<div id="signUp" class="signupButton">
+		<a href="/verification" height="25px">
+			<img src="@routes.Assets.at("images/signUp.png")" height="90px" width="235px">
+		</a>
 	</div>
 	</div>
 </div>
