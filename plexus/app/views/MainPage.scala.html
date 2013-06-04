@@ -7,18 +7,17 @@
 </head>
 <body>
 <div id="whole" class="wholeCss">
-	<div id="middle" class="middleCss">
+	<div id="middle" class="containerCss">
+			<center>
+				<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
 		<div id="signInUp" class="signCss signInCss"> 
 			<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="user_name" value="" placeholder="username"/></div>
 			<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="user_name" value="" placeholder="password"/></div>
-			<div id="signIn" class="signinButton"><a href="/profile" height="25px"><img src="@routes.Assets.at("images/logIn.png")" height="40px" width="200px"></a>
-			</div>
-			<div id="signUp" class="signinButton signupButton"><a href="signUp" height="25px"><img src="@routes.Assets.at("images/signUp2.png")" height="40px" width="200px"></a>
-			</div id="forgotPw" class="forgotPassword">
-			<a href="/forgotPassword"><p>Forgot Password?</p></a>
+			<div id="signIn" class="signinButton"><a href="/profile" height="25px"><img src="@routes.Assets.at("images/logIn.png")" height="40px" width="200px"></a></div>
+			<div id="signUp" class="signinButton signupButton"><a href="signUp" height="25px"><img src="@routes.Assets.at("images/signUp2.png")" height="40px" width="200px"></a></div>
+			<div id="forgotPw" class="forgotPassword">
+			<a href="/forgotPassword"><p>Forgot Password?</p></a></div>
 		</div>
-			<div id="upper" class="upperCss"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/>
-			</div>
 	</div>
 </div>
 </body>
