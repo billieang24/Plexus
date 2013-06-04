@@ -20,4 +20,16 @@ public class Application extends Controller {
   public static Result profile() {
 		return ok(ProfilePage.render());
   }
+  public static Result homePage() {
+		return ok(homePage.render());
+  }
+  public static Result verificationPage() {
+		return ok(VerificationPage.render());
+  }
+  public static Result addFriend() {
+		return ok(AddFriend.render());
+  }
+  public static Result uploadPhotoPage() {
+		return ok(PhotoUploadPage.render());
+  }
 }
