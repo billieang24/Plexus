@@ -31,13 +31,11 @@ body
 .fpWholeCss
 {	
 	padding: 0 75px 75px 35%;
-	max-height:100%;
-	max-width:100%;
 	float: left;
-	position: relative;
 }
 .logoMain
 {
+	max-width:100%;
 	max-width:50%;
 	height: 100px;
 	padding:150px 450px;
@@ -78,13 +76,21 @@ body
 	background-color: transparent;
 	width: 250px;
 	height: 80px;
-	margin-left: 35%;
+	margin-left: 50%;
 	float: left;
-
+}
+.SUlogoCss
+{
+	background-color: transparent;
+	width: 250px;
+	height: 80px;
+	margin: 20px 40%;
+	float: left;
 }
 .fplogo
 {
-	margin-left: 8%;
+	margin-left: 20%;
+	margin-top: 20px;
 }
 .middleUser
 {
@@ -137,20 +143,20 @@ body
 	height: 150px;
 	float: left;
 	padding-top: 10px;
-	padding-left: 10px;
-	margin-right: 20px;
+	margin-right: 25px;
 }
 .divborder
 {
 	border-radius: 15px;
-	border: 3px dashed #9866C0;
+	border: 3px dashed black;
 }
 .fpUpperCss
 {
-	height: 150px;
+	height: 160px;
 	max-width: 100%;
 	border-bottom: 0px;
 	margin-top: 30px;
+	padding: 20px 30px;
 }
 .fpLowerCss
 {
@@ -160,7 +166,8 @@ body
 }
 h1
 {
-	margin: 30px 30px;
+	margin-top: 30px;
+	margin-left: 15px;
 }
 .fpH3
 {
