@@ -36,11 +36,10 @@ body
 .logoMain
 {
 	max-width:100%;
-	max-width:50%;
+	max-height:50%;
 	height: 100px;
-	padding:150px 450px;
-	float:right;
-	position: fixed;
+	padding:30px 0px 0px 450px;
+	position:relative;
 }
 .upperCss
 {
@@ -104,13 +103,21 @@ body
 }
 .signCss
 {
-	width: 300px;
-	height: 200px;
-	float:right;
-	position: fixed;	
-	padding-top:50px;
-	padding-left:800px;
+	position:relative;
+    top: 10%;
+    left: 50%;
+    width:300px;
+    height:200px;
+    padding: 0 75px;
 
+
+}
+.containerCss
+{
+	margin-left:auto;
+	margin-right: auto;
+	width: 80%;
+	height: 50%;
 }
 .pad
 {
@@ -126,7 +133,7 @@ body
 	-webkit-border-radius: 10px;
 	width: 100%;
 	height: 10px;
-	padding:10px 25px 0px; 
+	padding:10px 25px 10px; 
 	float: left;
 }
 .signupButton
@@ -322,4 +329,10 @@ p
 .profilePageOf
 {
 	overflow-y: scroll;
+}
+.leftColumn
+{
+	max-width: 100%;
+	height: 80px;
+	background-color: black;
 }
