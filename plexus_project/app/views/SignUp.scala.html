@@ -1,15 +1,17 @@
 @(msg: String)
 @import helper._
-
 <!DOCTYPE html>
 <title>Sign Up</title>
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
 </head>
-<body class="of">
+<body>
 <div class="wholeCss">
-	<div id="upper" class="upperCss"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="SUlogoCss" height="100px" width="300px" alt="plexusLogo"/>
+	<div id="upper" class="upperCss">
+		<div class="logoSignUp">
+			<img src="@routes.Assets.at("images/plexusLogo2.png")" height="100px" width="300px" alt="plexusLogo"/>
+		</div>
 	</div>
 	<div class="middleCss middleSignup">
 	@form(routes.Application.newUser){
@@ -18,14 +20,14 @@
 			<input class="inputCss UPBottom" type="text" name="username" value="" placeholder="E-mail"/>
 			<br>
 			<input class="inputCss UPBottom" type="password" name="password" value="" placeholder="password"/>
-			<input class="inputCss UPBottom" type="password" name="password2" value="" placeholder="re-type password"/>
-			<div style="height:100%;width:100%">@msg</div>
+			<input class="inputCss UPBottom" type="password" name="repassword" value="" placeholder="re-type password"/>
+			<div class="signUpError">@msg</div>
 			<h3>Personal Information</h3>
-			<input id="firstName" class="firstNameCss" value="" placeholder="Given Name"/>
-			<input id="lastName" class="lastNameCss" value="" placeholder="Last Name"/>
+			<input name="givenname" class="firstNameCss" value="" placeholder="Given Name"/>
+			<input name="lastname" class="lastNameCss" value="" placeholder="Last Name"/>
 			<div class="h3SignUp fl">
 				<h3>Gender:</h3>
-			<select class="inputCss maleFemale" value="Gender">
+			<select name="gender" class="inputCss maleFemale" value="Gender">
 				<option class="gender" value="">Gender</option>
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>
@@ -33,7 +35,7 @@
 			</div>
 			<div class="h3SignUp fl">
 				<h3>Birth Date:</h3>
-				<select id="month" class="inputCss maleFemale monthBday dateBottom" value="Gender">
+				<select name="month" class="inputCss maleFemale monthBday dateBottom" value="Gender">
 					<option class="gender" value="-1">Month:</option>
 					<option value="January">January</option>
 					<option value="February">February</option>
@@ -48,7 +50,7 @@
 					<option value="November">November</option>
 					<option value="December">December</option>
 				</select>
-				<select id="Day" class="inputCss dayInput dateBottom" value="Gender">
+				<select name="date" class="inputCss dayInput dateBottom" value="Gender">
 					<option value="-1">Day:</option>
 					<option value="1">01</option>
 					<option value="2">02</option>
@@ -82,7 +84,7 @@
 					<option value="30">30</option>
 					<option value="31">31</option>
 				</select>
-				<select id="Year" class="inputCss dayInput dateBottom" value="Gender">
+				<select name="year" class="inputCss dayInput dateBottom" value="Gender">
 					<option class="gender" value="-1">Year:</option>
 					<option value="2013">2013</option>
 					<option value="2012">2012</option>
@@ -140,14 +142,15 @@
 					<option value="1960">1960</option>
 				</select>
 			</div>
-			<input type="text" id="address" class="address fl" value="" placeholder="Address" cols="20" rows="	2"/>
+			<input type="text" name="address" class="address fl" value="" placeholder="Address" cols="20" rows="	2"/>
 		</div>
 	</div>
 	<div class="lowerCss">
-	<div id="signUp" class="signinButton signupButton"><button type="submit" height="25px"><img src="@routes.Assets.at("images/signUp2.png")" height="90px" width="235px"></button>
+	<div id="signUp" class="signupButton">
+		<button type="submit" height="25px"><img src="@routes.Assets.at("images/signUp2.png")" height="90px" width="235px"></button>
+	</div>
 	</div>
 	}
-	</div>
 </div>
 </body>
 </html>

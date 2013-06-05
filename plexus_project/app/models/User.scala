@@ -1,6 +1,6 @@
 package models
 
-case class User(id: Long, username: String, password: String)
+case class User(id: Long, username: String, password: String,givenname:String,lastname:String,gender:String,address:String)
 
 import anorm._
 import anorm.SqlParser._
@@ -13,27 +13,26 @@ object User {
   val user = {
 		  get[Long]("id") ~ 
 		  get[String]("username")~ 
-		  get[String]("password")  map {
-		  case id~username~password => User(id, username, password)
+		  get[String]("password")~ 
+		  get[String]("givenname")~ 
+		  get[String]("lastname")~ 
+		  get[String]("gender")~ 
+		  get[String]("address")  map {
+		  case id~username~password~givenname~lastname~gender~address=> User(id, username, password,givenname,lastname,gender,address)
   	}
   }
- 
-  def all(): List[User] = DB.withConnection { implicit c =>
-  	SQL("select * from user").as(user *)
-  }
-  def create(username: String, password: String) {
-	  DB.withConnection { implicit c =>
-	  SQL("insert into user (username,password) values ({username},{password})").on(
+  def validLogIn(username: String, password: String)={
+    DB.withConnection { implicit c =>
+	  SQL("select * from user where username = {username} and password = {password}").on(
       'username -> username,'password -> password
-			  ).executeUpdate()
+			  ).as(user *)
 	  }
   }
-
-  def delete(id: Long) {
+  def create(username: String, password: String,givenname:String,lastname:String,gender:String,month:String,date:String,year:String,address:String)={
 	  DB.withConnection { implicit c =>
-	  SQL("delete from user where id = {id}").on(
-			  'id -> id
+	  SQL("insert into user (username,password,givenname,lastname,gender,birthdate,address) values ({username},{password},{givenname},{lastname},{gender},{birthdate},{address})").on(
+      'username -> username,'password -> password,'givenname -> givenname,'lastname -> lastname,'gender -> gender,'birthdate -> (year+"-"+month+"-"+date),'address -> address
 			  ).executeUpdate()
-}
+	  }
   }
 }
