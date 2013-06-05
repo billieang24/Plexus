@@ -27,7 +27,7 @@ object Application extends Controller {
     implicit request =>
   	logInForm.bindFromRequest.fold(
     formWithErrors => {
-      BadRequest
+      Redirect(routes.Application.main)
     },
     value => {
     	var params = request.body.asFormUrlEncoded.get
