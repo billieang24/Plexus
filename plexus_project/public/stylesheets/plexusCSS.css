@@ -256,6 +256,12 @@ h1.signup
 	margin-right: 50px;
 	margin-bottom: 50px;
 }
+.signUpB
+{
+	background-color: transparent;
+	border: 0px solid transparent;
+	cursor: pointer;
+}
 .profileUpper
 {
 	width: 100%;
@@ -464,9 +470,6 @@ h3.linkProfile
 	width: 100%;
 	margin-top: 10px;
 }
-<<<<<<< HEAD
-
-=======
 .rightProfile
 {
 	float: right;
@@ -546,4 +549,3 @@ h3.linkProfile
 	width: 250px;
 	margin-left: 100px;
 }
->>>>>>> c63006a22ad9de6de2e489cf9b589775ccf077eb
