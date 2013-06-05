@@ -398,10 +398,13 @@ p
 }
 .hpDp
 {
-	height:80px;
+	height:100px;
 	width: 100px;
-	padding: 10px 10px;
 	margin: 10px auto;
+}
+.hpDpImg
+{
+	border-radius: 15px;
 }
 .hpName
 {
@@ -635,7 +638,7 @@ button.post
 	position: relative;
 	margin: 10px auto;
 	padding: 30px 0px;
-=======
+}
 .postButtonProfile
 {
 	cursor: pointer;
@@ -817,5 +820,3 @@ ul.addFriendBullets
 	margin: 20px auto;
 	height: 20px;
 	width: 120px;
->>>>>>> 33879a1969bb20609b684cd4405c23948aa80a01
-}
