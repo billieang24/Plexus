@@ -15,9 +15,16 @@
 				@form(routes.Application.logIn){
 				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="username" value="" placeholder="username"/></div>
 				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="password" value="" placeholder="password"/></div>
-				<div id="signIn" class="signinButton"><button type"submit" height="25px"><img src="@routes.Assets.at("images/logIn.png")" height="40px" width="200px"></button></div>
+				<div id="signIn" class="signinButton">
+					<button type"submit" class="submitLogIn">
+						<img src="@routes.Assets.at("images/logIn.png")" class="logIn"/>
+					</button>
+				</div>
 			}	
-				<div id="signUp" class="signinButton signupButton"><a href="/signUp" height="25px"><img src="@routes.Assets.at("images/signUp2.png")" height="40px" width="200px"></a></div>
+				<div id="signUp" class="signinButton signupButton">
+					<a href="/signUp">
+					<img src="@routes.Assets.at("images/signUp2.png")" height="25px" width="200px"></a>
+				</div>
 				<div id="forgotPw" class="forgotPassword">
 				<a href="/forgotPassword"><p>Forgot Password?</p></a></div>
 			</div>
