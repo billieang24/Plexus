@@ -1,12 +1,17 @@
 html
 {
-	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
+	background: url("../images/plexusBgAll.png") no-repeat center center fixed; 
+	background-size: cover;
 	background-size: cover;
 	background-repeat: no-repeat;
 	overflow-y: scroll;
+}
+.mainpageBg
+{
+	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow:hidden;
 }
 body
 {
@@ -352,24 +357,27 @@ p
 }
 .leftColumn
 {
-	width: 300px;
+	width: 20%;
 	height: auto;
-	margin: 25 0px 0px 50px;
 	padding: 10px;
 	float:left;
-	position: relative;
+	margin-left: 50px;
+	margin-right: 10px;
 }
 .rightColumn
 {
 	max-height: 100%;
-	width: 900px;
-	margin: 25 25px;
-	float:left;
-	position:relative;
+	width: 60%;
+	float:right;
+	margin-right: 50px;
+}
+.boxShadow
+{
+	box-shadow: 5px 5px 5px 5px black,  -5px 5px 5px 5px black ;
 }
 .newsFeeds
 {
-	height: 100%;
+	height: auto;
 	width: auto;
 	margin: 10px 20px;
 	padding: 0 30px;
@@ -380,7 +388,6 @@ p
 	float: left;
 	height: auto;
 	width: auto;
-
 }
 .picName
 {
@@ -390,11 +397,10 @@ p
 }
 .hpDp
 {
-	float: left;
-	height: 100px;
+	height:80px;
 	width: 100px;
 	padding: 10px 10px;
-	margin: 10px;
+	margin: 10px auto;
 }
 .hpName
 {
@@ -402,15 +408,14 @@ p
 	height: 50px;
 	width: auto;
 	margin: 20px;
-	padding:20px 10px 0px 80px;
+	padding:auto;
 }
 .divhomePage
 {
-	height: 30px;
-	width: 100%;
-	float:left;
+	height: 20px;
+	max-width: 80%;
 	text-align: center;
-	margin:10px auto; 
+	margin:10px 20px; 
 }
 h3.linkProfile
 {
@@ -418,27 +423,29 @@ h3.linkProfile
 }
 .divSearch
 {
+	height: auto;
+	width: 200px;
 	padding-top: 200px;
-	float:right;
 	text-align: center;
+	margin: 10px auto;
+	float: left;
 }
 .searchInput
 {
 	height: 30px;
-	width: 200px;
-	float: left;
+	width: 180px;
 	text-align: center;
 	margin:10px auto;
 }
 .rightColUpper
 {
-	width: 900px;
+	width: 100%;
 	height:150px;
-	border-bottom: 3px dashed black;
+	border-bottom: 3px dotted black;
 }
 .headerHP
 {
-	width:300px;
+	width:40%;
 	float: left;
 	margin: 20px auto;
 	padding: 0px 100px;
@@ -449,18 +456,18 @@ h3.linkProfile
 	float: right;
 	height: 80px;
 	width:80px;
-	border-left: 3px dashed black;
-	border-bottom: 3px dashed black;
+	border-left: 3px dotted black;
+	border-bottom: 3px dotted black;
 }
 .postsHp
 {
 	margin: 10px auto;
-	height: 100%;
+	height: auto;
 	width: 100%;
 }
 .newpostTextBoxHp
 {
-	height: 120px;
+	height: auto;
 	padding: 10px 30px;
 	overflow: solid;
 	resize: none;
@@ -479,13 +486,22 @@ h3.linkProfile
 	font-weight: bold;
 	font-family: arial;
 	background-color: beige;
-	margin: 10px auto;
+	margin: 10px auto 0px
+}
+button.post
+{
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	height: auto;
+	width: 100%;
 }
 .postButtonHp
 {
-	height: 40px;
-	width: 100px;
-	margin: auto;
+	height: auto;
+	width: auto;
+	margin: 10px 225px;
+	position:relative;
 }
 .relative;
 {
@@ -504,7 +520,7 @@ h3.linkProfile
 }
 .newPost
 {
-	height: 200px;
+	height: auto;
 	width: 100%;
 	margin-bottom: 10px;
 	overflow: hidden; 
@@ -594,15 +610,27 @@ h3.linkProfile
 	width: 250px;
 	margin-left: 100px;
 }
-<<<<<<< HEAD
 .homeCss
 {
-	height: auto;
-	width: auto;
-	position: absolute;
+	height: 2000px;
+	width: 950px;
+	position: relative;
+	margin: 10px auto;
+	padding: 30px 0px;
 }
-
-
-
-=======
->>>>>>> 00af70a68d26cf13dba7cdea665f18905314e8e3
+.fontsVal
+{
+	font-size: 15;
+}
+.divSolid
+{
+	border: 2px dashed black;
+}
+.wrapper
+{
+	height: auto;
+	width: 1300px;
+	position: relative;
+	margin: 10px auto;
+	padding: 30px 0px;
+}

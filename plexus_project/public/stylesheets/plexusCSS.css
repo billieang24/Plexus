@@ -149,7 +149,7 @@ a
 {
 	width: 100%;
 	height: auto;
-	padding:10px 25px 5px; 
+	padding:10px 25px 5prx; 
 	float: left;
 	margin-top: 10px;
 }
@@ -272,12 +272,6 @@ h1.signup
 	max-width: 100%;
 	margin-right: 50px;
 	margin-bottom: 50px;
-}
-.signUpB
-{
-	background-color: transparent;
-	border: 0px solid transparent;
-	cursor: pointer;
 }
 .profileUpper
 {
@@ -487,6 +481,9 @@ h3.linkProfile
 	width: 100%;
 	margin-top: 10px;
 }
+<<<<<<< HEAD
+
+=======
 .rightProfile
 {
 	float: right;
@@ -566,3 +563,4 @@ h3.linkProfile
 	width: 250px;
 	margin-left: 100px;
 }
+>>>>>>> c63006a22ad9de6de2e489cf9b589775ccf077eb
