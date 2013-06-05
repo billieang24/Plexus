@@ -11,7 +11,7 @@ html
 	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
 	background-size: cover;
 	background-repeat: no-repeat;
-	overflow:hidden;
+	overflow:scroll;
 }
 body
 {
@@ -393,10 +393,13 @@ p
 }
 .hpDp
 {
-	height:80px;
+	height:100px;
 	width: 100px;
-	padding: 10px 10px;
 	margin: 10px auto;
+}
+.hpDpImg
+{
+	border-radius: 15px;
 }
 .hpName
 {
@@ -812,4 +815,7 @@ ul.addFriendBullets
 	margin: 20px auto;
 	height: 20px;
 	width: 120px;
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 99804f736e12caecbbed85c702c8a4a5f80169ec
