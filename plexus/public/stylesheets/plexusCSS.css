@@ -32,8 +32,9 @@ body
 }
 .fpWholeCss
 {	
-	margin-left: 35%;
-	float: left;
+	margin: 0px auto;
+	height: 100%;
+	width: 450px;
 }
 .logoMain
 {
@@ -47,10 +48,6 @@ body
 {
 	max-width:100%;	
 	height: 150px;
-}
-.logoFP
-{
-	padding: 25px 0px 0px 45px;
 }
 .lowerCss
 {
@@ -69,7 +66,7 @@ body
 .middleFP
 {
 	height: 500px;
-	width: 375px;
+	width: 445px;
 }
 .inputCss, .firstNameCss, .middleNameCss, .lastNameCss, .address
 {
@@ -93,7 +90,7 @@ body
 {
 	background-color: transparent;
 	width: 350px;
-	height: 10px;
+	height: 100px;
 	margin: 20px 38%;
 	float: left;
 }
@@ -273,7 +270,7 @@ h1.signup
 {
 	width: 1350px;
 	max-height: 100%;
-	position: absolute;
+	margin: 0px auto;
 }
 .profileUpper
 {
@@ -292,6 +289,10 @@ h1.signup
 {
 	height: 170px;
 	width: 170px;
+}
+.dpImage
+{
+	border-radius: 15px;
 }
 .usersName
 {
@@ -569,7 +570,7 @@ h3.linkProfile
 	padding: 10px 30px;
 	overflow: solid;
 	resize: none;
-	margin-bottom: 10px;
+	margin: 10px auto 0px auto;
 }
 .postTextBox
 {
@@ -594,15 +595,191 @@ h3.linkProfile
 	width: 250px;
 	margin-left: 100px;
 }
-<<<<<<< HEAD
 .homeCss
 {
 	height: auto;
 	width: auto;
 	position: absolute;
 }
-
-
-
-=======
->>>>>>> 00af70a68d26cf13dba7cdea665f18905314e8e3
+.postButtonProfile
+{
+	cursor: pointer;
+	height: 40px;
+	width: 100px;
+	background-color: transparent;
+	border: 0px solid transparent;
+	padding: 0px;
+}
+.verificationContainer
+{
+	height: 100%;
+	width: 650px;
+	margin: 0px auto;
+	text-align: center;
+}
+.logoAll
+{
+	padding: 25px;
+	margin: 0px auto;
+	height: 100px;
+	width: 300px;
+}
+.verificationMiddleCss
+{
+	width: 650px;
+	height: 500px;
+	padding: 10px;
+}
+.verificationHeading
+{
+	height: 38px;
+	width: 180px;
+	margin: 0px auto 20px auto; 
+}
+h1.verificationHead
+{
+	margin: 0px;	
+}
+.verificationMessage
+{
+	height: 300px;
+	width: 100%;
+}
+.skipVerificationDiv
+{
+	width: 110px;
+	height: 20px;
+	margin: 10px auto;
+}
+.addFriendContainer
+{
+	height: 100%;
+	width: 400px;
+	margin: 0px auto;
+}
+.addFriendMiddleCss
+{
+	height: 400px;
+	width: 400px;
+	border: 2px dotted black; 
+	border-radius: 15px; 
+}
+.friendsEmailList
+{
+	height: 400px;
+	width: 350px;
+	margin: 10px 25px;
+}
+.addFriendHead
+{
+	height: 38px;
+	width: 350px;
+}
+h1.addFriendHeading
+{
+	margin: 10px;
+}
+.addList
+{
+	height: 250px;
+	width: 350px;
+	margin-top: 20px;
+}
+ul.addFriendBullets
+{
+	list-style: square;
+}
+.addFriendListDiv
+{
+	height: 50px;
+	width: 310px;
+}
+.addFriendEmail
+{
+	border-radius: 15px;
+	background-color: beige;
+	width: 300px;
+	height: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+.addFriendButton
+{
+	width: 200px;
+	height: 50px;
+	margin: 10px auto;
+}
+.addFriend
+{
+	width: 200px;
+	height: 50px;
+	cursor: pointer;
+	padding: 0px;
+	border: 0px solid transparent;
+	background-color: transparent;
+}
+.skipAdding
+{
+	width: 128px;
+	height: 20px;
+	margin: 0 auto;
+}
+.photoUploadContainer
+{
+	height: 100%;
+	width: 400px;
+	margin: 0px auto;
+}
+.photoUploadMiddleCss
+{
+	height: 325px;
+	width: 400px;
+}
+.photoUploadMiddleUpper
+{
+	width: 100%;
+	height: 180px;
+}
+.firstPhoto
+{
+	height: 170px;
+	width: 170px;
+	margin: 10px auto;
+}
+.photoUploadMiddleMiddle
+{
+	width: 100%;
+	height: 100px;
+}
+.photoUploadDiv
+{
+	margin: 20px auto;
+	height: 25px;
+	width: 300px;
+}
+.photoUploadPath
+{
+	background-color: beige;
+	width: 300px;
+}
+.photoUploadButton
+{
+	height: 50px;
+	width: 200px;
+	cursor: pointer;
+	padding: 0px;
+	border: 0px solid transparent;
+	background-color: transparent;
+}
+.photoUploadButtonDiv
+{
+	height: 50px;
+	width: 200px;
+	margin: 0px auto;
+}
+.skipUpload
+{
+	margin: 20px auto;
+	height: 20px;
+	width: 120px;
+}

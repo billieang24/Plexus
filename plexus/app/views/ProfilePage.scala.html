@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
@@ -13,7 +14,8 @@
 			</div>
 			<div class="relative profileWhole">
 				<div class="userInfoProfile divborder relative">
-					<div class="dP divborder fl relative">display picture
+					<div class="dP divborder fl relative">
+						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
 					</div>
 					<div class="nameMiddle fl relative">
 						<div class="usersName fl relative">
@@ -43,9 +45,9 @@
 							<textarea class="postTextBox" rows="5" cols="55" placeholder="Post It Here!"></textarea>
 						</div>
 						<div class="postButton">
-							<a href="">
+							<button name="postButton" class="postButtonProfile">
 							<img src="@routes.Assets.at("images/postButton.png")" height="40px" width="100px">
-							</a>
+							</button>
 						</div>
 					</div>
 					<div class="recentPost">
