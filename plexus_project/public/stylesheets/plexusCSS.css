@@ -149,15 +149,15 @@ body
 	-webkit-border-radius: 10px;
 	width: 200px;
 	height: 10px;
-	padding:10px 20px 10px; 
+	padding:10px 20px; 
 	float: left;
 }
 .signupButton
 {
 	-webkit-border-radius: 10px;
-	width: 100%;
+	width: 200px;
 	height: 10px;
-	padding:20px 25px 5px; 
+	padding:5px 25px; 
 	float: left;
 }
 .submitLogIn
