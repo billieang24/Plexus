@@ -1,3 +1,4 @@
+@(form: Form[(String,String)])(implicit flash: Flash)
 <html class="mainpageBg">	
 <title>Plexus</title>
 <head>
@@ -11,14 +12,30 @@
 				<center>
 					<div id="upper" class="logoMain"><img src="/home/dmcalamares/github/Plexus/views/images/plexusLogo2.png" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
 			<div id="signInUp" class="signCss signInCss"> 
-				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="user_name" value="" placeholder="username"/></div>
-				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="user_name" value="" placeholder="password"/></div>
+				@helper.form(routes.Application.authenticate){
+				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="username" value="" placeholder="username"/></div>
+				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="password" value="" placeholder="password"/></div>
+				@form.globalError.map { error =>
+                <p class="error">
+                    @error.message
+                </p>
+            }
+            
+            @flash.get("success").map { message =>
+                <p class="success">
+                    @message
+                </p>
+            }
 				<div id="signIn" class="signinButton">
-					<a href="/homePage" height="25px"><img src="/home/dmcalamares/github/Plexus/views/images/logIn.png" height="25px" width="200px"></a></div>
+					<button type"submit" class="submitLogIn">
+						<img src="/home/dmcalamares/github/Plexus/views/images/logIn.png" class="logIn"/>
+					</button>
+				</div>
+			}	
 				<div id="signUp" class="signinButton signupButton">
-					<a href="signUp" height="25px">
-						<img src="/home/dmcalamares/github/Plexus/views/images/signUp2.png")" height="25px" width="200px"></a>
-					</div>
+					<a href="/signUp">
+					<img src="/home/dmcalamares/github/Plexus/views/images/signUp2.png" height="25px" width="200px"></a>
+				</div>
 				<div id="forgotPw" class="forgotPassword">
 				<a href="/forgotPassword"><p>Forgot Password?</p></a></div>
 			</div>
