@@ -11,7 +11,6 @@ html
 body
 {
 	margin: 0 auto;
-	background-image: url("../images/plexusBgMainpage.png");
 	overflow: hidden;
 	display: block;
 	background-size: 100%;
@@ -92,6 +91,7 @@ body
 {
 	height: 100%;
 	width: 100%;
+	text-align:center;
 }
 .fplogo
 {
@@ -113,7 +113,7 @@ body
 	position:relative;
     top: 10px;
     left: 50%;
-    width:300px;
+    width:254px;
     height:180px;
     padding: 0 75px;
 }
@@ -177,7 +177,7 @@ a
 .divborder
 {
 	border-radius: 15px;
-	border: 3px dashed black;
+	border: 3px dotted black;
 }
 .fpUpperCss
 {
@@ -356,25 +356,26 @@ p
 }
 .leftColumn
 {
-	width: 400px;
+	width: 300px;
 	height: auto;
-	margin: 25 0px 25px 50px;
+	margin: 25 0px 0px 50px;
 	padding: 10px;
 	float:left;
+	position: relative;
 }
 .rightColumn
 {
 	max-height: 100%;
 	width: 900px;
-	margin: 25 50px;
-	padding: 0px 0px 0 0px;
-	float:right;
+	margin: 25 25px;
+	float:left;
+	position:relative;
 }
 .newsFeeds
 {
 	height: 100%;
-	width: 800px;
-	margin: 20px;
+	width: auto;
+	margin: 10px 20px;
 	padding: 0 30px;
 	text-align: center;
 }
@@ -394,8 +395,8 @@ p
 .hpDp
 {
 	float: left;
-	height: 150px;
-	width: 150px;
+	height: 100px;
+	width: 100px;
 	padding: 10px 10px;
 	margin: 10px;
 }
@@ -403,9 +404,9 @@ p
 {
 	text-align: center;
 	height: 50px;
-	width: 250px;
+	width: auto;
 	margin: 20px;
-	padding:20px 10px 0px 100px;
+	padding:20px 10px 0px 80px;
 }
 .divhomePage
 {
@@ -435,7 +436,7 @@ h3.linkProfile
 }
 .rightColUpper
 {
-	width: 100%;
+	width: 900px;
 	height:150px;
 	border-bottom: 3px dashed black;
 }
@@ -450,7 +451,7 @@ h3.linkProfile
 {
 
 	float: right;
-	height: 50%;
+	height: 80px;
 	width:80px;
 	border-left: 3px dashed black;
 	border-bottom: 3px dashed black;
@@ -458,6 +459,8 @@ h3.linkProfile
 .postsHp
 {
 	margin: 10px auto;
+	height: 100%;
+	width: 100%;
 }
 .relative;
 {
@@ -543,26 +546,32 @@ h3.linkProfile
 	resize: none;
 	margin-bottom: 10px;
 }
-.postTextBox
+.postTextBoxHp
 {
-	padding: 10px;
+	padding:10px 50px;
 	border-radius: 5px;
 	max-width: 100%;
 	font-size: 16px;
 	font-weight: bold;
 	font-family: arial;
 	background-color: beige;
+	margin: 10px auto;
 }
-.postButton
+.postButtonHp
 {
-	float: right;
 	height: 40px;
 	width: 100px;
-	margin-right: 30px;
+	margin: auto;
 }
 .logoProfile
 {
 	height: 80px;
 	width: 250px;
 	margin-left: 100px;
+}
+.homeCss
+{
+	height: auto;
+	width: auto;
+	position: absolute;
 }

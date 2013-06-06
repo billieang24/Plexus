@@ -1,3 +1,4 @@
+@(user: User)
 <html>
 <title>Home Page</title>
 <head>
@@ -19,7 +20,7 @@
 					display picture
 				</div>
 				<div class="hpName">
-					<h3>Dianne Calamares</h3>
+					<h3>D/h3>
 				</div>
 			</div>
 			<div id="options" class="options">
@@ -47,7 +48,9 @@
 					<h1>News Feed</h1>
 				</div>
 				<div class="signOut">
-					<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
+					<a href="/logout">
+						<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
+					</a>
 				</div>
 			</div>
 				<div class="newPost">
