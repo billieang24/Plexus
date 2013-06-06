@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+</head>
+<body>
+	<div class="photoUploadContainer">
+		<div id="upper" class="upperCss">
+			<div class="logoAll">
+				<img src="@routes.Assets.at("images/plexusLogo2.png")" height="100px" width="300px" alt="plexusLogo"/>		
+			</div>
+		</div>
+		<div class="photoUploadMiddleCss divborder">
+			<div class="photoUploadMiddleUpper">
+				<div class="firstPhoto divborder">
+					<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
+				</div>
+			</div>
+			<div class="photoUploadMiddleMiddle">
+				<div class="photoUploadDiv">
+					<input type="file" name="photo" class="photoUploadPath" size="40"/>
+				</div>
+				<div class="photoUploadButtonDiv">
+					<button class="photoUploadButton" type="submit">
+						<img src="@routes.Assets.at("images/uploadButton.png")" height="50px" width="200px" alt="uploadButton"/>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="skipUpload">
+				<a href="">Skip Photo Upload</a>
+		</div>
+	</div>
+</body>
+<html>

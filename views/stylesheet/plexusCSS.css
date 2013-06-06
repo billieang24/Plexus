@@ -1,0 +1,819 @@
+html
+{
+	background: url("../images/plexusBgAll.png") no-repeat center center fixed; 
+	background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow-y: scroll;
+}
+.mainpageBg
+{
+	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow:scroll;
+}
+body
+{
+	margin: 0 auto;
+	overflow: hidden;
+	display: block;
+	background-size: 100%;
+}
+.of
+{
+	overflow-y: scroll;
+}
+.ofx
+{
+	overflow-x: hidden; 
+}
+.wholeCss
+{
+	max-height:100%;
+	width:100%;
+	display: block;
+	position: absolute;
+}
+.fpWholeCss
+{	
+	margin: 0px auto;
+	height: 100%;
+	width: 450px;
+}
+.logoMain
+{
+	max-width:100%;
+	max-height:50%;
+	height: 100px;
+	padding:30px 0px 0px 450px;
+	position:relative;
+}
+.upperCss
+{
+	max-width:100%;	
+	height: 150px;
+}
+.lowerCss
+{
+	padding-left: 38%;
+	height: 150px;
+}
+.fl
+{
+	float: left;
+}
+.middleCss
+{
+	max-width: 100%;
+	max-height: 100%;
+}
+.middleFP
+{
+	height: 500px;
+	width: 445px;
+}
+.inputCss, .firstNameCss, .middleNameCss, .lastNameCss, .address
+{
+	border-radius: 10px;
+	height: 30px; 
+	width: 250px;
+	background-color: beige;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+.logoCss
+{
+	background-color: transparent;
+	width: 250px;
+	height: 80px;
+	margin-left: 50%;
+	float: left;
+}
+.logoSignUp
+{
+	background-color: transparent;
+	width: 350px;
+	height: 100px;
+	margin: 20px 38%;
+	float: left;
+}
+.signUpError
+{
+	height: 100%;
+	width: 100%;
+}
+.fplogo
+{
+	margin-left: 20%;
+	margin-top: 20px;
+}
+.middleUser
+{
+	float: left;
+	padding: 25px 0 25px 0;
+}
+.middlePass
+{
+	float: left;
+	padding: 0px 0 50px 0;
+}
+.signCss
+{
+	position:relative;
+    top: 10%;
+    left: 50%;
+    width:300px;
+    height:200px;
+    padding: 0 75px;
+}
+.containerCss
+{
+	margin-left:auto;
+	margin-right: auto;
+	width: 80%;
+	height: 50%;
+}
+.pad
+{
+	height: 400px;
+	padding: 0px 100px 0px 200px;
+}
+.signInCss
+{
+	margin-left: 150px; 
+}
+.signinButton
+{
+	-webkit-border-radius: 10px;
+	width: 100%;
+	height: 10px;
+	padding:10px 25px 10px; 
+	float: left;
+}
+.signupButton
+{
+	-webkit-border-radius: 10px;
+	width: 100%;
+	height: 10px;
+	padding:20px 25px 5px; 
+	float: left;
+}
+.fpImageCss
+{
+	width: 100px;
+	height: 150px;
+	float: left;
+	padding-top: 10px;
+}
+}
+.forgotText
+{
+	width: 100%;
+	height: 100%;
+}
+.divborder
+{
+	border-radius: 15px;
+	border: 3px dotted black;
+}
+.fpUpperCss
+{
+	height: 160px;
+	width: 375px;
+	border-bottom: 0px;
+	padding: 20px 30px;
+}
+.fpLowerCss
+{
+	height: 250px;
+	width: 375px;
+	padding: 20px 30px;
+}
+.fpH3
+{
+	height:25px;
+}
+.emailInput
+{
+	padding: 20px 60px;
+	height: 50px;
+	max-width: 100%;
+}
+.colorBeige
+{
+	background-color: beige;
+}
+.sendButtonCss
+{
+	padding-left: 150px;
+}
+.userInfo
+{
+	max-height: 100%;
+	width: 550px;
+	padding-left: 20px;
+}
+.upperSU
+{
+	max-width:100%;
+	height: 200px;
+}
+.maleFemale
+{
+	width: 100px;
+	margin-bottom: 50px;
+}
+.dayInput
+{
+	width: 80px;
+}
+.dateBottom, .UPBottom, .address
+{
+	margin-bottom: 25px;
+}
+.address
+{
+	width: 510px;
+}
+.monthBday
+{
+	width:125px;
+}
+.gender
+{
+	visibility: hidden;
+}
+.signUpText
+{
+	height: 70px;
+	width: 900px;
+}
+h1.signup
+{
+	margin: 0 150px;
+}
+.middleSignup
+{
+	padding: 0 380px;
+	height: 500px;
+}
+.h3SignUp
+{
+	height: 80px;
+	max-width: 100%;
+	margin-right: 50px;
+	margin-bottom: 50px;
+}
+.profileContainer
+{
+	width: 1350px;
+	max-height: 100%;
+	margin: 0px auto;
+}
+.profileUpper
+{
+	width: 100%;
+	height: 80px;
+	padding: 30px 0px;
+}
+.userInfoProfile
+{
+	max-width: 100%;
+	height: 180px;
+	margin:30px 30px 0px 100px;
+	padding: 30px 50px;
+}
+.dP
+{
+	height: 170px;
+	width: 170px;
+}
+.dpImage
+{
+	border-radius: 15px;
+}
+.usersName
+{
+	max-height: 100%;
+	max-width: 100%;
+	margin-left:50px;
+	margin-top: 100px;
+	padding: 0px 10px 0px 10px;
+}
+div
+{
+	display: block;
+}
+h1.profileName
+{
+	margin: 0px;
+}
+li
+{
+	display: list-item;
+}
+li.font
+{
+	font-size: 20px;
+}
+.otherInfoProfile
+{
+	height: 170px;
+	width: 350px;
+	border-left: 3px dashed black;
+	float: right;
+}
+.nameMiddle
+{
+	height: 170px;
+	width: 500px;
+}
+.liProfileDiv
+{
+	padding: 0px 20px;
+	border: 1px solid white;
+}
+h3.profilePage
+{
+	margin: 0px 20px;
+}
+p
+{
+	-webkit-border-radius: 10px;
+	width: 100%;
+	height: 10px;
+	padding:20px 55px 5px; 
+	float: left;
+}
+.profilePageOf
+{
+	overflow-y: scroll;
+}
+.leftColumn
+{
+	width: 20%;
+	height: auto;
+	padding: 10px;
+	float:left;
+	margin-left: 50px;
+	margin-right: 10px;
+}
+.rightColumn
+{
+	max-height: 100%;
+	width: 60%;
+	float:right;
+	margin-right: 50px;
+}
+.boxShadow
+{
+	box-shadow: 5px 5px 5px 5px black,  -5px 5px 5px 5px black ;
+}
+.newsFeeds
+{
+	height: auto;
+	width: auto;
+	margin: 10px 20px;
+	padding: 0 30px;
+	text-align: center;
+}
+.options
+{
+	float: left;
+	height: auto;
+	width: auto;
+}
+.picName
+{
+	float:left;
+	height: auto;
+	width: auto;
+}
+.hpDp
+{
+	height:100px;
+	width: 100px;
+	margin: 10px auto;
+}
+.hpDpImg
+{
+	border-radius: 15px;
+}
+.hpName
+{
+	text-align: center;
+	height: 50px;
+	width: auto;
+	margin: 20px;
+	padding:auto;
+}
+.divhomePage
+{
+	height: 20px;
+	max-width: 80%;
+	text-align: center;
+	margin:10px 20px; 
+}
+h3.linkProfile
+{
+	margin:0 10px;
+}
+.divSearch
+{
+	height: auto;
+	width: 200px;
+	padding-top: 200px;
+	text-align: center;
+	margin: 10px auto;
+	float: left;
+}
+.searchInput
+{
+	height: 30px;
+	width: 180px;
+	text-align: center;
+	margin:10px auto;
+}
+.rightColUpper
+{
+	width: 100%;
+	height:150px;
+	border-bottom: 3px dotted black;
+}
+.headerHP
+{
+	width:40%;
+	float: left;
+	margin: 20px auto;
+	padding: 0px 100px;
+}
+.signOut
+{
+
+	float: right;
+	height: 80px;
+	width:80px;
+	border-left: 3px dotted black;
+	border-bottom: 3px dotted black;
+}
+.postsHp
+{
+	margin: 10px auto;
+	height: auto;
+	width: 100%;
+}
+.newpostTextBoxHp
+{
+	height: auto;
+	padding: 10px 30px;
+	overflow: solid;
+	resize: none;
+	border-radius: 5px;
+	max-width: 100%;
+	font-size: 16px;
+	background-color:transparent;
+	margin:10px 10px;
+}
+.postTextBoxHp
+{
+	padding:10px 50px;
+	border-radius: 5px;
+	max-width: 100%;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: arial;
+	background-color: beige;
+	margin: 10px auto 0px
+}
+button.post
+{
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	height: auto;
+	width: 100%;
+}
+.postButtonHp
+{
+	height: auto;
+	width: auto;
+	margin: 10px 225px;
+	position:relative;
+}
+.relative;
+{
+	position: relative;
+}
+.profileWhole
+{
+	padding: 0px 20px 20px 20px;
+}
+.usersPostProfile
+{
+	max-height: 100%;
+	width: 650px;
+	margin: 30px 0px 30px 100px;
+	padding: 30px 30px;
+}
+.newPost
+{
+	height: auto;
+	width: 100%;
+	margin-bottom: 10px;
+	overflow: hidden; 
+}
+.recentPost
+{
+	height: 100%;
+	width: 100%;
+	margin-top: 10px;
+}
+.rightProfile
+{
+	float: right;
+	max-height: 100%;
+	width: 310px;
+	margin: 30px 30px 30px 10px;
+	padding: 10px 30px 30px 30px;
+}
+.friendsPhoto
+{
+	height: 103px;
+	width: 103px;
+}
+.friendsInfo
+{
+	height: 100px;
+	width: 180px;
+	padding-left: 10px;
+}
+.usersFriendProfile
+{
+	margin-bottom: 10px;
+}
+.linkToAbout
+{
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.aboutInfoProfile
+{
+	margin-left: 30px;
+	height: 30px;
+	width: 100%;
+	border-bottom: 2px solid black;
+	margin-bottom: 10px;
+}
+.linkToFriends
+{
+	padding: 10px;
+	height: 20px;
+	width: 100%;
+	border-bottom: 2px solid black;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.newPostTextBox
+{
+	height: 120px;
+	max-width: 100%;
+	padding: 10px 30px;
+	overflow: solid;
+	resize: none;
+	margin: 10px auto 0px auto;
+}
+.postTextBox
+{
+	padding: 10px;
+	border-radius: 5px;
+	max-width: 100%;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: arial;
+	background-color: beige;
+}
+.postButton
+{
+	float: right;
+	height: 40px;
+	width: 100px;
+	margin-right: 30px;
+}
+.logoProfile
+{
+	height: 80px;
+	width: 250px;
+	margin-left: 100px;
+}
+.homeCss
+{
+	height: 2000px;
+	width: 950px;
+	position: relative;
+	margin: 10px auto;
+	padding: 30px 0px;
+}
+.fontsVal
+{
+	font-size: 15;
+}
+.divSolid
+{
+	border: 2px dashed black;
+}
+.wrapper
+{
+	height: auto;
+	width: 1300px;
+	position: relative;
+	margin: 10px auto;
+	padding: 30px 0px;
+}
+.postButtonProfile
+{
+	cursor: pointer;
+	height: 40px;
+	width: 100px;
+	background-color: transparent;
+	border: 0px solid transparent;
+	padding: 0px;
+}
+.verificationContainer
+{
+	height: 100%;
+	width: 650px;
+	margin: 0px auto;
+	text-align: center;
+}
+.logoAll
+{
+	padding: 25px;
+	margin: 0px auto;
+	height: 100px;
+	width: 300px;
+}
+.verificationMiddleCss
+{
+	width: 650px;
+	height: 500px;
+	padding: 10px;
+}
+.verificationHeading
+{
+	height: 38px;
+	width: 180px;
+	margin: 0px auto 20px auto; 
+}
+h1.verificationHead
+{
+	margin: 0px;	
+}
+.verificationMessage
+{
+	height: 300px;
+	width: 100%;
+}
+.skipVerificationDiv
+{
+	width: 100%;
+	height: 20px;
+	margin: 10px auto;
+}
+.addFriendContainer
+{
+	height: 100%;
+	width: 410px;
+	margin: 0px auto;
+}
+.addFriendMiddleCss
+{
+	height: 400px;
+	width: 400px;
+	border: 2px dotted black; 
+	border-radius: 15px; 
+}
+.friendsEmailList
+{
+	height: 400px;
+	width: 350px;
+	margin: 10px 25px;
+}
+.addFriendHead
+{
+	height: 38px;
+	width: 100%;
+}
+h1.addFriendHeading
+{
+	margin: 10px;
+}
+.addList
+{
+	height: 250px;
+	width: 350px;
+	margin-top: 20px;
+}
+ul.addFriendBullets
+{
+	list-style: square;
+}
+.addFriendListDiv
+{
+	height: 50px;
+	width: 310px;
+}
+.addFriendEmail
+{
+	border-radius: 15px;
+	background-color: beige;
+	width: 300px;
+	height: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+.addFriendButton
+{
+	width: 200px;
+	height: 50px;
+	margin: 10px auto;
+}
+.addFriend
+{
+	width: 200px;
+	height: 50px;
+	cursor: pointer;
+	padding: 0px;
+	border: 0px solid transparent;
+	background-color: transparent;
+}
+.skipAdding
+{
+	width: 150px;
+	height: 20px;
+	margin: 0 auto;
+	text-align: center;
+}
+.photoUploadContainer
+{
+	height: 100%;
+	width: 400px;
+	margin: 0px auto;
+}
+.photoUploadMiddleCss
+{
+	height: 325px;
+	width: 400px;
+}
+.photoUploadMiddleUpper
+{
+	width: 100%;
+	height: 180px;
+}
+.firstPhoto
+{
+	height: 170px;
+	width: 170px;
+	margin: 10px auto;
+}
+.photoUploadMiddleMiddle
+{
+	width: 100%;
+	height: 100px;
+}
+.photoUploadDiv
+{
+	margin: 20px auto;
+	height: 25px;
+	width: 300px; 
+}
+.photoUploadPath
+{
+	background-color: beige;
+	width: 100%;
+}
+.photoUploadButton
+{
+	height: 50px;
+	width: 200px;
+	cursor: pointer;
+	padding: 0px;
+	border: 0px solid transparent;
+	background-color: transparent;
+}
+.photoUploadButtonDiv
+{
+	height: 50px;
+	width: 200px;
+	margin: 0px auto;
+}
+.skipUpload
+{
+	margin: 20px auto;
+	height: 20px;
+	width: 120px;
+}
+
