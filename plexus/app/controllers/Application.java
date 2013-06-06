@@ -32,4 +32,10 @@ public class Application extends Controller {
   public static Result photoUploadPage() {
 		return ok(PhotoUploadPage.render());
   }
+  public static Result about() {
+		return ok(AboutPage.render());
+  }
+  public static Result friends() {
+		return ok(FriendsPage.render());
+  }
 }
