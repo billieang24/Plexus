@@ -56,8 +56,9 @@ body
 }
 .lowerCss
 {
-	padding-left: 38%;
-	height: 150px;
+	height: 110px;
+	width: 100%;
+	margin: 0px auto;
 }
 .fl
 {
@@ -152,13 +153,32 @@ body
 	padding:10px 20px; 
 	float: left;
 }
+.signUpContainer
+{
+	height: 100%;
+	width: 580px;
+	margin: 0px auto;
+}
 .signupButton
 {
 	-webkit-border-radius: 10px;
+<<<<<<< HEAD
 	width: 200px;
 	height: 10px;
 	padding:5px 25px; 
 	float: left;
+=======
+	width: 235px;
+	height: 85px;
+	margin: 20px auto;
+}
+.signUpB
+{
+	padding: 0px;
+	border: 0px solid transparent;
+	background-color: transparent;
+	cursor: pointer;
+>>>>>>> 78db4f6b033bf32df29160adcb22014831ef6abc
 }
 .submitLogIn
 {
@@ -264,8 +284,8 @@ h1.signup
 }
 .middleSignup
 {
-	padding: 0 380px;
 	height: 500px;
+	width: 575px;
 }
 .h3SignUp
 {
@@ -823,7 +843,4 @@ ul.addFriendBullets
 	margin: 20px auto;
 	height: 20px;
 	width: 120px;
-<<<<<<< HEAD
 }
-=======
->>>>>>> 99804f736e12caecbbed85c702c8a4a5f80169ec
