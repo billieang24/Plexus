@@ -674,7 +674,7 @@ button.post
 .verificationMiddleCss
 {
 	width: 650px;
-	height: 500px;
+	height: 450px;
 	padding: 10px;
 }
 .verificationHeading
@@ -775,7 +775,7 @@ ul.addFriendBullets
 .photoUploadContainer
 {
 	height: 100%;
-	width: 400px;
+	width: 410px;
 	margin: 0px auto;
 }
 .photoUploadMiddleCss
@@ -871,7 +871,7 @@ ul.addFriendBullets
 .friendsPageSearch
 {
 	width: 410px;
-	height: 25px;
+	height: 30px;
 	float: right;
 	margin: 45px 0px;
 }
@@ -880,13 +880,13 @@ ul.addFriendBullets
 	background-color: beige;
 	border-radius: 8px;
 	height: 20px;
-	width: 300px;
-	text-align: center;
+	width: 200px;
+	padding: 4px 14px;
 }
 .friendsPageSearchButton
 {
 	border-radius: 8px;
-	height: 25px;
+	height: 30px;
 	width: 100px;
 }
 .friendsPageFriendList
