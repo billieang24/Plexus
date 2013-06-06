@@ -7,33 +7,28 @@
 </head>
 <body>
 	<div id="hpCon" class="wholeCss">
-		<div class="homeCss">
+		<div class="wrapper">
 			<div class="profileUpper">
 				<div class="logoProfile fl">
 					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
 				</div>
 			</div>
-		<div id="leftCol" class="leftColumn divborder">
+		<div class="homeCss boxShadow">
+		<div id="leftCol" class="leftColumn divborder relative boxShadow">
 			<div id="namePic" class="picName">
 				<div class="hPdP divborder">
-					display picture
+					<img src="@routes.Assets.at("images/batman.png")" height="100px" width="100px" class="hpdpImg" alt="display picture"/>
 				</div>
-				<div class="hpName">
-					<h3>Dianne Calamares</h3>
+				<div class="hpName fontsVal">
+					<h4>Diannara Calamares</h4>
 				</div>
 			</div>
-			<div id="options" class="options">
-				<div id="hpProfile" class="hpProfile divborder divhomePage">
-					<h3 class="linkProfile"><a href="/profile ">Profile</a></h3>
+			<div id="options" class="options fontsVal">
+				<div id="hpProfile" class="hpProfile divhomePage">
+					<h3 class="linkProfile"><a href="/profile "><img src="@routes.Assets.at("images/profile.png")" height="25px" width="150px"/></a></h3>
 				</div>
-				<div id="hpProfile" class="hpFriendslist divborder divhomePage">
-					<h3 class="linkProfile"><a href="/profile ">FriendsList</a></h3>
-				</div>
-				<div id="hpProfile" class="hpMessages divborder divhomePage">
-					<h3 class="linkProfile"><a href="/profile ">Messages</a></h3>
-				</div>
-				<div id="hpProfile" class="hpNotifs divborder divhomePage">
-					<h3 class="linkProfile"><a href="/profile ">Notifications</a></h3>
+				<div id="hpProfile" class="hpFriendslist divhomePage">
+					<h3 class="linkProfile"><a href="/profile "><img src="@routes.Assets.at("images/friends.png")" height="25px" width="150px"/></a></h3>
 				</div>
 			</div>
 			<div id="divSearch" class="divSearch">
@@ -41,35 +36,37 @@
 				<h4><button>Search</button></h4>
 			</div>
 		</div>
-		<div id="rightCol" class="rightColumn divborder">
+		<div id="rightCol" class="rightColumn divborder relative boxShadow">
 			<div id="rightColUp" class="rightColUpper">
 				<div class="headerHP">
 					<h1>News Feed</h1>
 				</div>
 				<div class="signOut">
+					<button type="submit" class="post">
 					<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
+					</button>
 				</div>
 			</div>
 				<div class="newPost">
-					<div class="newPostTextBoxHp">
+					<div class="newPostTextBoxHp relative">
 						<textarea class="postTextBoxHp" rows="5" cols="60" placeholder="Post It Here!"></textarea>
 					</div>
-					<div class="postButtonHp">
-						<a href="">
-						<img src="@routes.Assets.at("images/postButton.png")" height="40px" width="100px">
-						</a>
+					<div class="postButtonHp relative">
+						<button type="submit" class="post">
+						<img src="@routes.Assets.at("images/postButton.png")" height="40px" width="100px"></button>
 					</div>
 				</div>
-				<div id="newsFeed" class="newsFeeds divborder">
-					<div id="postHp" class="postsHp divborder">
+				<div id="newsFeed" class="newsFeeds divborder fontsVal">
+					<div id="postHp" class="postsHp divSolid">
 						Try lang! Post to
 					</div>
-					<div id="showMoreHp" class="showmoreHp postsHp divborder">
+					<div id="showMoreHp" class="showmoreHp postsHp divSolid">
 						<h3>Show More</h3>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
