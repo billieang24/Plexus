@@ -1,4 +1,4 @@
-@import helper._
+@(form: Form[(String,String)])(implicit flash: Flash)
 <!DOCTYPE html>	
 <title>Plexus</title>
 <head>
@@ -12,9 +12,20 @@
 				<center>
 					<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
 			<div id="signInUp" class="signCss signInCss"> 
-				@form(routes.Application.logIn){
+				@helper.form(routes.Application.authenticate){
 				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="username" value="" placeholder="username"/></div>
 				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="password" value="" placeholder="password"/></div>
+				@form.globalError.map { error =>
+                <p class="error">
+                    @error.message
+                </p>
+            }
+            
+            @flash.get("success").map { message =>
+                <p class="success">
+                    @message
+                </p>
+            }
 				<div id="signIn" class="signinButton">
 					<button type"submit" class="submitLogIn">
 						<img src="@routes.Assets.at("images/logIn.png")" class="logIn"/>
