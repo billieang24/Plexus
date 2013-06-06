@@ -1,3 +1,4 @@
+@(user: User)
 <html>
 <title>Home Page</title>
 <head>
@@ -43,7 +44,9 @@
 				</div>
 				<div class="signOut">
 					<button type="submit" class="post">
-					<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
+						<a href="/logout">
+							<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
+						</a>
 					</button>
 				</div>
 			</div>

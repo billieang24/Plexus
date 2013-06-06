@@ -3,9 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.main
-POST    /							controllers.Application.logIn
-GET    	/signUp						controllers.Application.signUp()
+GET     /                           controllers.Application.index
+
+# Authentication
+GET    	/login						controllers.Application.login
+GET    	/signUp						controllers.Application.signUp
+GET     /logout                     controllers.Application.logout
+POST    /login						controllers.Application.authenticate
 POST    /signUp						controllers.Application.newUser
 
 # Map static resources from the /public folder to the /assets URL path

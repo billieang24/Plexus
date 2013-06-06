@@ -6,43 +6,46 @@ import play.api.data._
 import play.api.data.Forms._
 import models.User
 
-object Application extends Controller {
+object Application extends Controller with Secured{
   val userForm = Form(
       tuple(
 	  "username" -> nonEmptyText,
 	  "password" -> nonEmptyText)
   )
-  val logInForm = Form(
-      tuple(
-	  "username" -> nonEmptyText,
-	  "password" -> nonEmptyText)
+  val loginForm = Form(
+    tuple(
+      "username" -> text,
+      "password" -> text
+    ) verifying ("Invalid email or password", result => result match {
+      case (email, password) => User.authenticate(email, password).isDefined
+    })
   )
-  def main = Action {
-    Ok(views.html.Main())
+  def index = IsAuthenticated { username => _ =>
+    User.findByEmail(username).map { user =>
+        println("oo")
+      Ok(
+        views.html.Home(user)
+      )
+    }.getOrElse(Forbidden)
+  }
+  def login = Action { implicit request =>
+    Ok(views.html.Main(loginForm))
+  }
+  def logout = Action {
+    Redirect(routes.Application.login).withNewSession.flashing(
+      "success" -> "You are now logged out.")
+  }
+  def authenticate = Action { implicit request =>
+    loginForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.Main(formWithErrors)),
+      user => {
+        println("oo")
+        Redirect(routes.Application.index).withSession("username" -> user._1)
+      }
+    )
   }
   def signUp = Action {
     Ok(views.html.SignUp(""))
-  }
-  def logIn = Action {
-    implicit request =>
-  	logInForm.bindFromRequest.fold(
-    formWithErrors => {
-      Redirect(routes.Application.main)
-    },
-    value => {
-    	var params = request.body.asFormUrlEncoded.get
-    	var user = params.get("username") match{
-    		case Some(a) => a.head
-    	}
-    	var pass = params.get("password") match{
-    		case Some(a) => a.head
-    	}
-    	if(User.validLogIn(user, pass).size==1)
-    		Ok(views.html.SignUp("ok"))
-    	else
-    		Ok(views.html.SignUp("no"))
-    }
-    )
   }
   def newUser = Action { implicit request =>
   	userForm.bindFromRequest.fold(
@@ -116,9 +119,22 @@ object Application extends Controller {
     			date,
     			year,
     			add)
-    		Redirect(routes.Application.main)
+    		Redirect(routes.Application.index)
     	}
     }
   	)
   }
+}
+trait Secured {
+  
+  private def username(request: RequestHeader) = {
+    request.session.get(Security.username)
+  }
+  
+  private def onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Application.login)
+  
+  def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
+    Action(request => f(user)(request))
+  }
+
 }

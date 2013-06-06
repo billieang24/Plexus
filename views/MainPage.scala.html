@@ -2,15 +2,15 @@
 <html class="mainpageBg">	
 <title>Plexus</title>
 <head>
-	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<link rel="shortcut icon" type="image/png" href="/home/dmcalamares/github/Plexus/views/images/Icon.png"/>
+	<link rel="stylesheet" type="text/css" href="/home/dmcalamares/github/Plexus/views/stylesheet/plexusCSS.css"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
 </head>
 <body>
 	<div id="whole" class="wholeCss">
 		<div id="middle" class="containerCss">
 				<center>
-					<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
+					<div id="upper" class="logoMain"><img src="/home/dmcalamares/github/Plexus/views/images/plexusLogo2.png" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
 			<div id="signInUp" class="signCss signInCss"> 
 				@helper.form(routes.Application.authenticate){
 				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="username" value="" placeholder="username"/></div>
@@ -28,13 +28,13 @@
             }
 				<div id="signIn" class="signinButton">
 					<button type"submit" class="submitLogIn">
-						<img src="@routes.Assets.at("images/logIn.png")" class="logIn"/>
+						<img src="/home/dmcalamares/github/Plexus/views/images/logIn.png" class="logIn"/>
 					</button>
 				</div>
 			}	
 				<div id="signUp" class="signinButton signupButton">
 					<a href="/signUp">
-					<img src="@routes.Assets.at("images/signUp2.png")" height="25px" width="200px"></a>
+					<img src="/home/dmcalamares/github/Plexus/views/images/signUp2.png" height="25px" width="200px"></a>
 				</div>
 				<div id="forgotPw" class="forgotPassword">
 				<a href="/forgotPassword"><p>Forgot Password?</p></a></div>

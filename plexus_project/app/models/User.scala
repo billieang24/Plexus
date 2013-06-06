@@ -21,12 +21,22 @@ object User {
 		  case id~username~password~givenname~lastname~gender~address=> User(id, username, password,givenname,lastname,gender,address)
   	}
   }
-  def validLogIn(username: String, password: String)={
-    DB.withConnection { implicit c =>
-	  SQL("select * from user where username = {username} and password = {password}").on(
-      'username -> username,'password -> password
-			  ).as(user *)
-	  }
+  def findByEmail(username: String): Option[User] = {
+    DB.withConnection { implicit connection =>
+      SQL("select * from user where username = {username}").on(
+        'username -> username
+      ).as(User.user.singleOpt)
+    }
+  }
+  def authenticate(username: String, password: String): Option[User] = {
+    DB.withConnection { implicit connection =>
+      SQL(
+        "select * from user where username = {username} and password = {password}"
+      ).on(
+        'username -> username,
+        'password -> password
+      ).as(User.user.singleOpt)
+    }
   }
   def create(username: String, password: String,givenname:String,lastname:String,gender:String,month:String,date:String,year:String,address:String)={
 	  DB.withConnection { implicit c =>
