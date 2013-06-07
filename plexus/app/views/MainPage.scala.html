@@ -12,54 +12,41 @@
 </head>
 <body>
 	<div class="container">
-		<div class="wrapper boxShadow">
-			<form class="form-inline offset4">
-			  <input type="text" class="input-large" placeholder="Email">
-			  <input type="password" class="input-large" placeholder="Password">
-			  <button type="submit" class="btn">Sign in</button>
-			  <a href="/signUp" class="btn">Sign Up</a>
-			    <div class="control-group">
-		    		<div class="controls offset1">
-					 	<label class="checkbox">
-						<input type="checkbox">Remember me ·
-							 <a href="/forgotPassword"> Forgot Password</a>
-						</label>
-					</div>
-				 </div>
-			</form>
-			<div id="this-carousel-id" class="carousel slide">
-			  <div class="carousel-inner">
-			    <div class="item active">
-			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
-			      <div class="carousel-caption">
-			        <p>1</p>
-			      </div>
-			    </div>
-			    <div class="item">
-			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
-			      <div class="carousel-caption">
-			        <p>2</p>
-			      </div>
-			    </div>
-			    <div class="item">
-			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
-			      <div class="carousel-caption">
-			        <p>3</p>
-			      </div>
-			    </div>
-			    <div class="item">
-			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
-			      <div class="carousel-caption">
-			        <p>4</p>
-			      </div>
-			    </div>
-			  </div>
-			    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
-			    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+		<div class="wrapper-main boxShadow">
+			<div class="container auto">
+				<div class="offset4 auto">
+					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
+				</div>
 			</div>
+			<div class="offset6 homeSpan12 auto">
+				<form class="form-horizontal">
+				  <div class="control-group">
+				    <label class="control-label" for="inputEmail">Email</label>
+				    <div class="controls">
+				      <input type="text" id="inputEmail" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="control-group">
+				    <label class="control-label" for="inputPassword">Password</label>
+				    <div class="controls">
+				      <input type="password" id="inputPassword" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="control-group">
+				    <div class="controls">
+				      <label class="checkbox">
+				        <input type="checkbox"> Remember me<br/>
+				        <a href="/forgotPassword"> Forgot Password?</a>
+				      </label>
+				      <button type="submit" class="btn">Sign in</button>
+				      <a href="/signUp" class="btn">Sign up</a>
+				    </div>
+				  </div>
+				</form>
+		</div>
 		</div>
 		<div class="footer">
-				<p class="text-center">(c) Plexus 2013. PUP Manile. Dynamic Objx Labs. Inc</p>
+				<p class="text-center">(c) Plexus 2013. PUP Manila. Dynamic Objx Labs. Inc</p>
 		</div>
 	</div>
 </body>

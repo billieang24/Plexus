@@ -1,28 +1,35 @@
 <!DOCTYPE HTML>
 <html>
+<title>About</title>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
-<div class="wholeCss">
-		<div class="aboutContainer">
-			<div class="aboutUpper">
-				<div class="logoAbout fl">
-					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
-				</div>
-			</div>
-		<div class="aboutCss boxShadow">
-			<div class="aboutUp boxShadow">
-				<div class="about">
-					<img src="@routes.Assets.at("images/about.png")" height ="80px" width="200px" alt="about"/>
-				</div>
-			</div>
-				<div class="iconBack">
-				<a href="/profile"><img src="@routes.Assets.at("images/glyphicons_210_left_arrow.png")" height="40" width="60"></a>
-				</div>
-				<div class="aboutContents boxShadow">
+<div class="container">
+		<div class="wrapper">
+			<div class="navbar">
+			  <div class="navbar-inner navbar-fixed-top">
+			  	<div class="container">
+			    <ul class="nav">
+			      <li><a href="/homePage">Home</a></li>
+			      <li><a href="/profile">Profile</a></li>
+			      <li><a href="/friends">Friends</a></li>
+			      <li class="active"><a href="/about">About</a></li>
+			    </ul>
+			  </div>
+			  </div>
+			</div><!--Nav Bar-->
+			<div class="container auto">
+				<div class="aboutContents offset2 boxShadow">
 					<div id="aboutLocation" class="aboutLoc aboutContentsInner">
 						<h3>Location</h3>
 						<ul>
@@ -55,16 +62,7 @@
 						<img class="mrs uiLoadingIndicatorAsync img" src="@routes.Assets.at("images/glyphicons_150_edit.png")" alt="" width="40" height="30">
 						</a>
 					</div>
-				</div>
-			</div>	
-=======
-</head>
-<body>
-	<div class="wholeCss">
-		<div class="aboutContainer">
-			
->>>>>>> 18f51481c53d42f1fc9dcf057b747b086c5ed181
+			</div>
 		</div>
-	</div>
 </body>
 </html>

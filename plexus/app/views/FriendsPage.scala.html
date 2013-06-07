@@ -11,18 +11,20 @@
 	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
-	<div class="wholeCss">
-		<div class="container">
+<div class="container">
+		<div class="wrapper">
 			<div class="navbar">
- 				<div class="navbar-inner">
-			    	<ul class="nav">
-			    		<li><a href="/homePage">Home</a></li>
-				    	<li><a href="/profile">Profile</a></li>
-				    	<li class="active"><a href="#">Friends</a></li>
-				    	<li><a href="/about">About</a></li>
-					</ul>
- 				</div>
-			</div>
+			  <div class="navbar-inner navbar-fixed-top">
+			  	<div class="container">
+			    <ul class="nav">
+			      <li><a href="/homePage">Home</a></li>
+			      <li><a href="/profile">Profile</a></li>
+			      <li  class="active"><a href="/friends">Friends</a></li>
+			      <li><a href="/about">About</a></li>
+			    </ul>
+			  </div>
+			  </div>
+			</div><!--Nav Bar-->
 			<div class="friendsPageList boxShadow">
 				<div class="friendsPageListUpper">
 					<div class="friendsLogoUpper fl boxShadow">
@@ -72,7 +74,7 @@
 					</ul>
 				</div>
 			</div>
+			</div>
 		</div>
-	</div>
 </body>
 </html>
