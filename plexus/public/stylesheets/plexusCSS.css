@@ -1,25 +1,4 @@
-html
-{
-	background: url("../images/plexusBgAll.png") no-repeat center center fixed; 
-	background-size: cover;
-	background-size: cover;
-	background-repeat: no-repeat;
-	overflow-y: scroll;
-}
-.mainpageBg
-{
-	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
-	background-size: cover;
-	background-repeat: no-repeat;
-	overflow:scroll;
-}
-body
-{
-	margin: 0 auto;
-	overflow: hidden;
-	display: block;
-	background-size: 100%;
-}
+
 .of
 {
 	overflow-y: scroll;
@@ -395,7 +374,6 @@ p
 {
 	height:100px;
 	width: 100px;
-	margin: 10px auto;
 }
 .hpDpImg
 {
@@ -831,17 +809,13 @@ ul.addFriendBullets
 	height: 20px;
 	width: 120px;
 }
-<<<<<<< HEAD
-.aboutContainer
-=======
+.aboutContainer,
 .friendsPageContainer
->>>>>>> 18f51481c53d42f1fc9dcf057b747b086c5ed181
 {
 	width: 1350px;
 	max-height: 100%;
 	margin: 0px auto;
 }
-<<<<<<< HEAD
 
 .aboutCss
 {
@@ -904,7 +878,7 @@ ul.addFriendBullets
 	margin-right: 30px;
 	border-radius: 5px;
 	margin-bottom: 100px;
-=======
+}
 .friendsPageUpper
 {
 	height: 80px;
@@ -1004,5 +978,27 @@ ul.addFriendBullets
 	margin-left: 10px;
 	height: auto;
 	width: auto;
->>>>>>> 18f51481c53d42f1fc9dcf057b747b086c5ed181
+}
+.wrapper
+{
+	height: auto;
+	width: auto;
+	padding: 10px;
+	margin:20px auto;
+	background:transparent;
+}
+.homeSpan3
+{
+	height: 300px;
+}
+.homeSpan8
+{
+	height:1000px;
+}
+.wrapper-home
+{
+	width: 856px;
+	height: 2049px;
+	background: transparent;
+	margin: 10px auto;
 }

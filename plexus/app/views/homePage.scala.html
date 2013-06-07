@@ -1,83 +1,46 @@
-<html>
-<title>Home Page</title>
+<html class="mainpageBg">	
+<title>Home</title>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
-		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
-			<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
-		<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
-
-	<div id="hpCon" class="wholeCss">
-		<div class="container">
+	<div class="container">
+		<div class="wrapper">
 			<div class="navbar">
-  <div class="navbar-inner">
-    <ul class="nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="/profile">Profile</a></li>
-      <li><a href="/friends">Friends</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-  </div>
-</div>
-		<div class="homeCss boxShadow">
-		<div id="leftCol" class="leftColumn divborder relative boxShadow">
-			<div id="namePic" class="picName">
-				<div class="hPdP divborder">
-					<img src="@routes.Assets.at("images/batman.png")" height="100px" width="100px" class="hpdpImg" alt="display picture"/>
-				</div>
-				<div class="hpName fontsVal">
-					<h4>Diannara Calamares</h4>
-				</div>
-			</div>
-			<div id="options" class="options fontsVal">
-				<div id="hpProfile" class="hpProfile divhomePage">
-					<h3 class="linkProfile"><a href="/profile "><img src="@routes.Assets.at("images/profile.png")" height="25px" width="150px"/></a></h3>
-				</div>
-				<div id="hpProfile" class="hpFriendslist divhomePage">
-					<h3 class="linkProfile"><a href="/profile "><img src="@routes.Assets.at("images/friends.png")" height="25px" width="150px"/></a></h3>
-				</div>
-			</div>
-			<div id="divSearch" class="divSearch">
-				<input id="search" class="searchInput" value="" placeholder="Search"/>
-				<h4><button>Search</button></h4>
-			</div>
-		</div>
-		<div id="rightCol" class="rightColumn divborder relative boxShadow">
-			<div id="rightColUp" class="rightColUpper">
-				<div class="headerHP">
-					<h1>News Feed</h1>
-				</div>
-				<div class="signOut">
-					<button type="submit" class="post">
-					<img src="@routes.Assets.at("images/signOut.png")" height="80px" width="80px" alt="signOut">
-					</button>
-				</div>
-			</div>
-				<div class="newPost">
-					<div class="newPostTextBoxHp relative">
-						<textarea class="postTextBoxHp" rows="5" cols="60" placeholder="Post It Here!"></textarea>
-					</div>
-					<div class="postButtonHp relative">
-						<button type="submit" class="post">
-						<img src="@routes.Assets.at("images/postButton.png")" height="40px" width="100px"></button>
-					</div>
-				</div>
-				<div id="newsFeed" class="newsFeeds divborder fontsVal">
-					<div id="postHp" class="postsHp divSolid">
-						Try lang! Post to
-					</div>
-					<div id="showMoreHp" class="showmoreHp postsHp divSolid">
-						<h3>Show More</h3>
-					</div>
+			  <div class="navbar-inner navbar-fixed-top">
+			  	<div class="container">
+			    <ul class="nav">
+			      <li class="active"><a href="#">Home</a></li>
+			      <li><a href="/profile">Profile</a></li>
+			      <li><a href="/friends">Friends</a></li>
+			      <li><a href="/about">About</a></li>
+			    </ul>
+			  </div>
+			  </div>
+			</div><!--Nav Bar-->
+			<div class="container">
+				<div class="container-fluid wrapper-home">
+		 			<div class="row-fluid">
+		   				 <div class="span4 boxshadow homeSpan3">
+		     				 <div class="container">
+		     				 	<img src="@routes.Assets.at("images/batman.png")" class="img-rounded" height="100px" width="100px"/>
+		     				 </div>
+		    			</div>
+		    			<div class="span8 boxShadow homeSpan8">
+		      				<!--Body content-->
+		    			</div>
+		  			</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 </body>
 </html>

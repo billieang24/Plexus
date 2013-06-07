@@ -1,26 +1,65 @@
 <html class="mainpageBg">	
 <title>Plexus</title>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
-	<div id="whole" class="wholeCss">
-		<div id="middle" class="containerCss">
-				<center>
-					<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
-			<div id="signInUp" class="signCss signInCss"> 
-				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="user_name" value="" placeholder="username"/></div>
-				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="user_name" value="" placeholder="password"/></div>
-				<div id="signIn" class="signinButton"><a href="/homePage" height="25px"><img src="@routes.Assets.at("images/logIn.png")" height="25px" width="200px"></a></div>
-				<div id="signUp" class="signinButton signupButton">
-					<a href="signUp" height="25px">
-						<img src="@routes.Assets.at("images/signUp2.png")" height="25px" width="200px"></a>
+	<div class="container">
+		<div class="wrapper boxShadow">
+			<form class="form-inline offset4">
+			  <input type="text" class="input-large" placeholder="Email">
+			  <input type="password" class="input-large" placeholder="Password">
+			  <button type="submit" class="btn">Sign in</button>
+			  <a href="/signUp" class="btn">Sign Up</a>
+			    <div class="control-group">
+		    		<div class="controls offset1">
+					 	<label class="checkbox">
+						<input type="checkbox">Remember me ·
+							 <a href="/forgotPassword"> Forgot Password</a>
+						</label>
 					</div>
-				<div id="forgotPw" class="forgotPassword">
-				<a href="/forgotPassword"><p>Forgot Password?</p></a></div>
+				 </div>
+			</form>
+			<div id="this-carousel-id" class="carousel slide">
+			  <div class="carousel-inner">
+			    <div class="item active">
+			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
+			      <div class="carousel-caption">
+			        <p>1</p>
+			      </div>
+			    </div>
+			    <div class="item">
+			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
+			      <div class="carousel-caption">
+			        <p>2</p>
+			      </div>
+			    </div>
+			    <div class="item">
+			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
+			      <div class="carousel-caption">
+			        <p>3</p>
+			      </div>
+			    </div>
+			    <div class="item">
+			      <img src="@routes.Assets.at("images/plexusBgAll.png")" alt="" />
+			      <div class="carousel-caption">
+			        <p>4</p>
+			      </div>
+			    </div>
+			  </div>
+			    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+			    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
 			</div>
+		</div>
+		<div class="footer">
+				<p class="text-center">(c) Plexus 2013. PUP Manile. Dynamic Objx Labs. Inc</p>
 		</div>
 	</div>
 </body>
