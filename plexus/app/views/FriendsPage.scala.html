@@ -1,5 +1,6 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+<title>Friends</title>
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
@@ -14,6 +15,7 @@
 <div class="container">
 		<div class="wrapper">
 			<div class="navbar">
+<<<<<<< HEAD
 			  <div class="navbar-inner navbar-fixed-top">
 			  	<div class="container">
 			    <ul class="nav">
@@ -35,43 +37,68 @@
 						<button type="submit" class="friendsPageSearchButton">
 							Search
 						</button>
+=======
+ 				<div class="navbar-inner navbar-fixed-top">
+ 					<div class="container">
+				    	<ul class="nav">
+				    		<li><a href="/homePage">Home</a></li>
+					    	<li><a href="/profile">Profile</a></li>
+					    	<li class="active"><a href="#">Friends</a></li>
+					    	<li><a href="/about">About</a></li>
+						</ul>
 					</div>
-				</div>
-				<div class="friendsPageFriendList boxShadow">
-					<ul class="friendsPageListUl">
-						<li>
-							<div class="friendsPageListLi">
-								<div class="friendsPagePictureDiv fl">
-									<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+ 				</div>
+			</div>
+			<div class="container">
+				<div class="friendsPageList boxShadow">
+					<div class="friendsPageListUpper">
+						<div class="friendsLogoUpper fl boxShadow">
+							<img src="@routes.Assets.at("images/friendsList.png")" height="100px" width="200px"/>
+						</div>
+						<div class="friendsPageSearch">
+							<input class="friendsPageSearchInput" placeholder="search"/>
+							<button type="submit" class="friendsPageSearchButton">
+								Search
+							</button>
+						</div>
+>>>>>>> 9166a9b2e12f0a5a75ae4430bd689bbc094ca883
+					</div>
+					<div class="friendsPageFriendList boxShadow">
+						<ul class="friendsPageListUl">
+							<li>
+								<div class="friendsPageListLi">
+									<div class="friendsPagePictureDiv fl">
+										<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+									</div>
+									<div class="friendsPageFriendsName fl">
+										Ako Si Batman
+									</div>
 								</div>
-								<div class="friendsPageFriendsName fl">
-									Ako Si Batman
+							</li>
+							<li>
+								<div class="friendsPageListLi">
+									<div class="friendsPagePictureDiv">
+									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="friendsPageListLi">
-								<div class="friendsPagePictureDiv">
+							</li>
+							<li>
+								<div class="friendsPageListLi">
+									<div class="friendsPagePictureDiv fl">
+										<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+									</div>
+									<div class="friendsPageFriendsName fl">
+										Ako Si Man with a BAT
+									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="friendsPageListLi">
-								<div class="friendsPagePictureDiv fl">
-									<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+							</li>
+							<li>
+								<div class="friendsPageListLi">
+									<div class="friendsPagePictureDiv">
+									</div>
 								</div>
-								<div class="friendsPageFriendsName fl">
-									Ako Si Man with a BAT
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="friendsPageListLi">
-								<div class="friendsPagePictureDiv">
-								</div>
-							</div>
-						</li>
-					</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			</div>

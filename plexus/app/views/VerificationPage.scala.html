@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<title>Sign Up Step 2</title>
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
@@ -19,13 +20,88 @@
 				</div>
 			</div>
 			<div class="verificationMiddleCss">
-				<div class="verificationHeading">
-					<h1 class="verificationHead">Verification</h1>
-				</div>
-				<div class="verificationMessage">
-				</div>
-				<div class="skipVerificationDiv">
-				<a href="/addFriend">Skip Verification</a>
+				<div class="tabbable tabs divborder boxShadow">
+					  <ul class="nav nav-tabs">
+					    <li name="liTab1" id="liTab1" class="active"><a href="#tab1" data-toggle="tab">Verification</a></li>
+					    <li name="liTab2" id="liTab2"><a href="#tab2" data-toggle="tab">Add Friends</a></li>
+					    <li name="liTab3" id="liTab3"><a href="#tab3" data-toggle="tab">Upload Photo</a></li>
+					  </ul>
+					<div class="tab-content divborder">
+					    <div class="tab-pane active" id="tab1">
+								<div class="verificationHeading">
+									<h1 class="verificationHead">Verification</h1>
+								</div>
+								<div class="verificationMessage">
+								</div>
+								<div class="skipVerificationDiv">
+									<a href="#tab2" data-toggle="tab" onClick="changeTab(2,1)">Skip Verification</a>
+								</div>
+					    </div>
+					    <div class="tab-pane" id="tab2">
+								<div class="friendsEmailList">
+									<div class="addFriendHead">
+										<h1 class="addFriendHeading">Add some friends here!</h1>
+									</div>
+									<div class="addList">
+										<ul class="addFriendBullets">
+											<li>
+												<div class="addFriendListDiv">
+												<input name="first" type="email" class="addFriendEmail" placeholder="Add Friend"/>
+												</div>
+											</li>
+											<li>
+												<div class="addFriendListDiv">
+													<input name="second" type="email" class="addFriendEmail" placeholder="Add Friend"/>
+												</div>
+											</li>
+											<li>
+												<div class="addFriendListDiv">
+													<input name="third" type="email" class="addFriendEmail" placeholder="Add Friend"/>
+												</div>
+											</li>
+											<li>
+												<div class="addFriendListDiv">
+													<input name="fourth" type="email" class="addFriendEmail" placeholder="Add Friend"/>
+												</div>
+											</li>
+											<li>
+												<div class="addFriendListDiv">
+													<input name="fifth" type="email" class="addFriendEmail" placeholder="Add Friend"/>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="addFriendButton">
+										<button type="submit" class="addFriend">
+											<img src="@routes.Assets.at("images/addFriendButton.png")" height="50px" width="150px">
+										</button>
+									</div>
+								</div>
+								<div class="skipAdding">
+									<a href="#tab3" data-toggle="tab" onClick="changeTab(3,2)">Skip Adding Friends</a>
+								</div>
+					    </div>
+					    <div class="tab-pane" id="tab3">
+								<div class="photoUploadMiddleUpper">
+									<div class="firstPhoto divborder">
+										<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
+									</div>
+								</div>
+								<div class="photoUploadMiddleMiddle">
+									<div class="photoUploadDiv">
+										<input type="file" name="photo" size="40"/>
+									</div>
+									<div class="photoUploadButtonDiv">
+										<button class="photoUploadButton" type="submit">
+											<img src="@routes.Assets.at("images/uploadButton.png")" height="50px" width="200px" alt="uploadButton"/>
+										</button>
+									</div>
+								</div>
+							<div class="skipUpload">
+									<a href="/homePage">Skip Photo Upload</a>
+							</div>
+					    </div>
+					</div>  
 				</div>
 			</div>
 		</div>
