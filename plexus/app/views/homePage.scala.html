@@ -3,16 +3,27 @@
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+			<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+		<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
+
 	<div id="hpCon" class="wholeCss">
-		<div class="wrapper">
-			<div class="profileUpper">
-				<div class="logoProfile fl">
-					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
-				</div>
-			</div>
+		<div class="container">
+			<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/friends">Friends</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</div>
 		<div class="homeCss boxShadow">
 		<div id="leftCol" class="leftColumn divborder relative boxShadow">
 			<div id="namePic" class="picName">
