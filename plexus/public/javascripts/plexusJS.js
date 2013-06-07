@@ -3,3 +3,10 @@ function popitup(url) {
 		if (window.focus) {newwindow.focus()}
 		return false;
 }
+function changeTab(num1,num2){
+var x = "#liTab"+num1;
+var y = "#liTab"+num2;
+$(x).attr("class", "active");
+$(y).removeAttr("class");   
+console.log("asdhashda")
+}
