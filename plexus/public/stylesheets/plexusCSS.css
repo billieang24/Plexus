@@ -1,33 +1,3 @@
-html
-{
-	background: url("../images/plexusBgAll.png") no-repeat center center fixed; 
-	background-size: cover;
-	background-size: cover;
-	background-repeat: no-repeat;
-	overflow-y: scroll;
-}
-.mainpageBg
-{
-	background: url("../images/plexusBgMainpage.png") no-repeat center center fixed; 
-	background-size: cover;
-	background-repeat: no-repeat;
-	overflow:scroll;
-}
-body
-{
-	margin: 0 auto;
-	overflow: hidden;
-	display: block;
-	background-size: 100%;
-}
-.of
-{
-	overflow-y: scroll;
-}
-.ofx
-{
-	overflow-x: hidden; 
-}
 .wholeCss
 {
 	max-height:100%;
@@ -328,7 +298,7 @@ li.font
 .nameMiddle
 {
 	height: 170px;
-	width: 500px;
+	width: 400px;
 }
 .liProfileDiv
 {
@@ -514,7 +484,7 @@ button.post
 .usersPostProfile
 {
 	max-height: 100%;
-	width: 650px;
+	width: 550px;
 	margin: 30px 0px 30px 100px;
 	padding: 30px 30px;
 }
@@ -596,20 +566,20 @@ button.post
 {
 	height: 120px;
 	max-width: 100%;
-	padding: 10px 30px;
+	padding: 10px 10px;
 	overflow: solid;
-	resize: none;
 	margin: 10px auto 0px auto;
 }
 .postTextBox
 {
-	padding: 10px;
 	border-radius: 5px;
-	max-width: 100%;
+	max-width: 500px;
 	font-size: 16px;
 	font-weight: bold;
 	font-family: arial;
 	background-color: beige;
+	padding: 13px;
+	margin: 0px auto;
 }
 .postButton
 {
@@ -831,18 +801,13 @@ ul.addFriendBullets
 	height: 20px;
 	width: 120px;
 }
-<<<<<<< HEAD
-.aboutContainer
-=======
 .friendsPageContainer
->>>>>>> 18f51481c53d42f1fc9dcf057b747b086c5ed181
+
 {
 	width: 1350px;
 	max-height: 100%;
 	margin: 0px auto;
 }
-<<<<<<< HEAD
-
 .aboutCss
 {
 	width: 700px;
@@ -904,7 +869,7 @@ ul.addFriendBullets
 	margin-right: 30px;
 	border-radius: 5px;
 	margin-bottom: 100px;
-=======
+}
 .friendsPageUpper
 {
 	height: 80px;
@@ -1004,5 +969,4 @@ ul.addFriendBullets
 	margin-left: 10px;
 	height: auto;
 	width: auto;
->>>>>>> 18f51481c53d42f1fc9dcf057b747b086c5ed181
 }

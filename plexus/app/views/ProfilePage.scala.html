@@ -3,23 +3,36 @@
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
 	<div class="wholeCss">
-		<div class="profileContainer">
-			<div class="profileUpper">
-				<div class="logoProfile fl">
-					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
-				</div>
+		<div class="container">
+			<div class="navbar">
+ 				<div class="navbar-inner navbar-fixed-top">
+ 					<div class="container">
+				    	<ul class="nav">
+				    		<li><a href="/homePage">Home</a></li>
+					    	<li class="active"><a href="#">Profile</a></li>
+					    	<li><a href="/friends">Friends</a></li>
+					    	<li><a href="/about">About</a></li>
+						</ul>
+					</div>
+ 				</div>
 			</div>
-			<div class="profileWhole">
+			<div class="container">
 				<div class="userInfoProfile divborder">
 					<div class="dP divborder fl">
 						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
 					</div>
 					<div class="nameMiddle fl">
 						<div class="usersName fl">
-							<h1 class="profileName">PUP BSCoE 4-1</h1>
+							<h3 class="profileName">Maron Nino Amata Justo</h3>
 						</div>
 					</div>
 					<div class="otherInfoProfile fl">
@@ -29,20 +42,14 @@
 							</a>
 						</div>
 						<div class="profileAboutList">
-							<ul class="profileUl">
-								<li class="font"><div class="liProfileDiv">work?</div></li>
-								<li class="font"><div class="liProfileDiv">school?</div></li>
-								<li class="font"><div class="liProfileDiv">birthday</div></li>
-								<li class="font"><div class="liProfileDiv">male</div></li>
-								<li class="font"><div class="liProfileDiv">baesa, quezon city</div></li>
-							</ul>
+							
 						</div>
 					</div>
 				</div>
 				<div class="usersPostProfile divborder fl">
 					<div class="newPost divborder">
 						<div class="newPostTextBox">
-							<textarea class="postTextBox" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+							<textarea class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
 						</div>
 						<div class="postButton">
 							<button name="postButton" class="postButtonProfile">
@@ -69,7 +76,7 @@
 						</div>
 						<div id="friendsInfo" class="friendsInfo fl">
 							<a href="">
-							<h3>Jestine M. Banagbanag</h3>
+							<h5>Jestine M. Banagbanag</h5>
 							</a>
 						</div>
 					</div>
@@ -79,7 +86,7 @@
 						</div>
 						<div id="friendsInfo" class="friendsInfo fl">
 							<a href="">
-							<h3>Justine M. Oliveros</h3>
+							<h5>Justine M. Oliveros</h5>
 							</a>
 						</div>
 					</div>
