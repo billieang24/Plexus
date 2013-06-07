@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+
+.of
+{
+	overflow-y: scroll;
+}
+.ofx
+{
+	overflow-x: hidden; 
+}
+>>>>>>> c5303ec5be761a751eebeca74d48072424f3a0cc
 .wholeCss
 {
 	max-height:100%;
@@ -365,7 +377,6 @@ p
 {
 	height:100px;
 	width: 100px;
-	margin: 10px auto;
 }
 .hpDpImg
 {
@@ -801,13 +812,22 @@ ul.addFriendBullets
 	height: 20px;
 	width: 120px;
 }
+<<<<<<< HEAD
 .friendsPageContainer
 
+=======
+.aboutContainer,
+.friendsPageContainer
+>>>>>>> c5303ec5be761a751eebeca74d48072424f3a0cc
 {
 	width: 1350px;
 	max-height: 100%;
 	margin: 0px auto;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c5303ec5be761a751eebeca74d48072424f3a0cc
 .aboutCss
 {
 	width: 700px;
@@ -969,4 +989,31 @@ ul.addFriendBullets
 	margin-left: 10px;
 	height: auto;
 	width: auto;
+<<<<<<< HEAD
 }
+=======
+}
+.wrapper
+{
+	height: auto;
+	width: auto;
+	padding: 10px;
+	margin:20px auto;
+	background:transparent;
+}
+.homeSpan3
+{
+	height: 300px;
+}
+.homeSpan8
+{
+	height:1000px;
+}
+.wrapper-home
+{
+	width: 856px;
+	height: 2049px;
+	background: transparent;
+	margin: 10px auto;
+}
+>>>>>>> c5303ec5be761a751eebeca74d48072424f3a0cc
