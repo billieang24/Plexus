@@ -10,7 +10,6 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")">
 	</script>
-	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 </head>
 <body>
 	<div class="container">
@@ -19,14 +18,14 @@
 			  <div class="navbar-inner navbar-fixed-top search">
 			  	<div class="row-fluid offset2 search">
 			    <ul class="nav span6">
-			      <li class="active"><a href="#">Home</a></li>
+			      <li class="active"><a href="/homePage">Home</a></li>
 			      <li><a href="/profile">Profile</a></li>
 			      <li><a href="/friends">Friends</a></li>
 			      <li><a href="/about">About</a></li>
 			    </ul>
-			    <form class="form-inline span3 search">
-				  <input type="text" class="input-large search-query">
-				  <button type="submit" class="btn">Search</button>
+			 	<form class="form-inline span3 search">
+					  <input type="text" class="input-medium search-query">
+					  <button type="submit" class="btn">Search</button>
 				</form>
 				<div>
 				<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
@@ -45,19 +44,18 @@
 		     				 	 </div>
 		     				 	<div class="status">
 		     				 		<textarea class="status input-large" rows="3" placeholder="Post it here!"></textarea>
-		     				 		<button class="btn divPhoto">Post</button>
+		     				 		<button class="btn divPhoto"><i class="icon-comment"></i>Post</button>
 		     				 	</div>
 		     				 	<div class="span12 pagination-centered padding">
-												<a href="#myModal" role="button" class="btn" data-toggle="modal">Notifications</a>
-												 
+									<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-globe"></i>Notifications</a>
 												<!-- Modal -->
-												<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												  <div class="modal-header">
 												    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 												    <h3 id="myModalLabel">Notifications</h3>
 												  </div>
 												  <div class="modal-body">
-									
+											
 												  </div>
 												  <div class="modal-footer">
 												    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -74,7 +72,8 @@
 		      				</div>
 		      				<div class="wrapper">
 		      					<div class="row wrapper">
-		      					<div class="span6 tall"></div>
+		      					<div class="span6 tall">
+		      					</div>
 		      					<div class="showMore span7">
 		      					</div>
 		      				</div>
@@ -83,7 +82,6 @@
 		  			</div>
 				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 </body>

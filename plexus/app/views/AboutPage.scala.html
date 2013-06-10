@@ -15,25 +15,28 @@
 <body>
 <div class="container">
 		<div class="wrapper">
-			<div class="navbar">
-			  <div class="navbar-inner navbar-fixed-top">
-			  	<div class="container">
-			    <ul class="nav">
+			<div class="navbar search">
+			  <div class="navbar-inner navbar-fixed-top search">
+			  	<div class="row-fluid offset2 search">
+			    <ul class="nav span6">
 			      <li><a href="/homePage">Home</a></li>
 			      <li><a href="/profile">Profile</a></li>
 			      <li><a href="/friends">Friends</a></li>
 			      <li class="active"><a href="/about">About</a></li>
 			    </ul>
-			      <form class="form-inline span3 search">
-				  <input type="text" class="input-large search-query">
+			    <form class="form-inline span3 search">
+				  <input type="text" class="input-medium search-query">
 				  <button type="submit" class="btn">Search</button>
 				</form>
-				<button class="btn logOut" type="submit"><i class="icon-off"></i></button>
+				<div>
+				<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
+				</div>
 			  </div>
 			  </div>
 			</div><!--Nav Bar-->
+		<div class="wrapper">
 			<div class="container auto">
-				<div class="aboutContents offset2 boxShadow">
+				<div class="aboutContents offset2 boxShadow bg">
 					<div id="aboutUserPass" class="aboutLoc aboutContentsInner">
 						<h4>Account Settings</h4>
 						<ul>
@@ -60,7 +63,7 @@
 					</div>
 					<div class="edit">
 						<!-- Button to trigger modal -->
-						<a href="#myModal" role="button" class="btn" data-toggle="modal">Edit</a>
+						<a href="#myModal" role="button" class="btn hideEdit" data-toggle="modal"><i class="icon-edit"></i>Edit</a>
 						 
 						<!-- Modal -->
 						<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -70,7 +73,7 @@
 						  </div>
 						  <div class="modal-body">
 					<h4>Username:</h4><input type="text" id="address" class="address" value="" placeholder="Username" cols="20" rows="	2"/> 
-					<h4>Password:</h4><input type="text" id="address" class="address" value="" placeholder="Password" cols="20" rows="	2"/> 
+					<h4>Password:</h4><input type="password" id="address" class="address" value="" placeholder="Password" cols="20" rows="	2"/> 
 					<h4>E-mail:</h4><input type="text" id="address" class="address" value="" placeholder="E-mail" cols="20" rows="	2"/> 
 					<h4>Address:</h4><input type="text" id="address" class="address" value="" placeholder="Address" cols="20" rows="	2"/> 
 				<h4>Basic Information</h4>
@@ -203,7 +206,10 @@
 						  </div>
 						</div>
 					</div>
+				</div>
 			</div>
 		</div>
+	</div>
+</div>
 </body>
 </html>
