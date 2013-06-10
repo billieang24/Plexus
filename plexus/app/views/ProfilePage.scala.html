@@ -9,7 +9,6 @@
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
-	<script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
 </head>
 <body>
 	<div class="wholeCss">
@@ -27,7 +26,7 @@
  				</div>
 			</div>
 			<div class="container">
-				<div class="userInfoProfile divborder">
+				<div class="userInfoProfile divborder boxShadow">
 					<div class="dP divborder fl">
 						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
 					</div>
@@ -43,52 +42,58 @@
 							</a>
 						</div>
 						<div class="profileAboutList">
-							
+							<ul class="profileAboutListInfo">
+								<li>work?</li>
+								<li>School?</li>
+								<li>From?</li>
+								<li>Birthday?</li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="usersPostProfile divborder fl">
-					<div class="newPost divborder">
-						<div class="newPostTextBox">
-							<textarea class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+				<div class="row-fluid">
+					<div class="usersPostProfile divborder fl boxShadow">
+						<div class="newPost divborder">
+							<div class="newPostTextBox">
+								<textarea class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+							</div>
+							<div class="postButton">
+								<button name="postButton" type="submit" class="postButtonProfile">Post
+								</button>
+							</div>
 						</div>
-						<div class="postButton">
-							<button name="postButton" class="postButtonProfile">
-							<img src="@routes.Assets.at("images/postButton.png")" height="40px" width="100px">
-							</button>
-						</div>
-					</div>
-					<div class="recentPost">
-						<div id="firstpost" class="recentPost divborder">
-							<h1>Welcome To Plexus</h1>
-						</div>
-						<div id="firstpost" class="recentPost divborder">
-							<h1>Happy?</h1>
-						</div>
-					</div>
-				</div>
-				<div class="rightProfile divborder fl">
-					<div class="linkToFriends">
-						<a href="/friends">Friends</a>
-					</div>
-					<div class="usersFriendProfile fl">
-						<div id="friendsPhoto" class="friendsPhoto fl divborder">
-							Friends Picture
-						</div>
-						<div id="friendsInfo" class="friendsInfo fl">
-							<a href="">
-							<h5>Jestine M. Banagbanag</h5>
-							</a>
+						<div class="recentPost">
+							<div id="firstpost" class="recentPost divborder">
+								<h1>Welcome To Plexus</h1>
+							</div>
+							<div id="firstpost" class="recentPost divborder">
+								<h1>Happy?</h1>
+							</div>
 						</div>
 					</div>
-					<div class="usersFriendProfile fl">
-						<div id="friendsPhoto" class="friendsPhoto fl divborder">
-							Friends Picture
+					<div class="rightProfile divborder fl boxShadow">
+						<div class="linkToFriends">
+							<a href="/friends">Friends</a>
 						</div>
-						<div id="friendsInfo" class="friendsInfo fl">
-							<a href="">
-							<h5>Justine M. Oliveros</h5>
-							</a>
+						<div class="usersFriendProfile fl">
+							<div id="friendsPhoto" class="friendsPhoto fl">
+								<img class="friendsPhoto divborder" src="@routes.Assets.at("images/batman.png")" alt="Jestine Banagbanag"/>
+							</div>
+							<div id="friendsInfo" class="friendsInfo fl">
+								<a href="">
+								<h5>Jestine M. Banagbanag</h5>
+								</a>
+							</div>
+						</div>
+						<div class="usersFriendProfile fl">
+							<div id="friendsPhoto" class="friendsPhoto fl divborder">
+								Friends Picture
+							</div>
+							<div id="friendsInfo" class="friendsInfo fl">
+								<a href="">
+								<h5>Justine M. Oliveros</h5>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
