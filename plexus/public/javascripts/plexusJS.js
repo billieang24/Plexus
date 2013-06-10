@@ -8,13 +8,18 @@ var x = "#liTab"+num1;
 var y = "#liTab"+num2;
 $(x).attr("class", "active");
 $(y).removeAttr("class");
-<<<<<<< HEAD
-}
-=======
 }
 function changeTextFriendRequest()
 {
 	document.getElementById('friendRequestButton').innerHTML="Friend Request Sent";
 }
+function hide (userName1,userName2)
+{
+	if (userId1!=userId2)
+	{
+		$(".hideEdit").hide();
+	};
+	else
+		$(".hideEdit").show();
 
->>>>>>> b97fcf2c0cea1fc5477687f40455158e9fd670e6
+}

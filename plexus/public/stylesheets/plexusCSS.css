@@ -834,12 +834,12 @@ ul.addFriendBullets
 }
 .aboutContents
 {
-	height: 700px;
+	height: 600px;
 	width: 600px;
 	padding: 20px auto;
 	padding-top: 50px;
 	float: left;
-	margin-top: 50px;
+	margin-top: 0px;
 }
 .aboutContentsInner
 {
@@ -972,7 +972,7 @@ ul.addFriendBullets
 	width: 1100px;
 	padding-top: 10px;
 	margin:20px auto;
-	background:url("../images/plexusBgMainpage.png") no-repeat center center fixed;
+	background:url("../images/bg.png") no-repeat center center fixed;
 }
 .wrapper
 {
@@ -1039,7 +1039,7 @@ ul.addFriendBullets
 }
 .tall
 {
-	height: 800px;
+	height: auto;
 }
 .padding
 {
@@ -1061,8 +1061,6 @@ ul.addFriendBullets
 {
 	height: 30px;
 	width: 50px;
-<<<<<<< HEAD
-=======
 }
 .containerProfile
 {
@@ -1077,5 +1075,4 @@ ul.addFriendBullets
 .friendRequestButton
 {
 	float: right;
->>>>>>> b97fcf2c0cea1fc5477687f40455158e9fd670e6
 }
