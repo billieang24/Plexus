@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8ef1cca716ac3fe81fd7eb4f4322b48c251fc809
 .of
 {
 	overflow-y: scroll;
@@ -833,7 +836,7 @@ ul.addFriendBullets
 }
 .aboutContents
 {
-	height: 800px;
+	height: 700px;
 	width: 600px;
 	padding: 20px auto;
 	padding-top: 50px;
@@ -970,7 +973,10 @@ ul.addFriendBullets
 	width: 1100px;
 	padding-top: 10px;
 	margin:20px auto;
+<<<<<<< HEAD
+=======
 	background:url("../images/plexusBgMainpage.png") no-repeat center center fixed;
+>>>>>>> 8ef1cca716ac3fe81fd7eb4f4322b48c251fc809
 }
 .wrapper
 {
@@ -1039,4 +1045,28 @@ ul.addFriendBullets
 .tall
 {
 	height: 800px;
+<<<<<<< HEAD
+}
+.padding
+{
+	padding-top: 10px;
+}
+.bg
+{
+	background-color: #E0e0e0;
+}
+.search
+{
+	height: 10px;
+}
+.left
+{
+	margin-left: none;
+}
+.logOut
+{
+	height: 30px;
+	width: 50px;
+=======
+>>>>>>> 8ef1cca716ac3fe81fd7eb4f4322b48c251fc809
 }
