@@ -13,20 +13,27 @@
 <body>
 	<div class="wholeCss">
 		<div class="container">
-			<div class="navbar">
- 				<div class="navbar-inner navbar-fixed-top">
- 					<div class="container">
-				    	<ul class="nav">
+			<div class="navbar search">
+ 				<div class="navbar-inner navbar-fixed-top search">
+ 					<div class="row-fluid offset2 search">
+				    	<ul class="nav span6">
 				    		<li><a href="/homePage">Home</a></li>
 					    	<li class="active"><a href="#">Profile</a></li>
 					    	<li><a href="/friends">Friends</a></li>
 					    	<li><a href="/about">About</a></li>
 						</ul>
+						<form class="form-inline span3 search">
+				 			<input type="text" class="input-medium search-query">
+				  			<button type="submit" class="btn">Search</button>
+						</form>
+						<div>
+							<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
+						</div>
 					</div>
  				</div>
 			</div>
-			<div class="container">
-				<div class="userInfoProfile divborder boxShadow">
+			<div class="container containerProfile">
+				<div class="userInfoProfile divborder boxShadow bg">
 					<div class="dP divborder fl">
 						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
 					</div>
@@ -43,22 +50,23 @@
 						</div>
 						<div class="profileAboutList">
 							<ul class="profileAboutListInfo">
-								<li>work?</li>
-								<li>School?</li>
-								<li>From?</li>
-								<li>Birthday?</li>
+								<li><i class="icon-briefcase fl"></i><div class="infoDiv">work?</div></li>
+								<li><i class="icon-pencil fl"></i><div class="infoDiv">School?</div></li>
+								<li><i class="icon-map-marker fl"></i><div class="infoDiv">From?</div></li>
+								<li><i class="icon-gift fl"></i><div class="infoDiv">Birthday?</div></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="row-fluid">
-					<div class="usersPostProfile divborder fl boxShadow">
+					<div class="usersPostProfile divborder fl boxShadow bg">
 						<div class="newPost divborder">
 							<div class="newPostTextBox">
 								<textarea class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
 							</div>
 							<div class="postButton">
-								<button name="postButton" type="submit" class="postButtonProfile">Post
+								<button name="postButton" type="submit" class="postButtonProfile">
+									<i class="icon-comment"></i>Post
 								</button>
 							</div>
 						</div>
@@ -71,9 +79,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="rightProfile divborder fl boxShadow">
+					<div class="rightProfile divborder fl boxShadow bg">
 						<div class="linkToFriends">
 							<a href="/friends">Friends</a>
+							<button id="friendRequestButton" onclick="changeTextFriendRequest()" type="submit" class="btn friendRequestButton" value="">Add as friend</button>
 						</div>
 						<div class="usersFriendProfile fl">
 							<div id="friendsPhoto" class="friendsPhoto fl">

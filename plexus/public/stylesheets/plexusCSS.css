@@ -541,6 +541,7 @@ button.post
 {
 	font-size: 14px;
 	margin-bottom: 10px;
+	list-style-type: none;
 }
 .profileAboutListInfo li:first-child
 {
@@ -590,6 +591,7 @@ button.post
 	float: right;
 	height: 40px;
 	width: 60px;
+	margin-right: 20px;
 }
 .logoProfile
 {
@@ -1045,7 +1047,6 @@ ul.addFriendBullets
 .tall
 {
 	height: 800px;
-<<<<<<< HEAD
 }
 .padding
 {
@@ -1067,6 +1068,18 @@ ul.addFriendBullets
 {
 	height: 30px;
 	width: 50px;
-=======
->>>>>>> 8ef1cca716ac3fe81fd7eb4f4322b48c251fc809
+}
+.containerProfile
+{
+	margin: 40px auto;
+}
+.infoDiv
+{
+	margin-left: 20px;
+	height: auto;
+	width: auto;
+}
+.friendRequestButton
+{
+	float: right;
 }
