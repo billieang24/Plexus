@@ -19,8 +19,6 @@ function changeTextFriendRequest(x)
 	else if(x==1)
 		document.getElementById('friendRequestButton').innerHTML="Add as friend";
 }
-<<<<<<< HEAD
-=======
 function hide (userName1,userName2)
 {
 	if (userId1!=userId2)
@@ -31,4 +29,3 @@ function hide (userName1,userName2)
 		$(".hideEdit").show();
 
 }
->>>>>>> 267ecbe03fda565ab796de03eb2ed40064f518ed

@@ -975,11 +975,7 @@ ul.addFriendBullets
 	width: 1100px;
 	padding-top: 10px;
 	margin:20px auto;
-<<<<<<< HEAD
-	background:url("../images/plexusBgMainpage.png") no-repeat center center fixed;
-=======
 	background:url("../images/bg.png") no-repeat center center fixed;
->>>>>>> 267ecbe03fda565ab796de03eb2ed40064f518ed
 }
 .wrapper
 {
@@ -1081,9 +1077,5 @@ ul.addFriendBullets
 }
 .friendRequestButton
 {
-<<<<<<< HEAD
-	float: left;
-=======
 	float: right;
->>>>>>> 267ecbe03fda565ab796de03eb2ed40064f518ed
 }
