@@ -1,0 +1,9 @@
+@(users:scala.collection.mutable.ListBuffer[List[String]] )
+@main("Plexus") {
+<h1>Search Result</h1>
+        @users.map { user =>
+            <li>
+                @user(0)
+            </li>
+        }
+}

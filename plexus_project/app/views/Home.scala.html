@@ -1,4 +1,4 @@
-@(user: User)
+@(user: List[String])
 <html>
 <title>Home Page</title>
 <head>
@@ -21,7 +21,7 @@
 					<img src="@routes.Assets.at("images/batman.png")" height="100px" width="100px" class="hpdpImg" alt="display picture"/>
 				</div>
 				<div class="hpName fontsVal">
-					<h4>@user.givenname.head.toString.toUpperCase@user.givenname.tail @user.lastname.head.toString.toUpperCase@user.lastname.tail</h4>
+					<h4>@user(1).head.toString.toUpperCase@user(1).tail @user(2).head.toString.toUpperCase@user(2).tail</h4>
 				</div>
 			</div>
 			<div id="options" class="options fontsVal">

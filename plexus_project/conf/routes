@@ -2,15 +2,17 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+#
 GET     /                           controllers.Application.index
+GET    	/signUp						controllers.Application.signUp
+POST    /signUp						controllers.Application.newUser
+POST	/search						controllers.Application.search
+GET		/profile/:id				controllers.Application.profile(id:String)
 
 # Authentication
 GET    	/login						controllers.Application.login
-GET    	/signUp						controllers.Application.signUp
 GET     /logout                     controllers.Application.logout
 POST    /login						controllers.Application.authenticate
-POST    /signUp						controllers.Application.newUser
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

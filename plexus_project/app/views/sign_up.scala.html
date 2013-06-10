@@ -1,0 +1,27 @@
+@(form: Form[(String,  String, String, String, String, java.util.Date)])
+@main("Plexus") {
+	@helper.form(routes.Application.newUser){
+				<div ><input type="email" name="email" placeholder="Email"/></div>
+				<div ><input type="password" name="password" placeholder="Password"/></div>
+				<div ><input type="password" name="repassword" placeholder="Re-Enter Password"/></div>
+				<div ><input type="text" name="firstName" placeholder="First Name"/></div>
+				<div ><input type="text" name="lastName" placeholder="Last Name"/></div>
+				<select name="gender" value="Gender">
+					<option class="gender" value="">Gender</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+				<div ><input  type="date" name="birthdate"/></div>
+				
+				@form.globalError.map { error =>
+                <p class="error">
+                    @error.message
+                </p>
+                }
+                
+				<div >
+					<button type="submit">Sign Up
+					</button>
+				</div>
+	}	   
+}
