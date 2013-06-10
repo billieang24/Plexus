@@ -537,6 +537,7 @@ button.post
 {
 	font-size: 14px;
 	margin-bottom: 10px;
+	list-style-type: none;
 }
 .profileAboutListInfo li:first-child
 {
@@ -586,6 +587,7 @@ button.post
 	float: right;
 	height: 40px;
 	width: 60px;
+	margin-right: 20px;
 }
 .logoProfile
 {
@@ -1059,4 +1061,21 @@ ul.addFriendBullets
 {
 	height: 30px;
 	width: 50px;
+<<<<<<< HEAD
+=======
+}
+.containerProfile
+{
+	margin: 40px auto;
+}
+.infoDiv
+{
+	margin-left: 20px;
+	height: auto;
+	width: auto;
+}
+.friendRequestButton
+{
+	float: right;
+>>>>>>> b97fcf2c0cea1fc5477687f40455158e9fd670e6
 }

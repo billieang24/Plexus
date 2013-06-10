@@ -11,7 +11,9 @@
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 </head>
 <body>
+	<div class="wholeCss">
 		<div class="container">
+<<<<<<< HEAD
 			<div class="navbar">
 			  <div class="navbar-inner navbar-fixed-top">
 			  	<div class="container">
@@ -26,6 +28,29 @@
 			</div><!--Nav Bar-->
 			<div class="container">
 				<div class="friendsPageList boxShadow">
+=======
+			<div class="navbar search">
+ 				<div class="navbar-inner navbar-fixed-top search">
+ 					<div class="row-fluid offset2 search">
+				    	<ul class="nav span6">
+				    		<li><a href="/homePage">Home</a></li>
+					    	<li><a href="/profile">Profile</a></li>
+					    	<li class="active"><a href="#">Friends</a></li>
+					    	<li><a href="/about">About</a></li>
+						</ul>
+						<form class="form-inline span3 search">
+				 			<input type="text" class="input-medium search-query">
+				  			<button type="submit" class="btn">Search</button>
+						</form>
+						<div>
+							<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
+						</div>
+					</div>
+ 				</div>
+			</div>
+			<div class="container">
+				<div class="friendsPageList divborder boxShadow bg">
+>>>>>>> b97fcf2c0cea1fc5477687f40455158e9fd670e6
 					<div class="friendsPageListUpper">
 						<div class="friendsLogoUpper fl boxShadow">
 							<img src="@routes.Assets.at("images/friendsList.png")" height="100px" width="200px"/>
@@ -77,5 +102,6 @@
 			</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>
