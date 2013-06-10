@@ -38,7 +38,13 @@
 						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
 					</div>
 					<div class="nameMiddle fl">
-						<div class="usersName fl">
+						<div class="usersName fl dropdown">
+							<button id="friendRequestButton" onclick="changeTextFriendRequest(0)" type="submit" class="btn friendRequestButton" value="">Add as friend	
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+  								<li><a href="#" onclick="changeTextFriendRequest(1)">Cancel Friend Request</a></li>
+  							</ul>
+							<br>
 							<h3 class="profileName">Maron Nino Amata Justo</h3>
 						</div>
 					</div>
@@ -62,7 +68,7 @@
 					<div class="usersPostProfile divborder fl boxShadow bg">
 						<div class="newPost divborder">
 							<div class="newPostTextBox">
-								<textarea class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+								<textarea id="textAreaComment" class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
 							</div>
 							<div class="postButton">
 								<button name="postButton" type="submit" class="postButtonProfile">
@@ -82,12 +88,13 @@
 					<div class="rightProfile divborder fl boxShadow bg">
 						<div class="linkToFriends">
 							<a href="/friends">Friends</a>
-							<button id="friendRequestButton" onclick="changeTextFriendRequest()" type="submit" class="btn friendRequestButton" value="">Add as friend</button>
 						</div>
 						<div class="usersFriendProfile fl">
 							<div id="friendsPhoto" class="friendsPhoto fl">
 								<img class="friendsPhoto divborder" src="@routes.Assets.at("images/batman.png")" alt="Jestine Banagbanag"/>
 							</div>
+							<div class="modal hide fade">ww</div>
+
 							<div id="friendsInfo" class="friendsInfo fl">
 								<a href="">
 								<h5>Jestine M. Banagbanag</h5>

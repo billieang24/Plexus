@@ -34,18 +34,18 @@
 			</div>
 			<div class="container">
 				<div class="friendsPageList divborder boxShadow bg">
-					<div class="friendsPageListUpper">
+					<div class="friendsPageListUpper divborder">
 						<div class="friendsLogoUpper fl boxShadow">
 							<img src="@routes.Assets.at("images/friendsList.png")" height="100px" width="200px"/>
 						</div>
-						<div class="friendsPageSearch">
-							<input type="text" placeholder="search"/>
-							<button type="submit">
-								Search
-							</button>
-						</div>
+						<form class="form-search">
+						  	<div class="input-append friendsPageSearch">
+						    	<input type="text" class="span2 search-query">
+						    	<button type="submit" class="btn">Search</button>
+						  	</div>
+						</form>
 					</div>
-					<div class="friendsPageFriendList boxShadow">
+					<div class="friendsPageFriendList boxShadow divborder">
 						<ul class="friendsPageListUl">
 							<li>
 								<div class="friendsPageListLi">

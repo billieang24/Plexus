@@ -569,7 +569,7 @@ button.post
 }
 .newPostTextBox
 {
-	height: 120px;
+	height: auto;
 	max-width: 100%;
 	padding: 10px 10px;
 	overflow: solid;
@@ -585,6 +585,7 @@ button.post
 	background-color: beige;
 	padding: 13px;
 	margin: 0px auto;
+	resize: auto;
 }
 .postButton
 {
@@ -704,7 +705,7 @@ h1.addFriendHeading
 }
 ul.addFriendBullets
 {
-	list-style: square;
+	list-style: none;
 }
 .addFriendListDiv
 {
@@ -898,6 +899,8 @@ ul.addFriendBullets
 {
 	height: 50px;
 	width: 200px;
+	margin-left: 20px;
+	margin-top: 20px;
 	border: 2px solid black;
 }
 .friendsPageSearch
@@ -905,7 +908,7 @@ ul.addFriendBullets
 	width: 290px;
 	height: 30px;
 	float: right;
-	margin: 10px 0px;
+	margin: 30px 0px;
 }
 .friendsPageSearchInput
 {
@@ -975,10 +978,7 @@ ul.addFriendBullets
 	width: 1100px;
 	padding-top: 10px;
 	margin:20px auto;
-<<<<<<< HEAD
-=======
 	background:url("../images/plexusBgMainpage.png") no-repeat center center fixed;
->>>>>>> 8ef1cca716ac3fe81fd7eb4f4322b48c251fc809
 }
 .wrapper
 {
@@ -1081,5 +1081,5 @@ ul.addFriendBullets
 }
 .friendRequestButton
 {
-	float: right;
+	float: left;
 }

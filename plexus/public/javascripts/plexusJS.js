@@ -9,8 +9,13 @@ var y = "#liTab"+num2;
 $(x).attr("class", "active");
 $(y).removeAttr("class");
 }
-function changeTextFriendRequest()
+function changeTextFriendRequest(x)
 {
-	document.getElementById('friendRequestButton').innerHTML="Friend Request Sent";
+	if(x==0)
+	{
+		document.getElementById('friendRequestButton').innerHTML="Friend Request Sent";
+		$('.friendRequestButton').dropdown();
+	}
+	else if(x==1)
+		document.getElementById('friendRequestButton').innerHTML="Add as friend";
 }
-
