@@ -1,86 +1,115 @@
 <!DOCTYPE html>
 <html>
+<title>Profile</title>
 <head>
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 </head>
 <body>
 	<div class="wholeCss">
-		<div class="profileContainer">
-			<div class="profileUpper">
-				<div class="logoProfile fl">
-					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
-				</div>
-			</div>
-			<div class="relative profileWhole">
-				<div class="userInfoProfile divborder relative">
-					<div class="dP divborder fl relative">
-						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
-					</div>
-					<div class="nameMiddle fl relative">
-						<div class="usersName fl relative">
-							<h1 class="profileName">PUP BSCoE 4-1</h1>
+		<div class="container">
+			<div class="navbar search">
+ 				<div class="navbar-inner navbar-fixed-top search">
+ 					<div class="row-fluid offset2 search">
+				    	<ul class="nav span6">
+				    		<li><a href="/homePage">Home</a></li>
+					    	<li class="active"><a href="#">Profile</a></li>
+					    	<li><a href="/friends">Friends</a></li>
+					    	<li><a href="/about">About</a></li>
+						</ul>
+						<form class="form-inline span3 search">
+				 			<input type="text" class="input-medium search-query">
+				  			<button type="submit" class="btn">Search</button>
+						</form>
+						<div>
+							<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
 						</div>
 					</div>
-					<div class="otherInfoProfile fl relative">
-						<div class="aboutInfoProfile relative">
+ 				</div>
+			</div>
+			<div class="container containerProfile">
+				<div class="userInfoProfile divborder boxShadow bg">
+					<div class="dP divborder fl">
+						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
+					</div>
+					<div class="nameMiddle fl">
+						<div class="usersName fl dropdown">
+							<button id="friendRequestButton" onclick="changeTextFriendRequest(0)" type="submit" class="btn friendRequestButton" value="">Add as friend	
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+  								<li><a href="#" onclick="changeTextFriendRequest(1)">Cancel Friend Request</a></li>
+  							</ul>
+							<br>
+							<h3 class="profileName">Maron Nino Amata Justo</h3>
+						</div>
+					</div>
+					<div class="otherInfoProfile fl">
+						<div class="aboutInfoProfile">
 							<a href="/about" class="linkToAbout">	
 								About
 							</a>
 						</div>
-						<div class="relative">
-						<ul class="relative">
-							<li class="font"><div class="liProfileDiv">work?</div></li>
-							<li class="font"><div class="liProfileDiv">school?</div></li>
-							<li class="font"><div class="liProfileDiv">birthday</div></li>
-							<li class="font"><div class="liProfileDiv">male</div></li>
-							<li class="font"><div class="liProfileDiv">baesa, quezon city</div></li>
-						</ul>
+						<div class="profileAboutList">
+							<ul class="profileAboutListInfo">
+								<li><i class="icon-briefcase fl"></i><div class="infoDiv">work?</div></li>
+								<li><i class="icon-pencil fl"></i><div class="infoDiv">School?</div></li>
+								<li><i class="icon-map-marker fl"></i><div class="infoDiv">From?</div></li>
+								<li><i class="icon-gift fl"></i><div class="infoDiv">Birthday?</div></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="usersPostProfile divborder fl">
-					<div class="newPost divborder">
-						<div class="newPostTextBox">
-							<textarea class="postTextBox" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+				<div class="row-fluid">
+					<div class="usersPostProfile divborder fl boxShadow bg">
+						<div class="newPost divborder">
+							<div class="newPostTextBox">
+								<textarea id="textAreaComment" class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+							</div>
+							<div class="postButton">
+								<button name="postButton" type="submit" class="postButtonProfile">
+									<i class="icon-comment"></i>Post
+								</button>
+							</div>
 						</div>
-						<div class="postButton">
-							<button name="postButton" class="postButtonProfile">
-							<img src="@routes.Assets.at("images/postButton.png")" height="40px" width="100px">
-							</button>
-						</div>
-					</div>
-					<div class="recentPost">
-						<div id="firstpost" class="recentPost divborder">
-							<h1>Welcome To Plexus</h1>
-						</div>
-						<div id="firstpost" class="recentPost divborder">
-							<h1>Happy?</h1>
-						</div>
-					</div>
-				</div>
-				<div class="rightProfile divborder fl">
-					<div class="linkToFriends">
-						<a href="/friends">Friends</a>
-					</div>
-					<div class="usersFriendProfile fl">
-						<div id="friendsPhoto" class="friendsPhoto fl divborder">
-							Friends Picture
-						</div>
-						<div id="friendsInfo" class="friendsInfo fl">
-							<a href="">
-							<h3>Jestine M. Banagbanag</h3>
-							</a>
+						<div class="recentPost">
+							<div id="firstpost" class="recentPost divborder">
+								<h1>Welcome To Plexus</h1>
+							</div>
+							<div id="firstpost" class="recentPost divborder">
+								<h1>Happy?</h1>
+							</div>
 						</div>
 					</div>
-					<div class="usersFriendProfile fl">
-						<div id="friendsPhoto" class="friendsPhoto fl divborder">
-							Friends Picture
+					<div class="rightProfile divborder fl boxShadow bg">
+						<div class="linkToFriends">
+							<a href="/friends">Friends</a>
 						</div>
-						<div id="friendsInfo" class="friendsInfo fl">
-							<a href="">
-							<h3>Justine M. Oliveros</h3>
-							</a>
+						<div class="usersFriendProfile fl">
+							<div id="friendsPhoto" class="friendsPhoto fl">
+								<img class="friendsPhoto divborder" src="@routes.Assets.at("images/batman.png")" alt="Jestine Banagbanag"/>
+							</div>
+							<div class="modal hide fade">ww</div>
+
+							<div id="friendsInfo" class="friendsInfo fl">
+								<a href="">
+								<h5>Jestine M. Banagbanag</h5>
+								</a>
+							</div>
+						</div>
+						<div class="usersFriendProfile fl">
+							<div id="friendsPhoto" class="friendsPhoto fl divborder">
+								Friends Picture
+							</div>
+							<div id="friendsInfo" class="friendsInfo fl">
+								<a href="">
+								<h5>Justine M. Oliveros</h5>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>

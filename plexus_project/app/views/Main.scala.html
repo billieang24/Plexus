@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div id="whole" class="wholeCss">
-		<div id="middle" class="containerCss">
 				<center>
 					<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
 			<div id="signInUp" class="signCss signInCss"> 
@@ -16,30 +15,30 @@
 				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="username" value="" placeholder="username"/></div>
 				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="password" value="" placeholder="password"/></div>
 				@form.globalError.map { error =>
-                <p class="error">
+                <div class="MsgMain">
                     @error.message
-                </p>
+                 </div>
             }
             
             @flash.get("success").map { message =>
-                <p class="success">
+                <div class="MsgMain">
                     @message
-                </p>
+                </div>
             }
+
 				<div id="signIn" class="signinButton">
 					<button type"submit" class="submitLogIn">
 						<img src="@routes.Assets.at("images/logIn.png")" class="logIn" height="25px" width="200px"/>
 					</button>
 				</div>
 			}	
-				<div id="signUp" class="signinButton signupButton">
+				<div id="signUp" class="signinButton signupButtonMain">
 					<a href="/signUp">
 					<img src="@routes.Assets.at("images/signUp2.png")" height="25px" width="200px"></a>
 				</div>
 				<div id="forgotPw" class="forgotPassword">
-				<a href="/forgotPassword"><p>Forgot Password?</p></a></div>
+				<a href="/forgotPassword">Forgot Password?</a></div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>
