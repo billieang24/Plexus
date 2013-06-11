@@ -57,12 +57,8 @@ function hide (x,y)
 	if (x!=y)
 	{
 		$(".hideEdit").hide();
-<<<<<<< HEAD
 	}
-	else
-=======
-	}else{
->>>>>>> e20b7b74832f6da1b8de938676e64a5dd45b2e7d
+else{
 		$(".hideEdit").show();
 	}
 
