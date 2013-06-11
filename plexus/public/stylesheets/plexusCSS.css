@@ -302,7 +302,7 @@ li.font
 {
 	height: 185px;
 	width: 300px;
-	border-left: 3px dashed black;
+	border-left: 1px solid black;
 	float: right;
 }
 .nameMiddle
@@ -610,6 +610,11 @@ button.post
 	margin: 0px auto;
 	resize: auto;
 	overflow: hidden;
+}
+.profilePostsUl
+{
+	list-style: none;
+	margin-left: 0px;
 }
 .postButton
 {
