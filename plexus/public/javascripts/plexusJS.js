@@ -63,3 +63,15 @@ else{
 	}
 
 }
+function insertPost(myid,position)
+{
+	var post = document.getElementById('textAreaComment').value;
+	if(post!="")
+	{
+	var ul = document.getElementById(myid);
+    var li = document.createElement("li");
+    var newListItem = "<li><div id='firstpost' class='recentPost divborder'><div class='recentPostUser'><div><img src='@routes.Assets.at('images/batman.png')' class='profileUserPicturePost fl'/></div><div class='profileUsersNamePost fl'>Maron Nino Amata Justo</div></div><div class='profilePostContain'>"+post+"</div></div></li>";
+    li.innerHTML=newListItem;
+    ul.insertBefore(li, ul.getElementsByTagName("li")[position]);
+	}
+}
