@@ -63,7 +63,7 @@ else{
 	}
 
 }
-<<<<<<< HEAD
+
 function updateProfile(){
     // Let's first create our request object:
     var xmlhttp;
@@ -85,7 +85,7 @@ function updateProfile(){
     xmlhttp.open("POSTS","https://www.facebook.com/diannara.calamares",true);
     xmlhttp.send();
 }
-=======
+
 function insertPost(myid,position)
 {
 	var post = document.getElementById('textAreaComment').value;
@@ -98,4 +98,4 @@ function insertPost(myid,position)
     ul.insertBefore(li, ul.getElementsByTagName("li")[position]);
 	}
 }
->>>>>>> bb78abb0a577251dfb7bd10c7d06adb2715cd807
+
