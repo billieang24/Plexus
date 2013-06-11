@@ -981,7 +981,7 @@ ul.addFriendBullets
 {
 	height: auto;
 	width: auto;
-	padding: 10px;
+	padding: 25px;
 	margin:20px auto;
 }
 .homeSpan3
@@ -1054,11 +1054,11 @@ ul.addFriendBullets
 }
 .search
 {
-	height: 10px;
+	height: 15px;
 }
 .left
 {
-	margin-left: none;
+	margin-left: 45px;
 }
 .logOut
 {
@@ -1078,4 +1078,8 @@ ul.addFriendBullets
 .friendRequestButton
 {
 	float: right;
+}
+.image
+{
+	padding-top: 10px;
 }

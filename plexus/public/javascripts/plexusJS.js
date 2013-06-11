@@ -19,12 +19,12 @@ function changeTextFriendRequest(x)
 	else if(x==1)
 		document.getElementById('friendRequestButton').innerHTML="Add as friend";
 }
-function hide (userName1,userName2)
+function hide (x,y)
 {
-	if (userId1!=userId2)
+	if (x!=y)
 	{
 		$(".hideEdit").hide();
-	};
+	}
 	else
 		$(".hideEdit").show();
 

@@ -6,30 +6,35 @@
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
 	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/ajax-list-bootstrap.css")"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")">
 	</script>
+	<script src="@routes.Assets.at("javascripts/ajax-list.js")"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="wrapper">
-			<div class="navbar search">
-			  <div class="navbar-inner navbar-fixed-top search">
-			  	<div class="row-fluid offset2 search">
-			    <ul class="nav span6">
-			      <li class="active"><a href="/homePage">Home</a></li>
-			      <li><a href="/profile">Profile</a></li>
-			      <li><a href="/friends">Friends</a></li>
-			      <li><a href="/about">About</a></li>
-			    </ul>
-			 	<form class="form-inline span3 search">
-					  <input type="text" class="input-medium search-query">
-					  <button type="submit" class="btn">Search</button>
-				</form>
-				<div>
-				<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
-				</div>
+			<div class="navbar">
+			  <div class="navbar-inner navbar-fixed-top image">
+			  	<div class="row-fluid span12">
+			  		<div>
+				    	<img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
+				    </div>
+				    <ul class="nav span3">
+				      <li class="active"><a href="/homePage">Home</a></li>
+				      <li><a href="/profile">Profile</a></li>
+				      <li><a href="/friends">Friends</a></li>
+				      <li><a href="/about">About</a></li>
+				    </ul>
+				 	<form class="form-inline offset3 span3">
+						  <input type="text" class="input-medium search-query">
+						  <button type="submit" class="btn">Search</button>
+					</form>
+					<div>
+					<button class="btn logOut" type="submit"><i class="icon-off"></i></button>
+					</div>
 			  </div>
 			  </div>
 			</div><!--Nav Bar-->
@@ -55,7 +60,8 @@
 												    <h3 id="myModalLabel">Notifications</h3>
 												  </div>
 												  <div class="modal-body">
-											
+														<div class="pagination-container"></div>
+														<ul data-display="ajax-list" ajax-list-url="/todo_*"></ul>
 												  </div>
 												  <div class="modal-footer">
 												    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -73,6 +79,7 @@
 		      				<div class="wrapper">
 		      					<div class="row wrapper">
 		      					<div class="span6 tall">
+
 		      					</div>
 		      					<div class="showMore span7">
 		      					</div>
