@@ -33,6 +33,9 @@
  				</div>
 			</div>
 			<div class="container containerProfile">
+				<button onclick="changeTextFriendRequest(-1,2)">User</button>
+				<button onclick="changeTextFriendRequest(2,1)">Friend</button>
+				<button onclick="changeTextFriendRequest(1,1)">Not Friend</button>
 				<div class="userInfoProfile divborder boxShadow bg">
 					<div class="dP divborder fl">
 						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
@@ -42,7 +45,7 @@
 							<button id="friendRequestButton" onclick="changeTextFriendRequest(0)" type="submit" class="btn friendRequestButton" value="">Add as friend	
 							</button>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-  								<li><a href="#" onclick="changeTextFriendRequest(1)">Cancel Friend Request</a></li>
+  								<li><a id="unfriendCancelButton" href="#" onclick="AddAsFriendButton()"></a></li>
   							</ul>
 							<br>
 							<h3 class="profileName">Maron Nino Amata Justo</h3>
@@ -68,7 +71,7 @@
 					<div class="usersPostProfile divborder fl boxShadow bg">
 						<div class="newPost divborder">
 							<div class="newPostTextBox">
-								<textarea id="textAreaComment" class="postTextBox input-xxlarge" rows="5" cols="55" placeholder="Post It Here!"></textarea>
+								<textarea id="textAreaComment" class="postTextBox input-xxlarge" onkeyup="textAreaAdjust(this)" rows="3" cols="55" placeholder="Post It Here!"></textarea>
 							</div>
 							<div class="postButton">
 								<button name="postButton" type="submit" class="postButtonProfile">
@@ -78,10 +81,40 @@
 						</div>
 						<div class="recentPost">
 							<div id="firstpost" class="recentPost divborder">
-								<h1>Welcome To Plexus</h1>
+								<div class="recentPostUser">
+									<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+									</div>
+									<div class="profileUsersNamePost fl">
+										Maron Nino Amata Justo
+									</div>
+								</div>
+								<div class="profilePostContain">
+									Welcome To Plexus
+								</div>
 							</div>
 							<div id="firstpost" class="recentPost divborder">
-								<h1>Happy?</h1>
+								<div class="recentPostUser">
+									<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+									</div>
+									<div class="profileUsersNamePost fl">
+										Maron Nino Amata Justo
+									</div>
+								</div>
+								<div class="profilePostContain">
+									Baliw Si Daday!
+								</div>
+							</div>
+							<div id="firstpost" class="recentPost divborder">
+								<div class="recentPostUser">
+									<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+									</div>
+									<div class="profileUsersNamePost fl">
+										Maron Nino Amata Justo
+									</div>
+								</div>
+								<div class="profilePostContain">
+									Lokomoko U
+								</div>
 							</div>
 						</div>
 					</div>
