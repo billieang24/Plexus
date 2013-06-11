@@ -1,26 +1,51 @@
 <html class="mainpageBg">	
 <title>Plexus</title>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>		<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 </head>
 <body>
-	<div id="whole" class="wholeCss">
-		<div id="middle" class="containerCss">
-				<center>
-					<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
-			<div id="signInUp" class="signCss signInCss"> 
-				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="user_name" value="" placeholder="username"/></div>
-				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="user_name" value="" placeholder="password"/></div>
-				<div id="signIn" class="signinButton"><a href="/homePage" height="25px"><img src="@routes.Assets.at("images/logIn.png")" height="25px" width="200px"></a></div>
-				<div id="signUp" class="signinButton signupButton">
-					<a href="signUp" height="25px">
-						<img src="@routes.Assets.at("images/signUp2.png")" height="25px" width="200px"></a>
-					</div>
-				<div id="forgotPw" class="forgotPassword">
-				<a href="/forgotPassword"><p>Forgot Password?</p></a></div>
+	<div class="container">
+		<div class="wrapper-main">
+			<div class="container auto">
+				<div class="offset4 auto">
+					<img src="@routes.Assets.at("images/plexusLogo2.png")" height="80px" width="250px" alt="plexusLogo"/>
+				</div>
 			</div>
+			<div class="offset6 homeSpan12 auto">
+				<form class="form-horizontal">
+				  <div class="control-group">
+				    <label class="control-label" for="inputEmail">Email</label>
+				    <div class="controls">
+				      <input type="text" id="inputEmail" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="control-group">
+				    <label class="control-label" for="inputPassword">Password</label>
+				    <div class="controls">
+				      <input type="password" id="inputPassword" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="control-group">
+				    <div class="controls">
+				      <label class="checkbox">
+				        <input type="checkbox"> Remember me<br/>
+				        <a href="/forgotPassword"> Forgot Password?</a>
+				      </label>
+				      <button type="submit" class="btn">Sign in</button>
+				      <a href="/signUp" class="btn">Sign up</a>
+				    </div>
+				  </div>
+				</form>
+		</div>
+		</div>
+		<div class="footer">
+				<p class="text-center">(c) Plexus 2013. PUP Manila. Dynamic Objx Labs. Inc</p>
 		</div>
 	</div>
 </body>

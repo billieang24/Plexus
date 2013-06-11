@@ -1,7 +1,16 @@
-@(user: List[String])
+@(user:User,friendsList:scala.collection.mutable.ListBuffer[User])
 @main("Plexus") {
-<h4>@user(1).head.toString.toUpperCase@user(1).tail @user(2).head.toString.toUpperCase@user(2).tail</h4>
+<h4>@user.firstName.head.toString.toUpperCase@user.firstName.tail @user.lastName.head.toString.toUpperCase@user.lastName.tail</h4>
+<p>
+@user
 
+FRIENDS
+</p>
+@friendsList.map{ friend =>
+	<li>
+	@friend
+	</li>
+}
 @helper.form(routes.Application.search){
 				<div ><input type="text" name="keyword" placeholder="Search"/></div>
 				<button type="submit">Search</button>

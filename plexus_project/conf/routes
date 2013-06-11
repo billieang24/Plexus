@@ -7,7 +7,7 @@ GET     /                           controllers.Application.index
 GET    	/signUp						controllers.Application.signUp
 POST    /signUp						controllers.Application.newUser
 POST	/search						controllers.Application.search
-GET		/profile/:id				controllers.Application.profile(id:String)
+POST	/profile					controllers.Application.profile
 
 # Authentication
 GET    	/login						controllers.Application.login

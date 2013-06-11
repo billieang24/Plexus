@@ -1,9 +1,13 @@
-@(users:scala.collection.mutable.ListBuffer[List[String]] )
+@(users:scala.collection.mutable.ListBuffer[User])
 @main("Plexus") {
 <h1>Search Result</h1>
         @users.map { user =>
             <li>
-                @user(0)
+                <form id="myForm@user.objectId" action="/profile" method="post">
+    <input type="hidden" name="id" value="@user.objectId" />
+    <a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">@user</a>
+</form>
+                
             </li>
         }
 }
