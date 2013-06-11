@@ -15,22 +15,25 @@
 <body>
 <div class="container">
 		<div class="wrapper">
-			<div class="navbar search">
-			  <div class="navbar-inner navbar-fixed-top search">
-			  	<div class="row-fluid offset2 search">
-			    <ul class="nav span6">
-			      <li><a href="/homePage">Home</a></li>
-			      <li><a href="/profile">Profile</a></li>
-			      <li><a href="/friends">Friends</a></li>
-			      <li class="active"><a href="/about">About</a></li>
-			    </ul>
-			    <form class="form-inline span3 search">
-				  <input type="text" class="input-medium search-query">
-				  <button type="submit" class="btn">Search</button>
-				</form>
-				<div>
-				<button class="btn logOut search" type="submit"><i class="icon-off"></i></button>
-				</div>
+			<div class="navbar">
+			  <div class="navbar-inner navbar-fixed-top image">
+			  	<div class="row-fluid span12">
+			  		<div>
+				    	<img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
+				    </div>
+				    <ul class="nav span3">
+				      <li class="active"><a href="/homePage">Home</a></li>
+				      <li><a href="/profile">Profile</a></li>
+				      <li><a href="/friends">Friends</a></li>
+				      <li><a href="/about">About</a></li>
+				    </ul>
+				 	<form class="form-inline offset3 span3">
+						  <input type="text" class="input-medium search-query">
+						  <button type="submit" class="btn">Search</button>
+					</form>
+					<div>
+					<button class="btn logOut" type="submit"><i class="icon-off"></i></button>
+					</div>
 			  </div>
 			  </div>
 			</div><!--Nav Bar-->

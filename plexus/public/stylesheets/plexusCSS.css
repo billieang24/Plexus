@@ -1014,12 +1014,12 @@ ul.addFriendBullets
 }
 .homeSpan3
 {
-	height: 400px;
+	height: 500px;
 	border-radius: 15px;
 }
 .homeSpan8
 {
-	height:1000px;
+	height:1500px;
 	border-radius: 15px;
 	max-height: 2000px;
 }
@@ -1070,7 +1070,7 @@ ul.addFriendBullets
 }
 .tall
 {
-	height: auto;
+	height: 30px;
 }
 .padding
 {
@@ -1084,9 +1084,11 @@ ul.addFriendBullets
 {
 	height: 15px;
 }
-.left
+.above
 {
-	margin-left: 45px;
+	height: auto;
+	width:95%;
+	margin:0px auto;
 }
 .logOut
 {
@@ -1111,4 +1113,21 @@ ul.addFriendBullets
 .image
 {
 	padding-top: 10px;
+}
+.homePostContain
+{
+	height: auto;
+	max-width: 100%;
+	padding: 10px 20px;
+	position: relative;
+}
+.homerecentPost
+{
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+}
+.hrecentPost
+{
+	height: 1000px;
 }

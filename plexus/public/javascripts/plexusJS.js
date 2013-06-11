@@ -63,3 +63,24 @@ else{
 	}
 
 }
+function updateProfile(){
+    // Let's first create our request object:
+    var xmlhttp;
+     
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+    }else{
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+     
+    // This code will be executed each time the readyState changes
+    xmlhttp.onreadystatechange = function(){
+        if(ajaxRequest.readyState == 4){
+            document.getElementById("content").innerHTML=xmlhttp.responseText;
+        }
+    }
+     
+    // We'll send any data to the server through our request object
+    xmlhttp.open("POSTS","https://www.facebook.com/diannara.calamares",true);
+    xmlhttp.send();
+}
