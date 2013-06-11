@@ -302,7 +302,7 @@ li.font
 {
 	height: 185px;
 	width: 300px;
-	border-left: 3px dashed black;
+	border-left: 1px solid black;
 	float: right;
 }
 .nameMiddle
@@ -318,6 +318,33 @@ li.font
 h3.profilePage
 {
 	margin: 0px 20px;
+}
+.recentPostUser
+{
+	height: 60px;
+	width: 100%;
+	border-bottom: 1px solid black
+}
+.profilePostContain
+{
+	height: 100%;
+	max-width: 100%;
+	padding: 10px 20px;
+	position: relative;
+}
+.profileUserPicturePost
+{
+	height:40px; 
+	width:40px;
+	border-radius: 5px;
+	margin: 5px 20px;
+	border: 1px solid black;
+}
+.profileUsersNamePost
+{
+	height: auto;
+	width: auto;
+	margin: 15px 0px;
 }
 p
 {
@@ -579,9 +606,15 @@ button.post
 	font-weight: bold;
 	font-family: arial;
 	background-color: beige;
-	padding: 13px;
+	padding: 13px 13px 0px 13px;
 	margin: 0px auto;
 	resize: auto;
+	overflow: hidden;
+}
+.profilePostsUl
+{
+	list-style: none;
+	margin-left: 0px;
 }
 .postButton
 {
@@ -981,17 +1014,17 @@ ul.addFriendBullets
 {
 	height: auto;
 	width: auto;
-	padding: 10px;
+	padding: 25px;
 	margin:20px auto;
 }
 .homeSpan3
 {
-	height: 400px;
+	height: 500px;
 	border-radius: 15px;
 }
 .homeSpan8
 {
-	height:1000px;
+	height:1500px;
 	border-radius: 15px;
 	max-height: 2000px;
 }
@@ -1042,7 +1075,7 @@ ul.addFriendBullets
 }
 .tall
 {
-	height: auto;
+	height: 30px;
 }
 .padding
 {
@@ -1054,11 +1087,13 @@ ul.addFriendBullets
 }
 .search
 {
-	height: 10px;
+	height: 15px;
 }
-.left
+.above
 {
-	margin-left: none;
+	height: auto;
+	width:95%;
+	margin:0px auto;
 }
 .logOut
 {
@@ -1077,5 +1112,27 @@ ul.addFriendBullets
 }
 .friendRequestButton
 {
-	float: right;
+	float: left;
+	visibility: hidden;
+}
+.image
+{
+	padding-top: 10px;
+}
+.homePostContain
+{
+	height: auto;
+	max-width: 100%;
+	padding: 10px 20px;
+	position: relative;
+}
+.homerecentPost
+{
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+}
+.hrecentPost
+{
+	height: 1000px;
 }
