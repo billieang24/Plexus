@@ -136,7 +136,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	    else "friendRequestSent"
     	  }
     	  val wallPostsObjectIdList = ListBuffer[WallPost]()
-    	  get("Post?","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+    	  get("Post?order=-createdAt&","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			wallPost => wallPostsObjectIdList += wallPost.as[WallPost]
        		}
@@ -188,6 +188,23 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  }
     	  val user = getUser("username",username)
     	  val requestObjectId = getFriendOrRequest(id,"FriendRequests?","requester",user.objectId).map{
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
+    	  }.await.get
+    	  delete("FriendRequests/",requestObjectId)
+    	  Redirect(routes.Application.index)
+    	}
+    )
+  }
+  def ignoreFriendRequest=IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("username",username)
+    	  val requestObjectId = getFriendOrRequest(user.objectId,"FriendRequests?","requester",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
     	  }.await.get
     	  delete("FriendRequests/",requestObjectId)

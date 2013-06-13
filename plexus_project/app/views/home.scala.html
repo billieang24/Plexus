@@ -37,6 +37,10 @@
     			<input type="hidden" name="userId" value="@request.objectId" />
     			<button type="submit">Accept</button>
 			</form>
+			<form id="ignoreForm@request.objectId" action="/ignoreFriendRequest" method="post">
+    			<input type="hidden" name="userId" value="@request.objectId" />
+    			<button type="submit">Ignore</button>
+			</form>
 		</li>
 	}
 	<br>

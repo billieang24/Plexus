@@ -1,6 +1,11 @@
 @(pageOwner:User,user: User,role: String, wallPostList: scala.collection.mutable.ListBuffer[WallPost])
 @main("Plexus") {
-	<h4>@pageOwner.firstName @pageOwner.lastName</h4>
+	<h4>
+		<form id="myForm@pageOwner.objectId" action="/profile" method="post">
+    		<input type="hidden" name="userId" value="@pageOwner.objectId" />
+   			<a href="#" onclick="document.getElementById('myForm@pageOwner.objectId').submit();">@pageOwner.firstName @pageOwner.lastName</a>
+		</form>
+	</h4>
 	<br>
 	<h3>@pageOwner.gender</h3>
 	<br>
