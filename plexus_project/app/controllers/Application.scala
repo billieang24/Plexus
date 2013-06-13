@@ -276,7 +276,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  post("Post?",data)
     	  Redirect(routes.Application.index)
     	}
-    )////////////////////////////////////////////////////////////////
+    )
   }
   def deleteWallPost = IsAuthenticated {  username => implicit request =>
     idForm.bindFromRequest.fold(
