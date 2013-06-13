@@ -21,7 +21,7 @@ cookies = if you want to use cookies to remember which page the user is on, true
     $.fn.jPaginate = function(options) {
         var defaults = {
             items: 4,
-            next: "Next",
+            next: "Show More",
             previous: "Previous",
             active: "active",
             pagination_class: "pagination",
