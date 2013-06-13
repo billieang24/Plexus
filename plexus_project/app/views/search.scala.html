@@ -5,8 +5,8 @@
             <li>
                 <form id="myForm@user.objectId" action="/profile" method="post">
     				<input type="hidden" name="userId" value="@user.objectId" />
-   					<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">@user</a>
-					</form>
+   					<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">@user.firstName @user.lastName</a>
+				</form>
             </li>
         }
     <br>
