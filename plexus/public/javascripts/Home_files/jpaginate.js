@@ -20,11 +20,7 @@ cookies = if you want to use cookies to remember which page the user is on, true
 (function($){
     $.fn.jPaginate = function(options) {
         var defaults = {
-<<<<<<< HEAD
-            items: 4,
-=======
             items: 5,
->>>>>>> 648d25632f0381fa1dd12bb226d4db395624ad7f
             next: "Show More",
             previous: "Previous",
             active: "active",

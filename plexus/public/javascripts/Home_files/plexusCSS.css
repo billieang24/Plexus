@@ -346,69 +346,6 @@ h3.profilePage
 	width: auto;
 	margin: 15px 0px;
 }
-.likeAndComment
-{
-	height: 100%;
-	width: 100%;
-	border-top: 1px solid black;
-	padding: 5px 0px; 
-}
-.commentButton, .likeButton
-{
-	height: auto;
-	width: auto;
-	margin-left: 20px;
-}
-.likeAndCommentButton
-{
-	cursor: pointer;
-}
-.commentBox
-{
-	height: 100%;
-	max-width: 100%;
-	margin-left: 60px;
-	margin-right: 10px;
-}
-.commentTextBox
-{
-	height: 40px;
-	width: 100%;
-	padding-bottom: 0px;
-	border-radius: 5px;
-	font-size: 12px;
-	font-weight: bold;
-	font-family: arial;
-	background-color: beige;
-	padding: 13px 13px 0px 13px;
-	margin: 0px auto;
-	resize: auto;
-	overflow: hidden;
-}
-.commentList
-{
-	list-style: none;
-	margin-left: 0px;
-	border: 1px solid black;
-}
-.commentName
-{
-	margin-left: 5px;
-}
-.commentPadding
-{
-	padding-left: 15px;
-}
-hr.commentLine
-{
-	margin: 5px 0px;
-}
-.commentContent
-{
-	height: auto;
-	width: 100%;
-	margin-bottom: 10px;
-}
 p
 {
 	-webkit-border-radius: 10px;
@@ -685,12 +622,6 @@ button.post
 	height: 40px;
 	width: 60px;
 	margin-right: 20px;
-}
-.commentButtonSubmit
-{
-	float: left;
-	height: 40px;
-	width: 60px;
 }
 .logoProfile
 {
@@ -1095,16 +1026,15 @@ ul.addFriendBullets
 {
 	height:auto;
 	border-radius: 15px;
-	padding-bottom: 30px;
-	max-height: 1500px;
+	padding-bottom: 50px;
+	max-height: 100%;
 }
 .wrapper-home
 {
 	width: 856px;
-	height: auto;
+	height: 2049px;
 	background: transparent;
 	margin: 0px auto;
-	max-height: 100%
 }
 .divPhoto
 {
@@ -1209,7 +1139,7 @@ ul.addFriendBullets
 }
 .top
 {
-	margin-top: 30px;
+	margin-top: 10px;
 } 
 .heightAuto
 {
