@@ -22,6 +22,7 @@ import java.net.URLEncoder
 import models.FriendRequest
 import models.FriendRequest
 import models.WallPost
+import java.util.concurrent.TimeUnit
 
 object Application extends Controller with Secured with UserDeserializer with FriendDeserializer with WallPostDeserializer with FriendRequestDeserializer{
  
@@ -89,21 +90,21 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
        		}
-       	}.await.get
+       	}.await(20000, TimeUnit.MILLISECONDS ).get
        	get("FriendRequests?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			request => requestsObjectIdList += ((request \ "requester").as[JsObject] \ "objectId").as[String]
        		}
-       	}.await.get
+       	}.await(20000, TimeUnit.MILLISECONDS ).get
        	requestsObjectIdList.map{
         	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
        			result => requestsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
-       		}.await.get
+       		}.await(20000, TimeUnit.MILLISECONDS ).get
        	}
        	friendsObjectIdList.map{
         	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
        			result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
-       		}.await.get
+       		}.await(20000, TimeUnit.MILLISECONDS ).get
        	}
        	Ok(views.html.home(user,friendsList,requestsList))
   }
@@ -124,14 +125,14 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	        	result => 
     	        	  println(result.json)
     	        	  (result.json\"results").as[List[JsObject]].isEmpty
-    	        }.await.get
+    	        }.await(20000, TimeUnit.MILLISECONDS ).get
     	    ) "friend"
     	    else if (
     	        getFriendOrRequest(id,"FriendRequests?","requester",user.objectId).map{
     	        	result => 
     	        	  println(result.json)
     	        	  (result.json\"results").as[List[JsObject]].isEmpty
-    	        }.await.get
+    	        }.await(20000, TimeUnit.MILLISECONDS ).get
     	    ) "none"
     	    else "friendRequestSent"
     	  }
@@ -140,7 +141,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			wallPost => wallPostsObjectIdList += wallPost.as[WallPost]
        		}
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  Ok(views.html.profile(pageOwner, user, role, wallPostsObjectIdList))
     	}
     )////////////////////////////////////////////////////////////////////////////
@@ -159,7 +160,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
         			 entity=> userList += (entity).as[User]
         		}
         		Ok(views.html.search(userList))
-        }.await.get
+        }.await(20000, TimeUnit.MILLISECONDS ).get
     }
     )
   }
@@ -189,7 +190,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val user = getUser("username",username)
     	  val requestObjectId = getFriendOrRequest(id,"FriendRequests?","requester",user.objectId).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  delete("FriendRequests/",requestObjectId)
     	  Redirect(routes.Application.index)
     	}
@@ -206,7 +207,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val user = getUser("username",username)
     	  val requestObjectId = getFriendOrRequest(user.objectId,"FriendRequests?","requester",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  delete("FriendRequests/",requestObjectId)
     	  Redirect(routes.Application.index)
     	}
@@ -227,7 +228,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  post("FriendsList",data2)
     	  val requestObjectId = getFriendOrRequest(user.objectId,"FriendRequests?","requester",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  delete("FriendRequests/",requestObjectId)
     	  Redirect(routes.Application.index)
     	}
@@ -244,10 +245,10 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val user = getUser("username",username)
     	  val friendId1 = getFriendOrRequest(user.objectId,"FriendsList?","friend",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  val friendId2 = getFriendOrRequest(id,"FriendsList?","friend",user.objectId).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  delete("FriendsList/",friendId1)
     	  delete("FriendsList/",friendId2)
     	  Redirect(routes.Application.index)
@@ -267,10 +268,10 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  }
     	  val postedBy = get("_User?","{\"username\":\""+username+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  val postedTo = get("_User?","{\"objectId\":\""+id+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await.get
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  val data = Json.toJson(WallPost(content,postedTo,postedBy,null))
     	  post("Post?",data)
     	  Redirect(routes.Application.index)
@@ -308,7 +309,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
   def getUser(parameter: String, data: String)={
     get("_User?","{\""+parameter+"\":\""+data+"\"}").map{
        		result =>(result.json \ "results").as[List[JsObject]].head.as[User] 
-       	}.await.get
+       	}.await(20000, TimeUnit.MILLISECONDS ).get
   }
   def getLogIn (user: String, pass: String)={
     WS.url("https://api.parse.com/1/login?username="+URLEncoder.encode(user, "UTF-8")+"&password="+URLEncoder.encode(pass, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
