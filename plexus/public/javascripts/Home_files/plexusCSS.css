@@ -1026,16 +1026,15 @@ ul.addFriendBullets
 {
 	height:auto;
 	border-radius: 15px;
-	padding-bottom: 30px;
-	max-height: 1500px;
+	padding-bottom: 50px;
+	max-height: 100%;
 }
 .wrapper-home
 {
 	width: 856px;
-	height: auto;
+	height: 2049px;
 	background: transparent;
 	margin: 0px auto;
-	max-height: 100%
 }
 .divPhoto
 {
@@ -1140,7 +1139,7 @@ ul.addFriendBullets
 }
 .top
 {
-	margin-top: 30px;
+	margin-top: 10px;
 } 
 .heightAuto
 {

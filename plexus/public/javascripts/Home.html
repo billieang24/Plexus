@@ -1,33 +1,34 @@
-<html class="mainpageBg">	
-<title>Home</title>
-<head>
+
+<!-- saved from url=(0030)http://localhost:9000/homePage -->
+<html class="mainpageBg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Home</title>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/Icon.png")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/plexusCSS.css")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap.css")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")"/>
-	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/ajax-list-bootstrap.css")"/>
-	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
-	<script src="http://code.jquery.com/jquery.js"></script>
-	<script src="@routes.Assets.at("javascripts/bootstrap.js")">
+	<link rel="shortcut icon" type="image/png" href="http://localhost:9000/assets/images/Icon.png">
+	<link rel="stylesheet" type="text/css" href="./Home_files/plexusCSS.css">
+	<link rel="stylesheet" type="text/css" href="./Home_files/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./Home_files/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="./Home_files/ajax-list-bootstrap.css">
+	<script type="text/javascript" src="./Home_files/plexusJS.js"></script>
+	<script src="./Home_files/jquery.js"></script>
+	<script src="./Home_files/bootstrap.js">
 	</script>
-	<script src="@routes.Assets.at("javascripts/jquery.js")"></script> 
-	<script src="@routes.Assets.at("javascripts/jpaginate.js")"></script> 
+	<script src="./Home_files/jquery(1).js"></script> 
+	<script src="./Home_files/jpaginate.js"></script> 
 </head>
-<body>
-	<div class=" containe">
-		<div class="wrapper">
+<body style="">
+	<div class="container height">
+		<div class="wrapper auto">
 			<div class="navbar">
 			  <div class="navbar-inner navbar-fixed-top image">
 			  	<div class="row-fluid span12">
 			  		<div>
-				    	<img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
+				    	<img src="./Home_files/plexusBlue.png" alt="header" height="40px" width="150px" class="fl">
 				    </div>
 				    <ul class="nav span3">
-				      <li class="active"><a href="/homePage">Home</a></li>
-				      <li><a href="/profile">Profile</a></li>
-				      <li><a href="/friends">Friends</a></li>
-				      <li><a href="/about">About</a></li>
+				      <li class="active"><a href="./Home_files/Home.html">Home</a></li>
+				      <li><a href="http://localhost:9000/profile">Profile</a></li>
+				      <li><a href="http://localhost:9000/friends">Friends</a></li>
+				      <li><a href="http://localhost:9000/about">About</a></li>
 				    </ul>
 				 	<form class="form-inline offset3 span3">
 						  <input type="text" class="input-medium search-query">
@@ -44,7 +45,7 @@
 		 			<div class="row-fluid">
 		   				 <div class="span4 boxshadow homeSpan3 bg">
 		   				 	<div class="row-fluid padding">
-		     				 	 <div class="span12 pagination-centered divPhoto"><img src="@routes.Assets.at("images/batman.png")" alt="header" height="100px" width="100px"/></div>
+		     				 	 <div class="span12 pagination-centered divPhoto"><img src="./Home_files/batman.png" alt="header" height="100px" width="100px"></div>
 		     				 	 <div class="span12 pagination-centered">
 		     				 	 	<h4>Billie Ang</h4>
 		     				 	 </div>
@@ -53,7 +54,7 @@
 		     				 		<button class="btn divPhoto"><i class="icon-comment"></i>Post</button>
 		     				 	</div>
 		     				 	<div class="span12 pagination-centered padding">
-									<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-globe"></i>Notifications</a>
+									<a href="http://localhost:9000/homePage#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-globe"></i>Notifications</a>
 												<!-- Modal -->
 									<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												  <div class="modal-header">
@@ -69,7 +70,7 @@
 												</div>
 		     				 	</div>
 		     				 	<div class="span12 pagination-centered padding">
-									<a href="#myModal2" role="button" class="btn" data-toggle="modal"><i class="icon-user"></i>Friend Requests</a>
+									<a href="http://localhost:9000/homePage#myModal2" role="button" class="btn" data-toggle="modal"><i class="icon-user"></i>Friend Requests</a>
 												<!-- Modal -->
 									<div id="myModal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												  <div class="modal-header">
@@ -97,7 +98,7 @@
 		      					<div class="above1" id="content">
 		      			 <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -109,7 +110,7 @@
 						                    </div>
 						                    <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -121,7 +122,7 @@
 						                    </div>
 						                    <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -133,7 +134,7 @@
 						                    </div>
 						                     <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -145,7 +146,7 @@
 						                    </div>
 						                    <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -157,7 +158,7 @@
 						                    </div>
 						                    <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -169,7 +170,7 @@
 						                    </div>
 						                     <div id="firstpost" class="homerecentPost divborder">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -179,9 +180,9 @@
 						                        Welcome To Plexus
 						                      </div>
 						                    </div>
-						                    <div id="firstpost" class="homerecentPost divborder">
+						                    <div id="firstpost" class="homerecentPost divborder" style="display: none;">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -191,9 +192,9 @@
 						                        Baliw Si Daday!
 						                      </div>
 						                    </div>
-						                    <div id="firstpost" class="homerecentPost divborder">
+						                    <div id="firstpost" class="homerecentPost divborder" style="display: none;">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -203,9 +204,9 @@
 						                        Lokomoko U
 						                      </div>
 						                    </div>
-						                     <div id="firstpost" class="homerecentPost divborder">
+						                     <div id="firstpost" class="homerecentPost divborder" style="display: none;">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -215,9 +216,9 @@
 						                        Welcome To Plexus
 						                      </div>
 						                    </div>
-						                    <div id="firstpost" class="homerecentPost divborder">
+						                    <div id="firstpost" class="homerecentPost divborder" style="display: none;">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -227,9 +228,9 @@
 						                        Baliw Si Daday!
 						                      </div>
 						                    </div>
-						                    <div id="firstpost" class="homerecentPost divborder">
+						                    <div id="firstpost" class="homerecentPost divborder" style="display: none;">
 						                      <div class="recentPostUser">
-						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        <div><img src="./Home_files/batman.png" class="profileUserPicturePost fl">
 						                        </div>
 						                        <div class="profileUsersNamePost fl">
 						                          Maron Nino Amata Justo
@@ -238,9 +239,9 @@
 						                      <div class="homePostContain">
 						                        Lokomoko U
 						                      </div>
-						                    </div>
+						                    </div><button class="btn btn btn-large btn-block top" id="showMore">Showmore</button>
 									<div class="centered">
-				            			<button class="btn btn btn-large btn-block btn-primary top" id="showMore">Show More</button>
+				            			
 									</div>
 		      					</div>
 		      				</div>
@@ -250,18 +251,19 @@
 				</div>
 			</div>
 		</div>
-	</div> 
-</body>
+	 
+
 <script type="text/javascript">
-$(document).ready(function(){
-	$('.homerecentPost:gt(6)').hide().last().after(
+$('.homerecentPost:gt(6)').hide().last().after(
     $("#showMore").click(function(){
         var a = this;
         $('.homerecentPost:not(:visible):lt(3)').fadeIn(function(){
-         if ($('.homerecentPost:not(:visible)').length == 0) $(a).remove()
+         if ($('.homerecentPost:not(:visible)').length == 0) $(a).remove().show(function ()
+         	{
+         		alert("No More Posts to Show!");
+         	});   
         }); return false;
     })
 );
-})
 </script>
-</html>
+</body></html>
