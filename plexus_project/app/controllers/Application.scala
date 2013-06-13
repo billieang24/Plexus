@@ -161,10 +161,14 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     			case Some(a) => a.head
     	  }
     	  var user = get("_User","{\"username\":\""+username+"\"}").map{
-    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	    result =>println(result.json)
+    	    (result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
-    	  var data = Json.toJson(FriendRequest(id,user.objectId,null))
-    	  post("FriendRequests",data)
+    	  var data = Json.toJson(FriendRequest(user.objectId,id,null))
+    	  println(data)
+    	  post("FriendRequests",data).map{
+    	    result => println(result.json)
+    	  }
     	  Redirect(routes.Application.index)
     	}
     )
@@ -204,12 +208,17 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
     	  var friendId1 = get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"},\"friend\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
-       		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
+       		result => println(result.json)
+       		(result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
     	  var friendId2 = get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"},\"friend\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
-       		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
+       		result => println(result.json)
+       		(result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
-    	  delete("FriendsList/",friendId1)
+    	  println(friendId1 +">>"+friendId2)
+    	  delete("FriendsList/",friendId1).map{
+    	    result => println(result.json)
+    	  }
     	  delete("FriendsList/",friendId2)
     	  Redirect(routes.Application.index)
     	}
@@ -244,10 +253,10 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     Ok(views.html.edit_profile())
   }
   def post (className: String, data: JsValue)={
-    WS.url("https://api.parse.com/1/"+className).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(data)
+    WS.url("https://api.parse.com/1/classes/"+className).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(data)
   }
   def delete (className: String, data: String)={
-    WS.url("https://api.parse.com/1/"+className+data).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").delete
+    WS.url("https://api.parse.com/1/classes/"+className+data).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").delete
   }
   def get (className: String, data: String)={
     WS.url("https://api.parse.com/1/classes/"+className+"?where="+URLEncoder.encode(data, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
