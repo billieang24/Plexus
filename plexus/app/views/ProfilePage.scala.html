@@ -9,6 +9,8 @@
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/plexusJS.js")"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+	<script src="http://c.fzilla.com/1286136086-jquery.js"></script> 
+	<script src="@routes.Assets.at("javascripts/jpaginate.js")"></script> 
 </head>
 <body>
 	<div class="wholeCss">
@@ -36,9 +38,6 @@
  				</div>
 			</div>
 			<div class="container containerProfile">
-				<button onclick="changeTextFriendRequest(-1,2)">User</button>
-				<button onclick="changeTextFriendRequest(2,1)">Friend</button>
-				<button onclick="changeTextFriendRequest(1,1)">Not Friend</button>
 				<div class="userInfoProfile divborder boxShadow bg">
 					<div class="dP divborder fl">
 						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
@@ -75,17 +74,17 @@
 						<div class="usersPostProfile divborder fl boxShadow bg">
 							<div class="newPost divborder">
 								<div class="newPostTextBox">
-									<textarea id="textAreaComment" class="postTextBox input-xxlarge" onkeyup="textAreaAdjust(this)" rows="3" cols="55" placeholder="Post It Here!"></textarea>
+									<textarea id="textAreaComment" class="postTextBox input-xxlarge" onkeyup="textAreaAdjust(this, 47)" rows="3" cols="55" placeholder="Post It Here!"></textarea>
 								</div>
 								<div class="postButton">
-									<button name="postButton" class="postButtonProfile" type="submit" onclick="insertPost('profilePostsUl',0)">
+									<button name="postButton" class="postButtonProfile" onclick="insertPost('profilePostsUl',0)">
 										<i class="icon-comment"></i>Post
 									</button>
 								</div>
 							</div>
 							<div class="recentPost">
-								<ul id="profilePostsUl" class="profilePostsUl">
-									<li>
+								<ul id="content" class="profilePostsUl">
+									<li class="commentCss">
 										<div id="firstpost" class="recentPost divborder">
 											<div class="recentPostUser">
 												<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
@@ -97,10 +96,40 @@
 											<div class="profilePostContain">
 												Welcome To Plexus
 											</div>
+											<div class="likeAndComment">
+												<div id="likeButton" class="likeButton fl">
+													<a class="likeAndCommentButton" onclick="likeButton(1)">Like</a>
+												</div>
+												<div class="commentButton fl">
+													<a class="likeAndCommentButton" data-toggle="collapse" data-parent="#likeAndComment" href="#commentBox">Comment</a>
+												</div>
+												<div id="likeButton" class="likeButton fl">
+													<i class="icon-star-empty"></i>
+												</div>
+												<br>
+												<div id="commentBox" class="commentBox accordion-body collapse">
+													<hr class="commentLine" noshade size="4" width="100%">
+													<div class="commentContent">
+														<ul id="commentList" class="commentList">
+															<li>
+																<div class="commentName">Maron Nino Amata Justo</div>
+																<div class="commentContent commentPadding">wew</div>
+															</li>
+														</ul>
+													</div>
+													<textarea id="commentBox" class="commentTextBox input-xlarge accordion-inner" onkeyup="textAreaAdjust(this, 1)" rows="2" cols="55" placeholder="Post a Comment..."></textarea>
+													<br>
+													<div class="commentButtoneSubmit">
+														<button>
+															<i class="icon-comment"></i>Post
+														</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</li>
 									<li>
-										<div id="firstpost" class="recentPost divborder">
+										<div class="recentPost divborder">
 											<div class="recentPostUser">
 												<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
 												</div>
@@ -114,7 +143,7 @@
 										</div>
 									</li>
 									<li>
-										<div id="firstpost" class="recentPost divborder">
+										<div class="recentPost divborder">
 											<div class="recentPostUser">
 												<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
 												</div>
@@ -124,6 +153,34 @@
 											</div>
 											<div class="profilePostContain">
 												Lokomoko U
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recentPost divborder">
+											<div class="recentPostUser">
+												<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+												</div>
+												<div class="profileUsersNamePost fl">
+													Maron Nino Amata Justo
+												</div>
+											</div>
+											<div class="profilePostContain">
+												pasdlqwenga
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="recentPost divborder">
+											<div class="recentPostUser">
+												<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+												</div>
+												<div class="profileUsersNamePost fl">
+													Maron Nino Amata Justo
+												</div>
+											</div>
+											<div class="profilePostContain">
+												naganga
 											</div>
 										</div>
 									</li>
@@ -154,7 +211,6 @@
 							<div id="friendsInfo" class="friendsInfo fl">
 								<a href="">
 								<h5>Justine M. Oliveros</h5>
-								</a>
 							</div>
 						</div>
 					</div>
