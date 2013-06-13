@@ -13,7 +13,8 @@ POST	/acceptFriendRequest		controllers.Application.acceptFriendRequest
 POST	/addFriendRequest			controllers.Application.sendFriendRequest
 POST	/unfriend					controllers.Application.unfriend
 POST	/wallPost					controllers.Application.createWallPost
-
+POST	/cancelFriendRequest		controllers.Application.cancelFriendRequest
+POST	/deleteWallPost				controllers.Application.deleteWallPost
 # Authentication
 GET    	/login						controllers.Auth.login
 GET     /logout                     controllers.Auth.logout

@@ -1,32 +1,70 @@
-@(user:User, role: String)
+@(pageOwner:User,user: User,role: String, wallPostList: scala.collection.mutable.ListBuffer[WallPost])
 @main("Plexus") {
-	<h4>@user.firstName @user.lastName</h4>
+	<h4>@pageOwner.firstName @pageOwner.lastName</h4>
 	<br>
-	<h3>@user.gender</h3>
+	<h3>@pageOwner.gender</h3>
 	<br>
-	<h3>@user.birthdate</h3>
-	<br>
-	<h4>posts</h4>
+	<h3>@pageOwner.birthdate</h3>
 	<br>
 	@if(role.equals("none")){
-	<form action="/addFriendRequest" method="post">
-    	<input type="hidden" name="userId" value="@user.objectId" />
-    	<button type="submit">Add Friend</button>
-	</form>} else {
-	@if(role.equals("friend")){
-	<form action="/unfriend" method="post">
-    	<input type="hidden" name="userId" value="@user.objectId" />
-    	<button type="submit">Unfriend</button>
-	</form>
-	}else {<a href="/editProfile">Edit Profile</a>
+		<form action="/addFriendRequest" method="post">
+    		<input type="hidden" name="userId" value="@pageOwner.objectId" />
+    		<button type="submit">Add Friend</button>
+		</form>
+	} else {
+		@if(role.equals("friend")){<br>
+			<form action="/wallPost" method="post">
+    			<input type="hidden" name="userId" value="@pageOwner.objectId" />
+    			<input type="text" name="content"/>
+    			<button type="submit">post</button>
+			</form>
+			<br>
+			<h4>posts</h4>
+			<br>
+			@wallPostList.map{ wallPost =>
+				<li>
+					<h2>@wallPost.postedById</h2> @wallPost.content
+				</li>
+				@if(user.objectId.equals(wallPost.postedById)){
+				<form action="/deleteWallPost" method="post">
+    				<input type="hidden" name="userId" value="@wallPost.objectId" />
+    				<button type="submit">Delete Wall Post</button>
+				</form>
+				}
+			}
+			<form action="/unfriend" method="post">
+    			<input type="hidden" name="userId" value="@pageOwner.objectId" />
+    			<button type="submit">Unfriend</button>
+			</form>
+		}else {
+			@if(role.equals("owner")){
+				<br>
+				<form action="/wallPost" method="post">
+    				<input type="hidden" name="userId" value="@pageOwner.objectId" />
+    				<input type="text" name="content"/>
+    				<button type="submit">post</button>
+				</form>
+				<br>
+				<h4>posts</h4>
+				<br>
+				@wallPostList.map{ wallPost =>
+					<li>
+						<h2>@wallPost.postedById</h2> @wallPost.content
+						<form action="/deleteWallPost" method="post">
+    						<input type="hidden" name="userId" value="@wallPost.objectId" />
+    						<button type="submit">Delete Wall Post</button>
+						</form>
+					</li>
+				}
+				<a href="/editProfile">Edit Profile</a>
+			}else {
+				<form action="/cancelFriendRequest" method="post">
+    				<input type="hidden" name="userId" value="@pageOwner.objectId" />
+    				<button type="submit">Cancel Friend Request</button>
+				</form>
+			}
+		}
 	}
-	}
-	<br>
-	<form action="/wallPost" method="post">
-    	<input type="hidden" name="userId" value="@user.objectId" />
-    	<input type="text" name="content"/>
-    	<button type="submit">post</button>
-	</form>
 	<br>
 	<a href="/">home</a>
 	<br>

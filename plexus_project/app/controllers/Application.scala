@@ -21,6 +21,7 @@ import scala.collection.mutable.ListBuffer
 import java.net.URLEncoder
 import models.FriendRequest
 import models.FriendRequest
+import models.WallPost
 
 object Application extends Controller with Secured with UserDeserializer with FriendDeserializer with WallPostDeserializer with FriendRequestDeserializer{
  
@@ -115,18 +116,32 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     			case Some(a) => a.head
     		}
     	  val user = getUser("username",username)
-    	  val pageOwner = get("_User","{\"objectId\":\""+id+"\"}").map{
-       		result => (result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await.get
-    	  val notFriend=getFriendOrRequest(user.objectId,"friend",id).map{
-    	    result => (result.json\"results").as[List[JsObject]].isEmpty
-    	  }.await.get
+    	  val pageOwner = getUser("objectId",id)
     	  val role = {
     	    if(user.objectId.equals(id)) "owner"
-    	    else if (!notFriend) "friend"
-    	    else "none"
+    	    else if (
+    	        !getFriendOrRequest(user.objectId,"FriendsList","friend",id).map{
+    	        	result => 
+    	        	  println(result.json)
+    	        	  (result.json\"results").as[List[JsObject]].isEmpty
+    	        }.await.get
+    	    ) "friend"
+    	    else if (
+    	        getFriendOrRequest(id,"FriendRequests","requester",user.objectId).map{
+    	        	result => 
+    	        	  println(result.json)
+    	        	  (result.json\"results").as[List[JsObject]].isEmpty
+    	        }.await.get
+    	    ) "none"
+    	    else "friendRequestSent"
     	  }
-    	  Ok(views.html.profile(pageOwner, role))
+    	  val wallPostsObjectIdList = ListBuffer[WallPost]()
+    	  get("Post","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			wallPost => wallPostsObjectIdList += wallPost.as[WallPost]
+       		}
+    	  }.await.get
+    	  Ok(views.html.profile(pageOwner, user, role, wallPostsObjectIdList))
     	}
     )
   }
@@ -163,6 +178,23 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	}
     )
   }
+  def cancelFriendRequest=IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("username",username)
+    	  val requestObjectId = getFriendOrRequest(id,"FriendRequests","requester",user.objectId).map{
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
+    	  }.await.get
+    	  delete("FriendRequests/",requestObjectId)
+    	  Redirect(routes.Application.index)
+    	}
+    )
+  }
   def acceptFriendRequest()=IsAuthenticated {  username => implicit request =>
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
@@ -176,7 +208,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val data2 = Json.toJson(Friend(id,user.objectId,null))
     	  post("FriendsList",data1)
     	  post("FriendsList",data2)
-    	  val requestObjectId = getFriendOrRequest(user.objectId,"requester",id).map{
+    	  val requestObjectId = getFriendOrRequest(user.objectId,"FriendRequests","requester",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
     	  }.await.get
     	  delete("FriendRequests/",requestObjectId)
@@ -193,10 +225,10 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     			case Some(a) => a.head
     	  }
     	  val user = getUser("username",username)
-    	  val friendId1 = getFriendOrRequest(user.objectId,"friend",id).map{
+    	  val friendId1 = getFriendOrRequest(user.objectId,"FriendsList","friend",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
-    	  val friendId2 = getFriendOrRequest(id,"friend",user.objectId).map{
+    	  val friendId2 = getFriendOrRequest(id,"FriendsList","friend",user.objectId).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
     	  delete("FriendsList/",friendId1)
@@ -228,6 +260,19 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	}
     )
   }
+  def deleteWallPost = IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  delete("Post/",id)
+    	  Redirect(routes.Application.index)
+    	}
+    )
+  }
   def editProfile = IsAuthenticated { username => implicit request =>
     Ok(views.html.edit_profile())
   }
@@ -240,8 +285,8 @@ object Application extends Controller with Secured with UserDeserializer with Fr
   def get (className: String, data: String)={
     WS.url("https://api.parse.com/1/classes/"+className+"?where="+URLEncoder.encode(data, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
   }
-  def getFriendOrRequest (userId: String, parameter:String, parameterId: String) ={
-    get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+userId+"\"},\""+parameter+"\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+parameterId+"\"}}")
+  def getFriendOrRequest (userId: String, className: String, parameter:String, parameterId: String) ={
+    get(className,"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+userId+"\"},\""+parameter+"\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+parameterId+"\"}}")
   }
   def getUser(parameter: String, data: String)={
     get("_User","{\""+parameter+"\":\""+data+"\"}").map{

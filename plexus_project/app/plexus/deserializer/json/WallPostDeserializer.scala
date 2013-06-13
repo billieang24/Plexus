@@ -10,7 +10,7 @@ trait WallPostDeserializer{
   implicit object WallPostFormatter extends Format[WallPost]{
     def writes(wallPost: WallPost): JsValue = { JsObject(
         Seq(
-            "post" -> JsString(wallPost.content),
+            "content" -> JsString(wallPost.content),
             "postedTo" -> JsObject(
     	    	Seq(
     	    	    "__type"->JsString("Pointer"),
