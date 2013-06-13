@@ -1,6 +1,6 @@
 @(form: Form[(String,String)])(implicit flash: Flash)
 @main("Plexus") {
-	@helper.form(routes.Application.authenticate){
+	@helper.form(routes.Auth.authenticate){
 				<div ><input class="" type="email" name="email" value="" placeholder="Email"/></div>
 				<div ><input class="" type="password" name="password" value="" placeholder="Password"/></div>
 				@form.globalError.map { error =>
@@ -10,14 +10,15 @@
                 }
                 
                 @flash.get("success").map { message =>
-                <p class="success">
+                <p>
                     @message
                 </p>
                 }
 				<div >
 					<button type="submit">Log In
 					</button>
-				</div><div >
+				</div>
+				<div >
 					<a href="/signUp">Sign Up
 					</a>
 				</div>

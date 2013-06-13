@@ -1,0 +1,16 @@
+@(users:scala.collection.mutable.ListBuffer[User])
+@main("Plexus") {
+	<h1>Search Result</h1>
+        @users.map { user =>
+            <li>
+                <form id="myForm@user.objectId" action="/profile" method="post">
+    				<input type="hidden" name="userId" value="@user.objectId" />
+   					<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">@user</a>
+					</form>
+            </li>
+        }
+    <br>
+	<a href="/">home</a>
+	<br>
+	<a href="/logout">Sign Out</a>
+}

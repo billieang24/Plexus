@@ -5,14 +5,19 @@
 #
 GET     /                           controllers.Application.index
 GET    	/signUp						controllers.Application.signUp
+GET    	/editProfile				controllers.Application.editProfile
 POST    /signUp						controllers.Application.newUser
 POST	/search						controllers.Application.search
 POST	/profile					controllers.Application.profile
+POST	/acceptFriendRequest		controllers.Application.acceptFriendRequest
+POST	/addFriendRequest			controllers.Application.sendFriendRequest
+POST	/unfriend					controllers.Application.unfriend
+POST	/wallPost					controllers.Application.createWallPost
 
 # Authentication
-GET    	/login						controllers.Application.login
-GET     /logout                     controllers.Application.logout
-POST    /login						controllers.Application.authenticate
+GET    	/login						controllers.Auth.login
+GET     /logout                     controllers.Auth.logout
+POST    /login						controllers.Auth.authenticate
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

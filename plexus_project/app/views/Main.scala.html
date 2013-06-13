@@ -11,7 +11,7 @@
 				<center>
 					<div id="upper" class="logoMain"><img src="@routes.Assets.at("images/plexusLogo2.png")" class="logoCss" height="100px" width="100px" alt="plexusLogo"/></div></center>
 			<div id="signInUp" class="signCss signInCss"> 
-				@helper.form(routes.Application.authenticate){
+				@helper.form(routes.Auth.authenticate){
 				<div id="middleUsername" class="middleUser"><input class="inputCss" type="text" name="username" value="" placeholder="username"/></div>
 				<div id="middlePassword" class="middlePass"><input class="inputCss" type="password" name="password" value="" placeholder="password"/></div>
 				@form.globalError.map { error =>

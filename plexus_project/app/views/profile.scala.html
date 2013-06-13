@@ -1,0 +1,34 @@
+@(user:User, role: String)
+@main("Plexus") {
+	<h4>@user.firstName @user.lastName</h4>
+	<br>
+	<h3>@user.gender</h3>
+	<br>
+	<h3>@user.birthdate</h3>
+	<br>
+	<h4>posts</h4>
+	<br>
+	@if(role.equals("none")){
+	<form action="/addFriendRequest" method="post">
+    	<input type="hidden" name="userId" value="@user.objectId" />
+    	<button type="submit">Add Friend</button>
+	</form>} else {
+	@if(role.equals("friend")){
+	<form action="/unfriend" method="post">
+    	<input type="hidden" name="userId" value="@user.objectId" />
+    	<button type="submit">Unfriend</button>
+	</form>
+	}else {<a href="/editProfile">Edit Profile</a>
+	}
+	}
+	<br>
+	<form action="/wallPost" method="post">
+    	<input type="hidden" name="userId" value="@user.objectId" />
+    	<input type="text" name="content"/>
+    	<button type="submit">post</button>
+	</form>
+	<br>
+	<a href="/">home</a>
+	<br>
+	<a href="/logout">Sign Out</a>
+}

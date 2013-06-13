@@ -14,7 +14,7 @@ trait UserDeserializer {
       (j \ "firstName").as[String],
       (j \ "lastName").as[String],
       (j \ "gender").as[String],
-      ((j \ "birthdate").as[JsObject] \ "iso").as[String],
+      ((j \ "birthdate").as[JsObject] \ "iso").as[String].substring(0, 10),
       (j \ "objectId").as[String]
       )
 

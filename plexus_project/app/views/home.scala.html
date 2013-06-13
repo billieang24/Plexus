@@ -1,19 +1,44 @@
-@(user:User,friendsList:scala.collection.mutable.ListBuffer[User])
+@(user:User,friendsList:scala.collection.mutable.ListBuffer[User],requestsList:scala.collection.mutable.ListBuffer[User])
 @main("Plexus") {
-<h4>@user.firstName.head.toString.toUpperCase@user.firstName.tail @user.lastName.head.toString.toUpperCase@user.lastName.tail</h4>
-<p>
-@user
-
-FRIENDS
-</p>
-@friendsList.map{ friend =>
-	<li>
-	@friend
-	</li>
-}
-@helper.form(routes.Application.search){
-				<div ><input type="text" name="keyword" placeholder="Search"/></div>
-				<button type="submit">Search</button>
-				}<br>
-<a href="/logout">Sign Out</a>
+	<h4>
+		<form id="myForm@user.objectId" action="/profile" method="post">
+    			<input type="hidden" name="userId" value="@user.objectId" />
+   				<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">
+   					@user.firstName @user.lastName
+   				</a>
+		</form>
+	</h4>
+	<br>
+		FRIENDS
+	<br>
+	@friendsList.map{ friend =>
+		<li>
+			<form id="myForm@friend.objectId" action="/profile" method="post">
+    			<input type="hidden" name="userId" value="@friend.objectId" />
+   				<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();">@friend</a>
+			</form>
+		</li>
+	}
+	@helper.form(routes.Application.search){
+		<div >
+			<input type="text" name="keyword" placeholder="Search"/>
+		</div>
+		<button type="submit">Search</button>
+	}
+	<br>
+	FRIEND REQUESTS
+	@requestsList.map{ request =>
+		<li>
+			<form id="idForm@request.objectId" action="/profile" method="post">
+    			<input type="hidden" name="userId" value="@request.objectId" />
+    			<a href="#" onclick="document.getElementById('idForm@request.objectId').submit();">@request</a>
+			</form>
+			<form id="acceptForm@request.objectId" action="/acceptFriendRequest" method="post">
+    			<input type="hidden" name="userId" value="@request.objectId" />
+    			<button type="submit">Accept</button>
+			</form>
+		</li>
+	}
+	<br>
+	<a href="/logout">Sign Out</a>
 }

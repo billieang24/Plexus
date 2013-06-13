@@ -1,166 +1,254 @@
 package controllers
 
+import models.User
+import models.Friend
+import models.FriendRequest
+import models.WallPost
 import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import models.User
 import play.api.libs.ws.WS
-import play.api.libs.json
-import play.api.libs.json.Format
 import play.api.libs.json.JsObject
 import play.api.libs.json.Json
 import play.api.libs.json.JsValue
-import play.api.libs.json.JsArray
 import play.api.libs.json.JsString
-import java.net.URLEncoder
-import scala.collection.mutable.ListBuffer
 import plexus.deserializer.json.UserDeserializer
-import play.api.libs.concurrent.Akka
-import play.api.Play.current
-import views.html.defaultpages.badRequest
-object Application extends Controller with Secured with UserDeserializer{
+import plexus.deserializer.json.FriendDeserializer
+import plexus.deserializer.json.FriendRequestDeserializer
+import plexus.deserializer.json.WallPostDeserializer
+import scala.collection.mutable.ListBuffer
+import java.net.URLEncoder
+import models.FriendRequest
+import models.FriendRequest
+
+object Application extends Controller with Secured with UserDeserializer with FriendDeserializer with WallPostDeserializer with FriendRequestDeserializer{
  
-  val userForm = Form( //NO VALIDATIONS YET !!!!
+  val signUpForm = Form( //NO VALIDATIONS YET !!!!
       tuple(
       "email" -> text,
-          "password" -> nonEmptyText,
-          "firstName" -> text,
-          "lastName" -> text,
-          "gender" -> text,
-          "birthdate"-> date
+      "password" -> nonEmptyText,
+      "firstName" -> text,
+      "lastName" -> text,
+      "gender" -> text,
+      "birthdate"-> date
+      )
+  )
+  val postForm = Form(
+      tuple(
+      "userId"->text,
+      "content"->text
       )
   )
   val idForm = Form(
-      "id"->text
+      "userId"->text
   )
   val searchForm = Form(
       "keyword"->text
   )
-  val loginForm = Form(
-    tuple(
-      "email" -> text,
-      "password" -> text
-    ).verifying ("Invalid email or password", result => result match {
-        case (email, password) => check(email, password)
-      })
-  )
-  def check(user: String, pass :String)={
-    WS.url("https://api.parse.com/1/login?username="+URLEncoder.encode(user, "UTF-8")+"&password="+URLEncoder.encode(pass, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get.await.get.status==200
-  }
-  def index = IsAuthenticated {  username =>
-        implicit request =>
-        	val objectIdList = ListBuffer[String]()
-        	val friendsList = ListBuffer[User]()
-        	var user = WS.url("https://api.parse.com/1/classes/_User?where="+URLEncoder.encode("{\"username\":\""+username+"\"}", "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get.map{
-        		result =>(result.json \ "results").as[List[JsObject]].head.as[User] 
-        	}
-        	WS.url("https://api.parse.com/1/classes/FriendsList?where="+URLEncoder.encode("{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.await.get.objectId+"\"}}", "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get.map{
-        		results => 
-        			(results.json \ "results").as[Seq[JsObject]].map{
-        				friend => objectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
-        		 	}
-        	}.await.get
-        			objectIdList.map{
-        				id => WS.url("https://api.parse.com/1/classes/_User?where="+URLEncoder.encode("{\"objectId\":\""+id+"\"}", "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get.map{
-        					result => 
-        						println(result.json)
-        						friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
-        				}.await.get
-        			}
-        			println("object id >>>>>"+objectIdList)
-        			println("user >>>>>"+friendsList)
-        			Ok(views.html.home(user.await.get,friendsList))
-  }
-  def login = Action { implicit request =>
-    Ok(views.html.index(loginForm))
-  }
-  def authenticate = Action { implicit request =>
-    loginForm.bindFromRequest.fold(
-      formWithErrors => BadRequest(views.html.index(formWithErrors)),
-      user => Redirect(routes.Application.index).withSession("username" -> user._1)
-    )
-  }
-  def logout = Action {
-    Redirect(routes.Application.login).withNewSession.flashing(
-      "success" -> "You are now logged out.")
-  }
   def signUp = Action {
-    Ok(views.html.sign_up(userForm))
+    Ok(views.html.sign_up(signUpForm))
   }
   def newUser = Action { implicit request =>
-    userForm.bindFromRequest.fold(
+    signUpForm.bindFromRequest.fold(
     formWithErrors =>  BadRequest(views.html.sign_up(formWithErrors)),
     value => { 
-    		var params = request.body.asFormUrlEncoded.get
-    		var email = params.get("email") match{
+    		val params = request.body.asFormUrlEncoded.get
+    		val email = params.get("email") match{
     			case Some(a) => a.head
     		}
-    		var password = params.get("password") match{
+    		val password = params.get("password") match{
     			case Some(a) => a.head
     		}
-    		var firstName = params.get("firstName") match{
+    		val firstName = params.get("firstName") match{
     			case Some(a) => a.head
     		}
-    		var lastName = params.get("lastName") match{
+    		val lastName = params.get("lastName") match{
     			case Some(a) => a.head
     		}
-    		var gender = params.get("gender") match{
+    		val gender = params.get("gender") match{
     			case Some(a) => a.head
     		}
-    		var birthdate = params.get("birthdate") match{
+    		val birthdate = params.get("birthdate") match{
     			case Some(a) => a.head
     		}
-    		var user = User(email,password,firstName,lastName,gender,birthdate,null)
-    		WS.url("https://api.parse.com/1/classes/_User").withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(Json.toJson(user))
+    		val user = User(email,password,firstName,lastName,gender,birthdate,null)
+    		post("_User",Json.toJson(user))
     		Redirect(routes.Application.index)
     	}
   	)
+  }
+  def index = IsAuthenticated {  username => implicit request =>
+        val friendsObjectIdList = ListBuffer[String]()
+       	val requestsObjectIdList = ListBuffer[String]()
+       	val friendsList = ListBuffer[User]()
+       	val requestsList = ListBuffer[User]()
+       	val user = getUser("username",username)
+       	get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
+       		}
+       	}.await.get
+       	get("FriendRequests","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			request => requestsObjectIdList += ((request \ "requester").as[JsObject] \ "objectId").as[String]
+       		}
+       	}.await.get
+       	requestsObjectIdList.map{
+        	id => get("_User","{\"objectId\":\""+id+"\"}").map{
+       			result => requestsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+       		}.await.get
+       	}
+       	friendsObjectIdList.map{
+        	id => get("_User","{\"objectId\":\""+id+"\"}").map{
+       			result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+       		}.await.get
+       	}
+       	Ok(views.html.home(user,friendsList,requestsList))
   }
   def profile()=IsAuthenticated {  username => implicit request =>
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
-    	  var params = request.body.asFormUrlEncoded.get
-    	  var id = params.get("id") match{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
     			case Some(a) => a.head
     		}
-    	  Ok(id)
+    	  val user = getUser("username",username)
+    	  val pageOwner = getUser("objectId",id)
+    	  val notFriend=getFriendOrRequest(id,user.objectId,"friend").map{
+    	    result => (result.json\"results").as[List[JsObject]].isEmpty
+    	  }.await.get
+    	  val role = {
+    	    if(user.objectId.equals(id)) "owner"
+    	    else if (!notFriend) "friend"
+    	    else "none"
+    	  }
+    	  Ok(views.html.profile(pageOwner, role))
     	}
     )
   }
-  def search = IsAuthenticated {  username =>
-    implicit request =>
+  def search = IsAuthenticated {  username => implicit request =>
     searchForm.bindFromRequest.fold(
     formWithErrors =>  BadRequest,
     value =>{
-      var keyword = request.body.asFormUrlEncoded.get.get("keyword")match{
+      val keyword = request.body.asFormUrlEncoded.get.get("keyword")match{
     			case Some(a) => a.head
     		}
-      Async{     
-        WS.url("https://api.parse.com/1/classes/_User?where="+URLEncoder.encode("{\"fullName\":{\"$regex\":\""+keyword+"\"}}", "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get.map{
-        		result => 
-        		  val userList = ListBuffer[User]()
-        		 (result.json \ "results").as[Seq[JsObject]].map{
+        get("_User","{\"fullName\":{\"$regex\":\""+keyword+"\"}}").map{
+        	result => 
+        		val userList = ListBuffer[User]()
+        		(result.json \ "results").as[Seq[JsObject]].map{
         			 entity=> userList += (entity).as[User]
-        		 	}
-        		  Ok(views.html.searchy(userList))
-      
-        }
-      }
+        		}
+        		Ok(views.html.search(userList))
+        }.await.get
     }
     )
   }
-}
-trait Secured {
-  
-  private def username(request: RequestHeader) = {
-    request.session.get(Security.username)
+  def sendFriendRequest=IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("username",username)
+    	  val data = Json.toJson(FriendRequest(id,user.objectId,null))
+    	  post("FriendRequests",data)
+    	  Redirect(routes.Application.index)
+    	}
+    )
   }
-  
-  private def onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Application.login)
-  
-  def IsAuthenticated(f: => String => Request[AnyContent] => Result) = Security.Authenticated(username, onUnauthorized) { user =>
-    Action(request => f(user)(request))
+  def acceptFriendRequest()=IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("username",username)
+    	  val data1 = Json.toJson(Friend(user.objectId,id,null))
+    	  val data2 = Json.toJson(Friend(id,user.objectId,null))
+    	  post("FriendsList",data1)
+    	  post("FriendsList",data2)
+    	  val requestObjectId = getFriendOrRequest(user.objectId,id,"requester").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
+    	  }.await.get
+    	  delete("FriendRequests/",requestObjectId)
+    	  Redirect(routes.Application.index)
+    	}
+    )
+  }
+  def unfriend = IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("username",username)
+    	  val friendId1 = getFriendOrRequest(user.objectId,id,"friend").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
+    	  }.await.get
+    	  val friendId2 = getFriendOrRequest(id,user.objectId,"friend").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
+    	  }.await.get
+    	  delete("FriendsList/",friendId1)
+    	  delete("FriendsList/",friendId2)
+    	  Redirect(routes.Application.index)
+    	}
+    )
+  }
+  def createWallPost=IsAuthenticated {  username => implicit request =>
+    idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val content = params.get("content") match{
+    			case Some(a) => a.head
+    	  }
+    	  val postedBy = get("_User","{\"username\":\""+username+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  val postedTo = get("_User","{\"objectId\":\""+id+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  val data = Json.toJson(WallPost(content,postedTo.objectId,postedBy.objectId,null))
+    	  post("Post",data).map{
+    	    result => println(result.json)
+    	  }
+    	  Redirect(routes.Application.index)
+    	}
+    )
+  }
+  def editProfile = IsAuthenticated { username => implicit request =>
+    Ok(views.html.edit_profile())
+  }
+  def post (className: String, data: JsValue)={
+    WS.url("https://api.parse.com/1/"+className).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(data)
+  }
+  def delete (className: String, data: String)={
+    WS.url("https://api.parse.com/1/"+className+data).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").delete
+  }
+  def get (className: String, data: String)={
+    WS.url("https://api.parse.com/1/classes/"+className+"?where="+URLEncoder.encode(data, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
+  }
+  def getLogIn (user: String, pass: String)={
+    WS.url("https://api.parse.com/1/login?username="+URLEncoder.encode(user, "UTF-8")+"&password="+URLEncoder.encode(pass, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
+  }
+  def getFriendOrRequest(user: String, friend: String , parameter: String) = {
+	  get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user+"\"},\""+parameter+"\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+friend+"\"}}")
+  }
+  def getUser(parameter: String, data: String) = {
+    get("_User","{\""+parameter+"\":\""+data+"\"}").map{
+       		result =>(result.json \ "results").as[List[JsObject]].head.as[User] 
+       	}.await.get
   }
 }
