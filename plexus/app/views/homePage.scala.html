@@ -11,7 +11,8 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")">
 	</script>
-	<script src="@routes.Assets.at("javascripts/jpaginate.js")"></script>
+	<script src="http://c.fzilla.com/1286136086-jquery.js"></script> 
+	<script src="http://c.fzilla.com/1291523190-jpaginate.js"></script> 
 </head>
 <body>
 	<div class="container">
@@ -60,12 +61,7 @@
 												    <h3 id="myModalLabel">Notifications</h3>
 												  </div>
 												  <div class="modal-body">
-															<div class="pagination-container"></div>
-															<ul data-display="ajax-list" ajax-list-url="/todo_*"></ul>
-															<form class="item-form">
-															  <input type="text" name="name">
-															  <button type="submit" name="submit">Submit</button>
-															</form>
+												
 												  </div>
 												  <div class="modal-footer">
 												    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -99,9 +95,23 @@
 		      				</div>
 		      				<div class="above">
 		      					<div class="above" id="content">
-								</div>
+		      						<p>a</p>
+		      						<p>s</p>
+		      						<p>d</p>
+		      						<p>f</p>
+		      						<p>g</p>
+		      						<p>h</p>
+		      						<p>j</p>
+		      						<p>k</p>
+		      						<p>l</p>
+		      						<p>c</p>
+		      						<p>s</p>
+		      					</div>
 		      					<div class="showMore span7">
-		      						<button class="btn" onclick="updateProfile()">show more</button>
+		      						<ul class="pager">
+									  <li><a href="#">Prev</a></li>
+									  <li><a href="#">Next</a></li>
+									</ul>
 		      					</div>
 		      				</div>
 		      				</div>
@@ -110,7 +120,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 </body>
-</script>
+<script>  
+$(document).ready(function(){  
+    $("#content").jPaginate();                         
+});  
+</script>  
 </html>
