@@ -15,7 +15,7 @@
 		<li>
 			<form id="myForm@friend.objectId" action="/profile" method="post">
     			<input type="hidden" name="userId" value="@friend.objectId" />
-   				<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();">@friend</a>
+   				<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();">@friend.firstName @friend.lastName</a>
 			</form>
 		</li>
 	}
@@ -31,7 +31,7 @@
 		<li>
 			<form id="idForm@request.objectId" action="/profile" method="post">
     			<input type="hidden" name="userId" value="@request.objectId" />
-    			<a href="#" onclick="document.getElementById('idForm@request.objectId').submit();">@request</a>
+    			<a href="#" onclick="document.getElementById('idForm@request.objectId').submit();">@request.firstName @request.lastName</a>
 			</form>
 			<form id="acceptForm@request.objectId" action="/acceptFriendRequest" method="post">
     			<input type="hidden" name="userId" value="@request.objectId" />

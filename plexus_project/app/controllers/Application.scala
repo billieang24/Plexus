@@ -85,23 +85,23 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        	val friendsList = ListBuffer[User]()
        	val requestsList = ListBuffer[User]()
        	val user = getUser("username",username)
-       	get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+       	get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
        		}
        	}.await.get
-       	get("FriendRequests","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+       	get("FriendRequests?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			request => requestsObjectIdList += ((request \ "requester").as[JsObject] \ "objectId").as[String]
        		}
        	}.await.get
        	requestsObjectIdList.map{
-        	id => get("_User","{\"objectId\":\""+id+"\"}").map{
+        	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
        			result => requestsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
        		}.await.get
        	}
        	friendsObjectIdList.map{
-        	id => get("_User","{\"objectId\":\""+id+"\"}").map{
+        	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
        			result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
        		}.await.get
        	}
@@ -120,14 +120,14 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val role = {
     	    if(user.objectId.equals(id)) "owner"
     	    else if (
-    	        !getFriendOrRequest(user.objectId,"FriendsList","friend",id).map{
+    	        !getFriendOrRequest(user.objectId,"FriendsList?","friend",id).map{
     	        	result => 
     	        	  println(result.json)
     	        	  (result.json\"results").as[List[JsObject]].isEmpty
     	        }.await.get
     	    ) "friend"
     	    else if (
-    	        getFriendOrRequest(id,"FriendRequests","requester",user.objectId).map{
+    	        getFriendOrRequest(id,"FriendRequests?","requester",user.objectId).map{
     	        	result => 
     	        	  println(result.json)
     	        	  (result.json\"results").as[List[JsObject]].isEmpty
@@ -136,7 +136,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	    else "friendRequestSent"
     	  }
     	  val wallPostsObjectIdList = ListBuffer[WallPost]()
-    	  get("Post","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+    	  get("Post?","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			wallPost => wallPostsObjectIdList += wallPost.as[WallPost]
        		}
@@ -152,7 +152,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
       val keyword = request.body.asFormUrlEncoded.get.get("keyword")match{
     			case Some(a) => a.head
     		}
-        get("_User","{\"fullName\":{\"$regex\":\""+keyword+"\"}}").map{
+        get("_User?","{\"fullName\":{\"$regex\":\""+keyword+"\"}}").map{
         	result => 
         		val userList = ListBuffer[User]()
         		(result.json \ "results").as[Seq[JsObject]].map{
@@ -187,7 +187,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     			case Some(a) => a.head
     	  }
     	  val user = getUser("username",username)
-    	  val requestObjectId = getFriendOrRequest(id,"FriendRequests","requester",user.objectId).map{
+    	  val requestObjectId = getFriendOrRequest(id,"FriendRequests?","requester",user.objectId).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
     	  }.await.get
     	  delete("FriendRequests/",requestObjectId)
@@ -208,7 +208,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val data2 = Json.toJson(Friend(id,user.objectId,null))
     	  post("FriendsList",data1)
     	  post("FriendsList",data2)
-    	  val requestObjectId = getFriendOrRequest(user.objectId,"FriendRequests","requester",id).map{
+    	  val requestObjectId = getFriendOrRequest(user.objectId,"FriendRequests?","requester",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
     	  }.await.get
     	  delete("FriendRequests/",requestObjectId)
@@ -225,10 +225,10 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     			case Some(a) => a.head
     	  }
     	  val user = getUser("username",username)
-    	  val friendId1 = getFriendOrRequest(user.objectId,"FriendsList","friend",id).map{
+    	  val friendId1 = getFriendOrRequest(user.objectId,"FriendsList?","friend",id).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
-    	  val friendId2 = getFriendOrRequest(id,"FriendsList","friend",user.objectId).map{
+    	  val friendId2 = getFriendOrRequest(id,"FriendsList?","friend",user.objectId).map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
     	  delete("FriendsList/",friendId1)
@@ -248,14 +248,14 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val content = params.get("content") match{
     			case Some(a) => a.head
     	  }
-    	  val postedBy = get("_User","{\"username\":\""+username+"\"}").map{
+    	  val postedBy = get("_User?","{\"username\":\""+username+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
-    	  val postedTo = get("_User","{\"objectId\":\""+id+"\"}").map{
+    	  val postedTo = get("_User?","{\"objectId\":\""+id+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
     	  val data = Json.toJson(WallPost(content,postedTo.objectId,postedBy.objectId,null))
-    	  post("Post",data)
+    	  post("Post?",data)
     	  Redirect(routes.Application.index)
     	}
     )
@@ -283,13 +283,13 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     WS.url("https://api.parse.com/1/classes/"+className+data).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").delete
   }
   def get (className: String, data: String)={
-    WS.url("https://api.parse.com/1/classes/"+className+"?where="+URLEncoder.encode(data, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
+    WS.url("https://api.parse.com/1/classes/"+className+"where="+URLEncoder.encode(data, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
   }
   def getFriendOrRequest (userId: String, className: String, parameter:String, parameterId: String) ={
     get(className,"{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+userId+"\"},\""+parameter+"\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+parameterId+"\"}}")
   }
   def getUser(parameter: String, data: String)={
-    get("_User","{\""+parameter+"\":\""+data+"\"}").map{
+    get("_User?","{\""+parameter+"\":\""+data+"\"}").map{
        		result =>(result.json \ "results").as[List[JsObject]].head.as[User] 
        	}.await.get
   }
