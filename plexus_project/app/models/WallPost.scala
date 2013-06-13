@@ -1,3 +1,3 @@
 package models
 
-case class WallPost(content: String, postedToId: String, postedById:String, objectId: String)
+case class WallPost(content: String, postedTo: User, postedBy:User, objectId: String)

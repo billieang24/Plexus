@@ -143,7 +143,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  }.await.get
     	  Ok(views.html.profile(pageOwner, user, role, wallPostsObjectIdList))
     	}
-    )
+    )////////////////////////////////////////////////////////////////////////////
   }
   def search = IsAuthenticated {  username => implicit request =>
     searchForm.bindFromRequest.fold(
@@ -271,11 +271,11 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val postedTo = get("_User?","{\"objectId\":\""+id+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
-    	  val data = Json.toJson(WallPost(content,postedTo.objectId,postedBy.objectId,null))
+    	  val data = Json.toJson(WallPost(content,postedTo,postedBy,null))
     	  post("Post?",data)
     	  Redirect(routes.Application.index)
     	}
-    )
+    )////////////////////////////////////////////////////////////////
   }
   def deleteWallPost = IsAuthenticated {  username => implicit request =>
     idForm.bindFromRequest.fold(
@@ -288,7 +288,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  delete("Post/",id)
     	  Redirect(routes.Application.index)
     	}
-    )
+    )//////////////////////////////////////////////////////////////////////////////
   }
   def editProfile = IsAuthenticated { username => implicit request =>
     Ok(views.html.edit_profile())

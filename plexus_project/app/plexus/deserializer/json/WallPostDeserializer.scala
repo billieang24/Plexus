@@ -15,14 +15,14 @@ trait WallPostDeserializer{
     	    	Seq(
     	    	    "__type"->JsString("Pointer"),
     	    	    "className"->JsString("_User"),
-    	    	    "objectId"->JsString(wallPost.postedToId)
+    	    	    "objectId"->JsString(wallPost.postedTo.objectId)
     	    	)
     	    ),
     	    "postedBy" -> JsObject(
     	        Seq(
     	        	"__type"->JsString("Pointer"),
     	        	"className"->JsString("_User"),
-    	        	"objectId"->JsString(wallPost.postedById)
+    	        	"objectId"->JsString(wallPost.postedBy.objectId)
     	        	)
     	    )
       )
@@ -31,8 +31,8 @@ trait WallPostDeserializer{
   
     def reads(j: JsValue)= WallPost(
         (j \ "content").as[String],
-        ((j \ "postedTo").as[JsValue] \ "objectId").as[String],
-        ((j \ "postedBy").as[JsValue] \ "objectId").as[String],
+        controllers.Application.getUser("objectId",((j \ "postedTo").as[JsValue] \ "objectId").as[String]),
+        controllers.Application.getUser("objectId",((j \ "postedBy").as[JsValue] \ "objectId").as[String]),
     	(j \ "objectId").as[String]
     )
   }

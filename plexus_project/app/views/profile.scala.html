@@ -28,9 +28,9 @@
 			<br>
 			@wallPostList.map{ wallPost =>
 				<li>
-					<h2>@wallPost.postedById</h2> @wallPost.content
+					<h2>@wallPost.postedBy.firstName @wallPost.postedBy.lastName</h2> @wallPost.content
 				</li>
-				@if(user.objectId.equals(wallPost.postedById)){
+				@if(user.objectId.equals(wallPost.postedBy.objectId)){
 				<form action="/deleteWallPost" method="post">
     				<input type="hidden" name="userId" value="@wallPost.objectId" />
     				<button type="submit">Delete Wall Post</button>
@@ -54,7 +54,7 @@
 				<br>
 				@wallPostList.map{ wallPost =>
 					<li>
-						<h2>@wallPost.postedById</h2> @wallPost.content
+						<h2>@wallPost.postedBy.firstName @wallPost.postedBy.lastName</h2> @wallPost.content
 						<form action="/deleteWallPost" method="post">
     						<input type="hidden" name="userId" value="@wallPost.objectId" />
     						<button type="submit">Delete Wall Post</button>
