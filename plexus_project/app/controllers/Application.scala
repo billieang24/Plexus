@@ -144,7 +144,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  Ok(views.html.profile(pageOwner, user, role, wallPostsObjectIdList))
     	}
-    )////////////////////////////////////////////////////////////////////////////
+    )
   }
   def search = IsAuthenticated {  username => implicit request =>
     searchForm.bindFromRequest.fold(
