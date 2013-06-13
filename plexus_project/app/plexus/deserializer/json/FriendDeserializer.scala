@@ -7,8 +7,13 @@ import play.api.libs.json.JsString
 import play.api.libs.json.JsValue
 
 trait FriendDeserializer{
-  implicit object FriendFormatter extends Format[Friend]
-    def writes(friend: Friend): JsValue = { JsObject(
+  implicit object FriendFormatter extends Format[Friend] {
+	def reads(j: JsValue)= Friend(
+        ((j \ "friend").as[JsValue] \ "objectId").as[String],
+        ((j \ "user").as[JsValue] \ "objectId").as[String],
+    	(j \ "objectId").as[String]
+    )
+    def writes(friend: Friend): JsValue =  JsObject(
         Seq(
             "friend"->JsObject(
     	    	Seq(
@@ -27,10 +32,4 @@ trait FriendDeserializer{
       )
     )
   }
-  
-    def reads(j: JsValue)= Friend(
-        ((j \ "friend").as[JsValue] \ "objectId").as[String],
-        ((j \ "user").as[JsValue] \ "objectId").as[String],
-    	(j \ "objectId").as[String]
-    )
 }

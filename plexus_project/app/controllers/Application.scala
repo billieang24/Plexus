@@ -53,26 +53,26 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     signUpForm.bindFromRequest.fold(
     formWithErrors =>  BadRequest(views.html.sign_up(formWithErrors)),
     value => { 
-    		val params = request.body.asFormUrlEncoded.get
-    		val email = params.get("email") match{
+    		var params = request.body.asFormUrlEncoded.get
+    		var email = params.get("email") match{
     			case Some(a) => a.head
     		}
-    		val password = params.get("password") match{
+    		var password = params.get("password") match{
     			case Some(a) => a.head
     		}
-    		val firstName = params.get("firstName") match{
+    		var firstName = params.get("firstName") match{
     			case Some(a) => a.head
     		}
-    		val lastName = params.get("lastName") match{
+    		var lastName = params.get("lastName") match{
     			case Some(a) => a.head
     		}
-    		val gender = params.get("gender") match{
+    		var gender = params.get("gender") match{
     			case Some(a) => a.head
     		}
-    		val birthdate = params.get("birthdate") match{
+    		var birthdate = params.get("birthdate") match{
     			case Some(a) => a.head
     		}
-    		val user = User(email,password,firstName,lastName,gender,birthdate,null)
+    		var user = User(email,password,firstName,lastName,gender,birthdate,null)
     		post("_User",Json.toJson(user))
     		Redirect(routes.Application.index)
     	}
@@ -83,7 +83,9 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        	val requestsObjectIdList = ListBuffer[String]()
        	val friendsList = ListBuffer[User]()
        	val requestsList = ListBuffer[User]()
-       	val user = getUser("username",username)
+       	var user = get("_User","{\"username\":\""+username+"\"}").map{
+       		result =>(result.json \ "results").as[List[JsObject]].head.as[User] 
+       	}.await.get
        	get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
@@ -110,16 +112,20 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
-    	  val params = request.body.asFormUrlEncoded.get
-    	  val id = params.get("userId") match{
+    	  var params = request.body.asFormUrlEncoded.get
+    	  var id = params.get("userId") match{
     			case Some(a) => a.head
     		}
-    	  val user = getUser("username",username)
-    	  val pageOwner = getUser("objectId",id)
-    	  val notFriend=getFriendOrRequest(id,user.objectId,"friend").map{
+    	  var user = get("_User","{\"username\":\""+username+"\"}").map{
+       		result => (result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  var pageOwner = get("_User","{\"objectId\":\""+id+"\"}").map{
+       		result => (result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  var notFriend=get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"},\"friend\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
     	    result => (result.json\"results").as[List[JsObject]].isEmpty
     	  }.await.get
-    	  val role = {
+    	  var role = {
     	    if(user.objectId.equals(id)) "owner"
     	    else if (!notFriend) "friend"
     	    else "none"
@@ -132,7 +138,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     searchForm.bindFromRequest.fold(
     formWithErrors =>  BadRequest,
     value =>{
-      val keyword = request.body.asFormUrlEncoded.get.get("keyword")match{
+      var keyword = request.body.asFormUrlEncoded.get.get("keyword")match{
     			case Some(a) => a.head
     		}
         get("_User","{\"fullName\":{\"$regex\":\""+keyword+"\"}}").map{
@@ -150,12 +156,14 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
-    	  val params = request.body.asFormUrlEncoded.get
-    	  val id = params.get("userId") match{
+    	  var params = request.body.asFormUrlEncoded.get
+    	  var id = params.get("userId") match{
     			case Some(a) => a.head
     	  }
-    	  val user = getUser("username",username)
-    	  val data = Json.toJson(FriendRequest(id,user.objectId,null))
+    	  var user = get("_User","{\"username\":\""+username+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  var data = Json.toJson(FriendRequest(id,user.objectId,null))
     	  post("FriendRequests",data)
     	  Redirect(routes.Application.index)
     	}
@@ -165,16 +173,18 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
-    	  val params = request.body.asFormUrlEncoded.get
-    	  val id = params.get("userId") match{
+    	  var params = request.body.asFormUrlEncoded.get
+    	  var id = params.get("userId") match{
     			case Some(a) => a.head
     	  }
-    	  val user = getUser("username",username)
-    	  val data1 = Json.toJson(Friend(user.objectId,id,null))
-    	  val data2 = Json.toJson(Friend(id,user.objectId,null))
+    	  var user = get("_User","{\"username\":\""+username+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  var data1 = Json.toJson(Friend(user.objectId,id,null))
+    	  var data2 = Json.toJson(Friend(id,user.objectId,null))
     	  post("FriendsList",data1)
     	  post("FriendsList",data2)
-    	  val requestObjectId = getFriendOrRequest(user.objectId,id,"requester").map{
+    	  var requestObjectId = get("FriendRequests","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"},\"requester\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[FriendRequest].objectId
     	  }.await.get
     	  delete("FriendRequests/",requestObjectId)
@@ -186,15 +196,17 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
-    	  val params = request.body.asFormUrlEncoded.get
-    	  val id = params.get("userId") match{
+    	  var params = request.body.asFormUrlEncoded.get
+    	  var id = params.get("userId") match{
     			case Some(a) => a.head
     	  }
-    	  val user = getUser("username",username)
-    	  val friendId1 = getFriendOrRequest(user.objectId,id,"friend").map{
+    	  var user = get("_User","{\"username\":\""+username+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await.get
+    	  var friendId1 = get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"},\"friend\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
-    	  val friendId2 = getFriendOrRequest(id,user.objectId,"friend").map{
+    	  var friendId2 = get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"},\"friend\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[Friend].objectId
     	  }.await.get
     	  delete("FriendsList/",friendId1)
@@ -207,20 +219,20 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     idForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
-    	  val params = request.body.asFormUrlEncoded.get
-    	  val id = params.get("userId") match{
+    	  var params = request.body.asFormUrlEncoded.get
+    	  var id = params.get("userId") match{
     			case Some(a) => a.head
     	  }
-    	  val content = params.get("content") match{
+    	  var content = params.get("content") match{
     			case Some(a) => a.head
     	  }
-    	  val postedBy = get("_User","{\"username\":\""+username+"\"}").map{
+    	  var postedBy = get("_User","{\"username\":\""+username+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
-    	  val postedTo = get("_User","{\"objectId\":\""+id+"\"}").map{
+    	  var postedTo = get("_User","{\"objectId\":\""+id+"\"}").map{
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await.get
-    	  val data = Json.toJson(WallPost(content,postedTo.objectId,postedBy.objectId,null))
+    	  var data = Json.toJson(WallPost(content,postedTo.objectId,postedBy.objectId,null))
     	  post("Post",data).map{
     	    result => println(result.json)
     	  }
@@ -242,13 +254,5 @@ object Application extends Controller with Secured with UserDeserializer with Fr
   }
   def getLogIn (user: String, pass: String)={
     WS.url("https://api.parse.com/1/login?username="+URLEncoder.encode(user, "UTF-8")+"&password="+URLEncoder.encode(pass, "UTF-8")).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo").get
-  }
-  def getFriendOrRequest(user: String, friend: String , parameter: String) = {
-	  get("FriendsList","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user+"\"},\""+parameter+"\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+friend+"\"}}")
-  }
-  def getUser(parameter: String, data: String) = {
-    get("_User","{\""+parameter+"\":\""+data+"\"}").map{
-       		result =>(result.json \ "results").as[List[JsObject]].head.as[User] 
-       	}.await.get
   }
 }

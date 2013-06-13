@@ -7,7 +7,7 @@ import play.api.libs.json.JsString
 import play.api.libs.json.JsValue
 
 trait FriendRequestDeserializer{
-  implicit object FriendRequestFormatter extends Format[FriendRequest]
+  implicit object FriendRequestFormatter extends Format[FriendRequest]{
     def writes(friendRequest: FriendRequest): JsValue = { JsObject(
         Seq(
             "requester" -> JsObject(
@@ -33,4 +33,5 @@ trait FriendRequestDeserializer{
         ((j \ "user").as[JsValue] \ "objectId").as[String],
     	(j \ "objectId").as[String]
     )
+  }
 }

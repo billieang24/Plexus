@@ -7,7 +7,7 @@ import play.api.libs.json.JsString
 import play.api.libs.json.JsValue
 
 trait WallPostDeserializer{
-  implicit object WallPostFormatter extends Format[WallPost]
+  implicit object WallPostFormatter extends Format[WallPost]{
     def writes(wallPost: WallPost): JsValue = { JsObject(
         Seq(
             "post" -> JsString(wallPost.content),
@@ -35,4 +35,5 @@ trait WallPostDeserializer{
         ((j \ "postedBy").as[JsValue] \ "objectId").as[String],
     	(j \ "objectId").as[String]
     )
+  }
 }
