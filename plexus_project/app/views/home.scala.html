@@ -37,7 +37,7 @@
 		     				 	 		<form id="myForm@user.objectId" action="/profile" method="post">
   								  			<input type="hidden" name="userId" value="@user.objectId" />
    											<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">
-   												@user.firstName @user.lastName
+   												@user.firstName.head.toString.toUpperCase@user.firstName.tail @user.lastName.head.toString.toUpperCase@user.lastName.tail
    											</a>
 										</form>
 									</h4>

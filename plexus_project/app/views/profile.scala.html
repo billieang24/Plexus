@@ -105,7 +105,7 @@
     							<input type="hidden" name="userId" value="@pageOwner.objectId" />
     						</form>
 						}else{
-							<h6>Sorry. Only @pageOwner.firstName's friends are able to see these wall posts.</h6>
+							<h6>Sorry. Only @pageOwner.firstName.head.toUpperCase@pageOwner.firstName.tail's friends are able to see these wall posts.</h6>
 						}
 						<div class="recentPost homerecentPost">
 							<ul id="content" class="profilePostsUl">
@@ -191,7 +191,7 @@
 								<div id="friendsInfo" class="friendsInfo fl">
 									<form id="myForm@friend.objectId" action="/profile" method="post">
 							    		<input type="hidden" name="userId" value="@friend.objectId" />
-							   			<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();"><h5>@friend.firstName @friend.lastName</h5></a>
+							   			<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();"><h5>@friend.firstName.head.toString.toUpperCase@friend.firstName.tail @friend.lastName.head.toString.toUpperCase@friend.lastName.tail</h5></a>
 									</form>
 								</div>
 							</div>
