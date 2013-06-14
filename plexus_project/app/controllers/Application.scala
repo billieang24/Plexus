@@ -378,7 +378,50 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        		result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
        	}.await(20000, TimeUnit.MILLISECONDS ).get
     }      	
-    Ok(views.html.friends(friendsList))
+    Ok(views.html.friends(friendsList,"owner"))
+  }
+  def othersFriends = IsAuthenticated {  username => implicit request =>
+     idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val friendsObjectIdList = ListBuffer[String]()
+    	  val friendsList = ListBuffer[User]()
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("username",username)
+    	  val role = if(user.objectId.equals(id)) "owner" else "none"
+    	  get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+    		  result => (result.json \ "results").as[Seq[JsObject]].map{
+    			  friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
+    		  }
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  friendsObjectIdList.map{
+    		  id => get("_User?","{\"objectId\":\""+id+"\"}").map{
+    			  result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+    		  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  }
+    	  Ok(views.html.friends(friendsList,role))
+    	}
+    )
+  }
+  def about = IsAuthenticated  { username => implicit request =>
+    val user = getUser("username",username)
+    Ok(views.html.about(user,"owner"))
+  }
+  def aboutOthers = IsAuthenticated  { username => implicit request =>
+     idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = getUser("objectId",id)
+    	  Ok(views.html.about(user,"none"))
+    	}
+     )
   }
   def post (className: String, data: JsValue)={
     WS.url("https://api.parse.com/1/classes/"+className).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(data)

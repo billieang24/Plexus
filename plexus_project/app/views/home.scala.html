@@ -14,12 +14,12 @@
 				    	<li><a href="/friends">Friends</a></li>
 				    	<li><a href="/about">About</a></li>
 				    </ul>
-				 	<div class="form-inline offset3 span3">
-						@helper.form(routes.Application.search){
-						  <input type="text" name="keyword" placeholder="Find People" class="input-medium search-query">
-						  <button type="submit" class="btn">Search</button>
-						}
-					</div>
+						<div class="form-inline offset3 span3">
+						  	@helper.form(routes.Application.search){
+						  		<input type="text" name="keyword" placeholder="Find People" class="input-medium search-query">
+						  		<button type="submit" class="btn"><i class="icon-search"></i></button>
+							}
+						</div>
 					<div>
 					<a href="logout"><button class="btn logOut"><i class="icon-off"></i></button></a>
 					</div>

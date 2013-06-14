@@ -1,4 +1,4 @@
-@(friendsList:scala.collection.mutable.ListBuffer[User])
+@(friendsList:scala.collection.mutable.ListBuffer[User],role:String)
 @main("Plexus") {	
 	<div class="wholeCss">
 		<div class="container">
@@ -11,15 +11,19 @@
 				    	<ul class="nav span3">
 				    		<li><a href="/">Home</a></li>
 					    	<li><a href="/userProfile">Profile</a></li>
-					    	<li class="active"><a href="/friends">Friends</a></li>
+					    	@if(role.equals("owner")){
+					    		<li class="active"><a href="/friends">Friends</a></li>
+					    	}else{
+					    		<li><a href="/friends">Friends</a></li>
+					    	}
 					    	<li><a href="/about">About</a></li>
 						</ul>
-						<div class="form-inline offset3 span3">
-						  	@helper.form(routes.Application.search){
-						  		<input type="text" name="keyword" placeholder="Find People" class="input-medium search-query">
-						  		<button type="submit" class="btn"><i class="icon-search"></i></button>
-							}
-						</div>
+							<div class="form-inline offset3 span3">
+							  	@helper.form(routes.Application.search){
+							  		<input type="text" name="keyword" placeholder="Find People" class="input-medium search-query">
+							  		<button type="submit" class="btn"><i class="icon-search"></i></button>
+								}
+							</div>
 						<div>
 							<a href="logout"><button class="btn logOut"><i class="icon-off"></i></button></a>
 						</div>
