@@ -111,7 +111,7 @@
 							<ul id="content" class="profilePostsUl">
 								@if(role.equals("friend")||role.equals("owner")){
 									@wallPostList.map{ wallPost =>
-										<li class="commentCss">
+										<li class="commentCss homerecentPost">
 											<div class="recentPost divborder">
 												<div class="recentPostUser">
 													<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
