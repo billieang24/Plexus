@@ -331,6 +331,7 @@ h3.profilePage
 	max-width: 100%;
 	padding: 10px 20px;
 	position: relative;
+	word-wrap:break-word;
 }
 .deletePostButton
 {
@@ -396,15 +397,35 @@ h3.profilePage
 {
 	list-style: none;
 	margin-left: 0px;
-	border: 1px solid black;
+}
+.commentList li:first-child
+{
+	border-top: 2px solid black;
+}
+.commentList li:last-child
+{
+	border-bottom: 2px solid black;
 }
 .commentName
 {
 	margin-left: 5px;
+	padding: 3px 0px;
+}
+.commentName h5
+{
+	margin: 0px;
+}
+.profileUsersNamePost h5
+{
+	margin: 0px;
+}
+.commenAll
+{
+	border: 1px solid black;
 }
 .commentPadding
 {
-	padding-left: 15px;
+	margin: 0px 15px;
 }
 hr.commentLine
 {
@@ -413,8 +434,16 @@ hr.commentLine
 .commentContent
 {
 	height: auto;
-	width: 100%;
-	margin-bottom: 10px;
+	max-width: 100%;
+	margin-bottom: 5px;
+}
+.commentContent2
+{
+	word-wrap:break-word;
+	height: auto;
+	max-width: 100%;
+	margin-bottom: 5px;
+	border-top: 1px solid black;
 }
 p
 {
@@ -1040,9 +1069,9 @@ ul.addFriendBullets
 }
 .friendsPageFriendList
 {
-	width: 800px;
+	width: 765px;
 	height: 100%;
-	margin: 0px auto 30px 50px;
+	margin: 0px auto 30px 65px;
 	display: inline-block;
 	
 }
