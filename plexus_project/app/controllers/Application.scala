@@ -380,6 +380,30 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     }      	
     Ok(views.html.friends(friendsList))
   }
+  def othersFriends = IsAuthenticated {  username => implicit request =>
+     idForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val friendsObjectIdList = ListBuffer[String]()
+    	  val friendsList = ListBuffer[User]()
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+    		  result => (result.json \ "results").as[Seq[JsObject]].map{
+    			  friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
+    		  }
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  friendsObjectIdList.map{
+    		  id => get("_User?","{\"objectId\":\""+id+"\"}").map{
+    			  result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+    		  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  }
+    	  Ok(views.html.friends(friendsList))
+    	}
+    )
+  }
   def about = IsAuthenticated  { username => implicit request =>
     val user = getUser("username",username)
     Ok(views.html.about(user,"owner"))

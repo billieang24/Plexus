@@ -184,7 +184,12 @@
 					</div>
 					<div class="rightProfile divborder fl boxShadow bg">
 						<div class="linkToFriends">
-							<a href="/friends">Friends</a>
+							<form id="friendForm" action="/about" method="post">
+								<input type="hidden" name="userId" value="@pageOwner.objectId" />	
+								<a href="#" onclick="document.getElementById('friendForm').submit();">
+									About
+								</a>
+							</form>
 						</div>
 						@friendsList.map{ friend =>
 							<div class="usersFriendProfile fl">

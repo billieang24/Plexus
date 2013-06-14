@@ -8,6 +8,7 @@ GET    	/signUp						controllers.Application.signUp
 GET    	/friends					controllers.Application.friends
 GET		/userProfile				controllers.Application.userProfile
 GET		/about						controllers.Application.about
+POST   	/friends					controllers.Application.othersFriends
 POST	/about						controllers.Application.aboutOthers
 POST    /signUp						controllers.Application.newUser
 POST	/search						controllers.Application.search
