@@ -364,8 +364,21 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	}
     )
   }
-  def friends = Action {
-    Ok(views.html.friends())
+  def friends = IsAuthenticated {  username => implicit request =>
+    val friendsObjectIdList = ListBuffer[String]()
+    val friendsList = ListBuffer[User]()
+    val user = getUser("username",username)
+    get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+    	result => (result.json \ "results").as[Seq[JsObject]].map{
+       		friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
+       	}
+    }.await(20000, TimeUnit.MILLISECONDS ).get
+    friendsObjectIdList.map{
+    	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
+       		result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+       	}.await(20000, TimeUnit.MILLISECONDS ).get
+    }      	
+    Ok(views.html.friends(friendsList))
   }
   def post (className: String, data: JsValue)={
     WS.url("https://api.parse.com/1/classes/"+className).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(data)

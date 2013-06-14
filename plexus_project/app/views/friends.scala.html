@@ -1,3 +1,4 @@
+@(friendsList:scala.collection.mutable.ListBuffer[User])
 @main("Plexus") {	
 	<div class="wholeCss">
 		<div class="container">
@@ -15,8 +16,8 @@
 						</ul>
 						<div class="form-inline offset3 span3">
 						  	@helper.form(routes.Application.search){
-						  		<input type="text" name="keyword" placeholder="Search" class="input-medium search-query">
-						  		<button type="submit" class="btn">Search</button>
+						  		<input type="text" name="keyword" placeholder="Find People" class="input-medium search-query">
+						  		<button type="submit" class="btn"><i class="icon-search"></i></button>
 							}
 						</div>
 						<div>
@@ -33,45 +34,28 @@
 						</div>
 						<form class="form-search">
 						  	<div class="input-append friendsPageSearch">
-						    	<input type="text" class="span2 search-query">
-						    	<button type="submit" class="btn">Search</button>
+							    	<input type="text" name="keyword" placeholder="Search Friends"  class="span2 search-query">
+							    	<button type="submit" class="btn"><i class="icon-search"></i></button>
 						  	</div>
 						</form>
 					</div>
 					<div class="friendsPageFriendList boxShadow divborder">
 						<ul class="friendsPageListUl">
-							<li>
-								<div class="friendsPageListLi">
-									<div class="friendsPagePictureDiv fl">
-										<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+							@friendsList.map{ friend =>
+								<li>
+									<div class="friendsPageListLi">
+										<div class="friendsPagePictureDiv fl">
+											<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+										</div>
+										<div class="friendsPageFriendsName fl">
+										<form id="myForm@friend.objectId" action="/profile" method="post">
+							    		<input type="hidden" name="userId" value="@friend.objectId" />
+							   			<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();"><h5>@friend.firstName.head.toString.toUpperCase@friend.firstName.tail @friend.lastName.head.toString.toUpperCase@friend.lastName.tail</h5></a>
+									</form>
+										</div>
 									</div>
-									<div class="friendsPageFriendsName fl">
-										Ako Si Batman
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="friendsPageListLi">
-									<div class="friendsPagePictureDiv">
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="friendsPageListLi">
-									<div class="friendsPagePictureDiv fl">
-										<img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
-									</div>
-									<div class="friendsPageFriendsName fl">
-										Ako Si Man with a BAT
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="friendsPageListLi">
-									<div class="friendsPagePictureDiv">
-									</div>
-								</div>
-							</li>
+								</li>
+							}
 						</ul>
 					</div>
 				</div>
