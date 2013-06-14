@@ -86,7 +86,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     		}
     		val user = User(email,password,firstName,lastName,gender,birthdate,null)
     		post("_User",Json.toJson(user))
-    		Redirect(routes.Application.index).withSession("username" -> user._1)
+    		Redirect(routes.Application.index).withSession("username" -> value._1)
     	}
   	)
   }
