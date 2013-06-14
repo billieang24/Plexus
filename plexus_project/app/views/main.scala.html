@@ -19,10 +19,10 @@
 	<script src="@routes.Assets.at("javascripts/jpaginate.js")"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.homerecentPost:gt(6)').hide().last().after(
+			$('.homerecentPost:gt(8)').hide().last().after(
     		$("#showMore").click(function(){
         		var a = this;
-        		$('.homerecentPost:not(:visible):lt(3)').fadeIn(function(){
+        		$('.homerecentPost:not(:visible):lt(4)').fadeIn(function(){
          		if ($('.homerecentPost:not(:visible)').length == 0) $(a).remove()
         		}); return false;
     		})
