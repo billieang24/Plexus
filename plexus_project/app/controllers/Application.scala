@@ -378,7 +378,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        		result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
        	}.await(20000, TimeUnit.MILLISECONDS ).get
     }      	
-    Ok(views.html.friends(friendsList))
+    Ok(views.html.friends(friendsList,"owner"))
   }
   def othersFriends = IsAuthenticated {  username => implicit request =>
      idForm.bindFromRequest.fold(
@@ -390,6 +390,8 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val id = params.get("userId") match{
     			case Some(a) => a.head
     	  }
+    	  val user = getUser("username",username)
+    	  val role = if(user.objectId.equals(id)) "owner" else "none"
     	  get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
     		  result => (result.json \ "results").as[Seq[JsObject]].map{
     			  friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
@@ -400,7 +402,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     			  result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
     		  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  }
-    	  Ok(views.html.friends(friendsList))
+    	  Ok(views.html.friends(friendsList,role))
     	}
     )
   }
