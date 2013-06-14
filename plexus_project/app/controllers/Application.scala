@@ -86,7 +86,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     		}
     		val user = User(email,password,firstName,lastName,gender,birthdate,null)
     		post("_User",Json.toJson(user))
-    		Redirect(routes.Application.index)
+    		Redirect(routes.Application.index).withSession("username" -> user._1)
     	}
   	)
   }
@@ -333,6 +333,15 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val params = request.body.asFormUrlEncoded.get
     	  val id = params.get("userId") match{
     			case Some(a) => a.head
+    	  }
+    	  val commentsList = ListBuffer[Comment]()
+    	  get("Comment?","{\"WallPost\":{\"__type\":\"Pointer\",\"className\":\"WallPost\",\"objectId\":\""+id+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			comment => commentsList += comment.as[Comment]
+       		}
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  commentsList.map{
+    	    comment => delete("Comment/",comment.objectId)
     	  }
     	  delete("WallPost/",id)
     	  Redirect(routes.Application.index)
