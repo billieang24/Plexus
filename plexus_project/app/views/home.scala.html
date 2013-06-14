@@ -43,19 +43,11 @@
 									</h4>
 		     				 	</div>
 		     				 	<div class="status">
-				     				<form action="/wallPost" method="post">
-										<div class="newPost divborder">
-											<div class="newPostTextBox">
-												<textarea id="textAreaComment" name="content" class="postTextBox input-xxlarge" onkeyup="textAreaAdjust(this, 47)" rows="3" cols="55" placeholder="Post It Here!"></textarea>
-											</div>
-											<div class="postButton">
-												<button type="submit" class="postButtonProfile" >
-													<i class="icon-pencil"></i>Post
-												</button>
-											</div>
-										</div>
-		    							<input type="hidden" name="userId" value="@user.objectId" />
-		    						</form>
+		     				 		<form action="/wallPost" method="post">
+		     				 			<textarea class="status input-large" rows="3" name="content" placeholder="Post it here!"></textarea>
+		     				 			<button class="btn divPhoto" type="submit"><i class="icon-comment"></i>Post</button>
+		     				 			<input type="hidden" name="userId" value="@user.objectId" />
+									</form>
 		     				 	</div>
 		     				 	<div class="span12 pagination-centered padding">
 									<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-globe"></i>Notifications</a>

@@ -318,12 +318,8 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val content = params.get("content") match{
     			case Some(a) => a.head
     	  }
-    	  val postedBy = get("_User?","{\"username\":\""+username+"\"}").map{
-    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await(20000, TimeUnit.MILLISECONDS ).get
-    	  val postedTo = get("_User?","{\"objectId\":\""+id+"\"}").map{
-    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  val postedBy = getUser("username",username)
+    	  val postedTo = getUser("objectId",id)
     	  val data = Json.toJson(WallPost(content,postedTo,postedBy,null))
     	  post("WallPost?",data)
     	  Redirect(routes.Application.index)
@@ -357,12 +353,8 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val content = params.get("content") match{
     			case Some(a) => a.head
     	  }
-    	  val user = get("_User?","{\"username\":\""+username+"\"}").map{
-    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await(20000, TimeUnit.MILLISECONDS ).get
-    	  val pageOwner = get("_User?","{\"objectId\":\""+id+"\"}").map{
-    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
-    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  val user = getUser("username",username)
+    	  val pageOwner = getUser("objectId",id)
     	  val wallPost = get("WallPost?","{\"objectId\":\""+postId+"\"}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].head.as[WallPost]
     	  }.await(20000, TimeUnit.MILLISECONDS ).get
