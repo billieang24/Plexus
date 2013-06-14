@@ -15,9 +15,7 @@ trait CommentDeserializer{
         controllers.Application.getUser("objectId",((j \ "pageOwner").as[JsValue] \ "objectId").as[String]),
         controllers.Application.getUser("objectId",((j \ "user").as[JsValue] \ "objectId").as[String]),
     	controllers.Application.get("WallPost?","{\"objectId\":\""+((j \ "WallPost").as[JsValue]\"objectId").as[String]+"\"}").map{
-       		result => 
-       		  println(result.json)
-       		  (result.json \ "results").as[Seq[JsObject]].head.as[WallPost]
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[WallPost]
     	  }.await.get,
     	(j \ "objectId").as[String]
     )
