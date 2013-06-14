@@ -120,7 +120,9 @@
 													<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
 													</div>
 													<div class="profileUsersNamePost fl">
+														<h5>
 														@wallPost.postedBy.firstName @wallPost.postedBy.lastName
+														</h5>
 													</div>
 													@if(user.objectId.equals(wallPost.postedBy.objectId)||role.equals("owner")){
 														<div class="deletePostButton">
@@ -151,9 +153,9 @@
 															<ul id="commentList" class="commentList">
 																@commentsList.map{ comment =>
 																	@if(comment.wallPost.objectId.equals(wallPost.objectId)){
-																		<li>
-																			<div class="commentName">@comment.user.firstName @comment.user.lastName</div>
-																			<div class="commentContent commentPadding">@comment.content</div>
+																		<li class="commenAll">
+																			<div class="commentName"><h5>@comment.user.firstName @comment.user.lastName</h5></div>
+																			<div class="commentContent2 commentPadding">@comment.content</div>
 																		</li>
 																	}
 																}
