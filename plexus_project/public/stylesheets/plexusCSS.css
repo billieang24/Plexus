@@ -286,7 +286,7 @@ div
 {
 	display: block;
 }
-h1.profileName
+h3.profileName
 {
 	margin: 0px;
 }
@@ -1198,7 +1198,7 @@ ul.addFriendBullets
 }
 .friendRequestButton
 {
-	float: left;
+	margin-bottom: 0px;
 }
 .image
 {

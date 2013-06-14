@@ -38,7 +38,7 @@
 					<div class="nameMiddle fl">
 						<div class="usersName fl">
 							@if(role.equals("none")){
-								<form action="/addFriendRequest" method="post">
+								<form action="/addFriendRequest" method="post" class="friendRequestButton">
 						    		<input type="hidden" name="userId" value="@pageOwner.objectId" />
 						    		<button class="btn friendRequestButton" type="submit">Add Friend</button>
 								</form>
@@ -50,12 +50,12 @@
 									</form>
 								}else {
 									@if(role.equals("owner")){
-										<form action="/cancelFriendRequest" method="post">
+										<form action="/cancelFriendRequest" method="post" class="friendRequestButton">
 											<input type="hidden" name="userId" value="@pageOwner.objectId" />
 						    				<button class="btn friendRequestButton" style="visibility:hidden" type="submit">Cancel Friend Request</button>
 										</form>
 									}else {
-										<form action="/cancelFriendRequest" method="post">
+										<form action="/cancelFriendRequest" method="post" class="friendRequestButton">
 						    				<input type="hidden" name="userId" value="@pageOwner.objectId" />
 						    				<button class="btn friendRequestButton" type="submit">Cancel Friend Request</button>
 										</form>
