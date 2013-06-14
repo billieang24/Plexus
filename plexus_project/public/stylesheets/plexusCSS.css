@@ -381,7 +381,7 @@ h3.profilePage
 .commentTextBox
 {
 	height: 40px;
-	width: 100%;
+	max-width: 392px;
 	padding-bottom: 0px;
 	border-radius: 5px;
 	font-size: 12px;
@@ -1093,7 +1093,7 @@ ul.addFriendBullets
 	height: 100px;
 	width: 350px;
 	border: 2px solid black;
-	margin-bottom: 10px;
+	margin: 10px 0px;
 }
 .friendsPagePictureDiv
 {
@@ -1171,7 +1171,7 @@ ul.addFriendBullets
 .status
 {
 	height: 100px;
-	width:80%;
+	max-width:210px;
 	margin: auto;
 }
 .content-header
