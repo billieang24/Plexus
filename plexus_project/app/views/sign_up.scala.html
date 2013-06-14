@@ -13,8 +13,9 @@
 						<h3>E-mail</h3>
 						<input class="inputCss UPBottom" type="email" name="email" placeholder="E-mail" required/>
 						<br>
-						<input class="inputCss UPBottom" type="password" name="password" value="" placeholder="Password" required/>
-						<input class="inputCss UPBottom" type="password" name="repassword" value="" placeholder="Confirm Password" required/>
+						<input class="inputCss UPBottom" type="password" name="password" id="pass" placeholder="Password" required/>
+						<input class="inputCss UPBottom" type="password" name="repassword" id="confirmPass" placeholder="Confirm Password" onChange="checkPasswordMatch();" required/>
+						<div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
 						<h3>Personal Information</h3>
 						<input id="firstName" name="firstName" type="text" class="firstNameCss" placeholder="Given Name" required/>
 						<input id="lastName" name="lastName" type="text" class="lastNameCss" placeholder="Last Name" required/>
