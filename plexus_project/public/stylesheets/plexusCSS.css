@@ -406,6 +406,10 @@ h3.profilePage
 {
 	border-bottom: 2px solid black;
 }
+textarea
+{
+	resize: none;
+}
 .commentName
 {
 	margin-left: 5px;
