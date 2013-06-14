@@ -1,3 +1,16 @@
+function checkPasswordMatch() {
+    var password = $("#pass").val();
+    var confirmPassword = $("#confirmPass").val();
+
+    if (password != confirmPassword){
+        $("#divCheckPasswordMatch").html("Passwords do not match!");
+    	document.getElementById("signUp").style.visibility='hidden';
+    }
+    else{
+    	$("#divCheckPasswordMatch").html("Passwords match.");
+    	document.getElementById("signUp").style.visibility='visible';
+    }
+}
 function popitup(url) {
 		var newwindow=window.open(url,'Forgot Password','location=middle,height=600,width=600');
 		if (window.focus) {newwindow.focus()}
