@@ -1,16 +1,51 @@
 @(users:scala.collection.mutable.ListBuffer[User])
 @main("Plexus") {
-	<h1>Search Result</h1>
-        @users.map { user =>
-            <li>
-                <form id="myForm@user.objectId" action="/profile" method="post">
-    				<input type="hidden" name="userId" value="@user.objectId" />
-   					<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">@user.firstName @user.lastName</a>
-				</form>
-            </li>
-        }
-    <br>
-	<a href="/">home</a>
-	<br>
-	<a href="/logout">Sign Out</a>
+    <div class="container">
+        <div class="navbar search">
+            <div class="navbar-inner navbar-fixed-top image">
+                <div class="row-fluid span12">
+                    <div>
+                        <img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
+                    </div>
+                    <ul class="nav span3">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/userProfile">Profile</a></li>
+                        <li><a href="/friends">Friends</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                    <div class="form-inline offset3 span3">
+                        @helper.form(routes.Application.search){
+                            <input type="text" name="keyword" placeholder="Search" class="input-medium search-query">
+                            <button type="submit" class="btn">Search</button>
+                        }
+                    </div>
+                    <div>
+                        <a href="logout"><button class="btn logOut"><i class="icon-off"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div class="container">
+        <div class>
+        <div class="searchPageContainer divborder bg">
+        <h1 class="searchHeading">Search Result</h1>
+            <ul class="friendsPageListUlSearch">
+                @users.map { user =>
+                    <li>
+                        <div class="friendsPageListLi fl">
+                            <form id="myForm@user.objectId" action="/profile" method="post">
+                                <div class="friendsPagePictureDiv fl">
+                                    <img src="@routes.Assets.at("images/batman.png")" class="friendsPagePicture"/>
+                                </div>
+                                <div class="friendsPageFriendsName fl">
+                                    <input type="hidden" name="userId" value="@user.objectId" />
+                                    <a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">@user.firstName @user.lastName</a>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    </div>
 }

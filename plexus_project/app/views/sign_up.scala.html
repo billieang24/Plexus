@@ -1,27 +1,46 @@
 @(form: Form[(String,  String, String, String, String, java.util.Date)])
 @main("Plexus") {
 	@helper.form(routes.Application.newUser){
-				<div ><input type="email" name="email" placeholder="Email"/></div>
-				<div ><input type="password" name="password" placeholder="Password"/></div>
-				<div ><input type="password" name="repassword" placeholder="Re-Enter Password"/></div>
-				<div ><input type="text" name="firstName" placeholder="First Name"/></div>
-				<div ><input type="text" name="lastName" placeholder="Last Name"/></div>
-				<select name="gender" value="Gender">
-					<option class="gender" value="">Gender</option>
-					<option value="Male">Male</option>
-					<option value="Female">Female</option>
-				</select>
-				<div ><input  type="date" name="birthdate"/></div>
-				
-				@form.globalError.map { error =>
-                <p class="error">
-                    @error.message
-                </p>
-                }
-                
-				<div >
-					<button type="submit">Sign Up
-					</button>
+		<div class="wholeCss">
+			<div class="container">
+				<div id="upper" class="upperCss">
+					<div class="logoSignUp">
+						<img src="@routes.Assets.at("images/plexusLogo2.png")" height="100px" width="300px" alt="plexusLogo"/>
+					</div>
 				</div>
+				<div class="middleCss middleSignUp">
+					<div class="userInfo divborder boxShadow bg">
+						<h3>E-mail</h3>
+						<input class="inputCss UPBottom" type="email" name="email" placeholder="E-mail"/>
+						<br>
+						<input class="inputCss UPBottom" type="password" name="password" value="" placeholder="Password"/>
+						<input class="inputCss UPBottom" type="password" name="repassword" value="" placeholder="Confirm Password"/>
+						<h3>Personal Information</h3>
+						<input id="firstName" name="firstName" type="text" class="firstNameCss" placeholder="Given Name"/>
+						<input id="lastName" name="lastName" type="text" class="lastNameCss" placeholder="Last Name"/>
+						<div class="h3SignUp fl">
+							<h3>Gender:</h3>
+							<select class="inputCss maleFemale" name="gender" value="Gender">
+								<option class="gender" value="">Gender</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+						</div>
+						<div class="h3SignUp">
+							<h3>Birth Date:</h3>
+							<input  type="date" name="birthdate"/>
+						</div>
+						<input type="text" id="address" class="address" value="" placeholder="Address" cols="20" rows="	2"/>
+					</div>
+				</div>
+				<div class="lowerCss">
+					<div id="signUp" class="signupButton">
+						<button type="submit">
+							<img src="@routes.Assets.at("images/signUp.png")" height="90px" width="235px">
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	}	   
 }

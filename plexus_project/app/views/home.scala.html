@@ -1,48 +1,273 @@
 @(user:User,friendsList:scala.collection.mutable.ListBuffer[User],requestsList:scala.collection.mutable.ListBuffer[User])
 @main("Plexus") {
-	<h4>
-		<form id="myForm@user.objectId" action="/profile" method="post">
-    			<input type="hidden" name="userId" value="@user.objectId" />
-   				<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">
-   					@user.firstName @user.lastName
-   				</a>
-		</form>
-	</h4>
-	<br>
-		FRIENDS
-	<br>
-	@friendsList.map{ friend =>
-		<li>
-			<form id="myForm@friend.objectId" action="/profile" method="post">
-    			<input type="hidden" name="userId" value="@friend.objectId" />
-   				<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();">@friend.firstName @friend.lastName</a>
-			</form>
-		</li>
-	}
-	@helper.form(routes.Application.search){
-		<div >
-			<input type="text" name="keyword" placeholder="Search"/>
+	<div class=" containe">
+		<div class="wrapper">
+			<div class="navbar">
+			  <div class="navbar-inner navbar-fixed-top image">
+			  	<div class="row-fluid span12">
+			  		<div>
+				    	<img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
+				    </div>
+				    <ul class="nav span3">
+				    	<li class="active"><a href="/">Home</a></li>
+				     	<li><a href="/userProfile" >Profile</a></li>
+				    	<li><a href="/friends">Friends</a></li>
+				    	<li><a href="/about">About</a></li>
+				    </ul>
+				 	<div class="form-inline offset3 span3">
+						@helper.form(routes.Application.search){
+						  <input type="text" name="keyword" placeholder="Search" class="input-medium search-query">
+						  <button type="submit" class="btn">Search</button>
+						}
+					</div>
+					<div>
+					<a href="logout"><button class="btn logOut"><i class="icon-off"></i></button></a>
+					</div>
+			  </div>
+			  </div>
+			</div><!--Nav Bar-->
+			<div class="wrapper">
+				<div class="container-fluid wrapper-home">
+		 			<div class="row-fluid">
+		   				 <div class="span4 boxshadow homeSpan3 bg">
+		   				 	<div class="row-fluid padding">
+		     				 	 <div class="span12 pagination-centered divPhoto"><img src="@routes.Assets.at("images/batman.png")" alt="header" height="100px" width="100px"/></div>
+		     				 	 <div class="span12 pagination-centered">
+		     				 	 	<h4>
+		     				 	 		<form id="myForm@user.objectId" action="/profile" method="post">
+  								  			<input type="hidden" name="userId" value="@user.objectId" />
+   											<a href="#" onclick="document.getElementById('myForm@user.objectId').submit();">
+   												@user.firstName @user.lastName
+   											</a>
+										</form>
+									</h4>
+		     				 	</div>
+		     				 	<div class="status">
+				     				<form action="/wallPost" method="post">
+										<div class="newPost divborder">
+											<div class="newPostTextBox">
+												<textarea id="textAreaComment" name="content" class="postTextBox input-xxlarge" onkeyup="textAreaAdjust(this, 47)" rows="3" cols="55" placeholder="Post It Here!"></textarea>
+											</div>
+											<div class="postButton">
+												<button type="submit" class="postButtonProfile" >
+													<i class="icon-pencil"></i>Post
+												</button>
+											</div>
+										</div>
+		    							<input type="hidden" name="userId" value="@user.objectId" />
+		    						</form>
+		     				 	</div>
+		     				 	<div class="span12 pagination-centered padding">
+									<a href="#myModal" role="button" class="btn" data-toggle="modal"><i class="icon-globe"></i>Notifications</a>
+												<!-- Modal -->
+									<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+												  <div class="modal-header">
+												    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+												    <h3 id="myModalLabel">Notifications</h3>
+												  </div>
+												  <div class="modal-body">
+												
+												  </div>
+												  <div class="modal-footer">
+												    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+												  </div>
+												</div>
+		     				 	</div>
+		     				 	<div class="span12 pagination-centered padding">
+									<a href="#myModal2" role="button" class="btn" data-toggle="modal"><i class="icon-user"></i>Friend Requests</a>
+												<!-- Modal -->
+									<div id="myModal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-header">
+										    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h3 id="myModalLabel">Friend Requests</h3>
+										</div>
+											<div class="modal-body">
+												@requestsList.map{ request =>
+													<li>
+														<form id="idForm@request.objectId" action="/profile" method="post">
+											    			<input type="hidden" name="userId" value="@request.objectId" />
+											    			<a href="#" onclick="document.getElementById('idForm@request.objectId').submit();">@request.firstName @request.lastName</a>
+														</form>
+														<form id="acceptForm@request.objectId" action="/acceptFriendRequest" method="post">
+											    			<input type="hidden" name="userId" value="@request.objectId" />
+											    			<button type="submit">Accept</button>
+														</form>
+														<form id="ignoreForm@request.objectId" action="/ignoreFriendRequest" method="post">
+											    			<input type="hidden" name="userId" value="@request.objectId" />
+											    			<button type="submit">Ignore</button>
+														</form>
+													</li>
+												}
+											</div>
+										<div class="modal-footer">
+											<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+										</div>
+									</div>
+		     				 	</div>
+		     				 </div>
+		    			</div>
+		    			<div class="span8 boxShadow homeSpan8 bg">
+		      				<div class="content-header">
+		      					<div class="header-inner text-center">
+		      						<h2>News Feeds</h2>
+		      					</div>
+		      				</div>
+		      				<div class="above">
+		      					<div class="above1" id="content">
+		      			 <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Welcome To Plexus
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Baliw Si Daday!
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Lokomoko U
+						                      </div>
+						                    </div>
+						                     <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Welcome To Plexus
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Baliw Si Daday!
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Lokomoko U
+						                      </div>
+						                    </div>
+						                     <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Welcome To Plexus
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Baliw Si Daday!
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Lokomoko U
+						                      </div>
+						                    </div>
+						                     <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Welcome To Plexus
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Baliw Si Daday!
+						                      </div>
+						                    </div>
+						                    <div id="firstpost" class="homerecentPost divborder">
+						                      <div class="recentPostUser">
+						                        <div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+						                        </div>
+						                        <div class="profileUsersNamePost fl">
+						                          Maron Nino Amata Justo
+						                        </div>
+						                      </div>
+						                      <div class="homePostContain">
+						                        Lokomoko U
+						                      </div>
+						                    </div>
+									<div class="centered">
+				            			<button class="btn btn btn-large btn-block btn-primary top" id="showMore">Show More</button>
+									</div>
+		      					</div>
+		      				</div>
+		      				</div>
+		    			</div>
+		  			</div>
+				</div>
+			</div>
 		</div>
-		<button type="submit">Search</button>
-	}
-	<br>
-	FRIEND REQUESTS
-	@requestsList.map{ request =>
-		<li>
-			<form id="idForm@request.objectId" action="/profile" method="post">
-    			<input type="hidden" name="userId" value="@request.objectId" />
-    			<a href="#" onclick="document.getElementById('idForm@request.objectId').submit();">@request.firstName @request.lastName</a>
-			</form>
-			<form id="acceptForm@request.objectId" action="/acceptFriendRequest" method="post">
-    			<input type="hidden" name="userId" value="@request.objectId" />
-    			<button type="submit">Accept</button>
-			</form>
-			<form id="ignoreForm@request.objectId" action="/ignoreFriendRequest" method="post">
-    			<input type="hidden" name="userId" value="@request.objectId" />
-    			<button type="submit">Ignore</button>
-			</form>
-		</li>
-	}
-	<br>
-	<a href="/logout">Sign Out</a>
+	</div> 
 }

@@ -1,77 +1,204 @@
-@(pageOwner:User,user: User,role: String, wallPostList: scala.collection.mutable.ListBuffer[WallPost])
+@(pageOwner:User,user: User,role: String, wallPostList: scala.collection.mutable.ListBuffer[WallPost],friendsList:scala.collection.mutable.ListBuffer[User],commentsList:scala.collection.mutable.ListBuffer[Comment])
 @main("Plexus") {
-	<h4>
-		<form id="myForm@pageOwner.objectId" action="/profile" method="post">
-    		<input type="hidden" name="userId" value="@pageOwner.objectId" />
-   			<a href="#" onclick="document.getElementById('myForm@pageOwner.objectId').submit();">@pageOwner.firstName @pageOwner.lastName</a>
-		</form>
-	</h4>
-	<br>
-	<h3>@pageOwner.gender</h3>
-	<br>
-	<h3>@pageOwner.birthdate</h3>
-	<br>
-	@if(role.equals("none")){
-		<form action="/addFriendRequest" method="post">
-    		<input type="hidden" name="userId" value="@pageOwner.objectId" />
-    		<button type="submit">Add Friend</button>
-		</form>
-	} else {
-		@if(role.equals("friend")){<br>
-			<form action="/wallPost" method="post">
-    			<input type="hidden" name="userId" value="@pageOwner.objectId" />
-    			<input type="text" name="content"/>
-    			<button type="submit">post</button>
-			</form>
-			<br>
-			<h4>posts</h4>
-			<br>
-			@wallPostList.map{ wallPost =>
-				<li>
-					<h2>@wallPost.postedBy.firstName @wallPost.postedBy.lastName</h2> @wallPost.content
-				</li>
-				@if(user.objectId.equals(wallPost.postedBy.objectId)){
-				<form action="/deleteWallPost" method="post">
-    				<input type="hidden" name="userId" value="@wallPost.objectId" />
-    				<button type="submit">Delete Wall Post</button>
-				</form>
-				}
-			}
-			<form action="/unfriend" method="post">
-    			<input type="hidden" name="userId" value="@pageOwner.objectId" />
-    			<button type="submit">Unfriend</button>
-			</form>
-		}else {
-			@if(role.equals("owner")){
-				<br>
-				<form action="/wallPost" method="post">
-    				<input type="hidden" name="userId" value="@pageOwner.objectId" />
-    				<input type="text" name="content"/>
-    				<button type="submit">post</button>
-				</form>
-				<br>
-				<h4>posts</h4>
-				<br>
-				@wallPostList.map{ wallPost =>
-					<li>
-						<h2>@wallPost.postedBy.firstName @wallPost.postedBy.lastName</h2> @wallPost.content
-						<form action="/deleteWallPost" method="post">
-    						<input type="hidden" name="userId" value="@wallPost.objectId" />
-    						<button type="submit">Delete Wall Post</button>
-						</form>
-					</li>
-				}
-				<a href="/editProfile">Edit Profile</a>
-			}else {
-				<form action="/cancelFriendRequest" method="post">
-    				<input type="hidden" name="userId" value="@pageOwner.objectId" />
-    				<button type="submit">Cancel Friend Request</button>
-				</form>
-			}
-		}
-	}
-	<br>
-	<a href="/">home</a>
-	<br>
-	<a href="/logout">Sign Out</a>
+	<div class="wholeCss">
+		<div class="container">
+			<div class="navbar search">
+ 				<div class="navbar-inner navbar-fixed-top image">
+ 					<div class="row-fluid span12">
+ 						<div>
+				    		<img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
+				    	</div>
+				    	<ul class="nav span3">
+				    		<li><a href="/">Home</a></li>
+					    	@if(role.equals("owner")){
+					    		<li class="active"><a href="/userProfile">Profile</a></li>
+					    	}else{
+					    		<li><a href="/userProfile">Profile</a></li>
+					    	}
+					    	<li><a href="/friends">Friends</a></li>
+					    	<li><a href="/about">About</a></li>
+						</ul>
+						<div class="form-inline offset3 span3">
+						  	@helper.form(routes.Application.search){
+						  		<input type="text" name="keyword" placeholder="Search" class="input-medium search-query">
+						  		<button type="submit" class="btn">Search</button>
+							}
+						</div>
+						<div>
+							<a href="logout"><button class="btn logOut"><i class="icon-off"></i></button></a>
+						</div>
+					</div>
+ 				</div>
+			</div>
+			<div class="container containerProfile">
+				<div class="userInfoProfile divborder boxShadow bg">
+					<div class="dP divborder fl">
+						<img src="@routes.Assets.at("images/batman.png")" height="170px" width="170px" alt="batman" class="dpImage"/>
+					</div>
+					<div class="nameMiddle fl">
+						<div class="usersName fl">
+							@if(role.equals("none")){
+								<form action="/addFriendRequest" method="post">
+						    		<input type="hidden" name="userId" value="@pageOwner.objectId" />
+						    		<button class="btn friendRequestButton" type="submit">Add Friend</button>
+								</form>
+							} else {
+								@if(role.equals("friend")){
+									<form action="/unfriend" method="post">
+						    			<input type="hidden" name="userId" value="@pageOwner.objectId" />
+						    			<button class="btn friendRequestButton" type="submit">Unfriend</button>
+									</form>
+								}else {
+									@if(role.equals("owner")){
+										<form action="/cancelFriendRequest" method="post">
+											<input type="hidden" name="userId" value="@pageOwner.objectId" />
+						    				<button class="btn friendRequestButton" style="visibility:hidden" type="submit">Cancel Friend Request</button>
+										</form>
+									}else {
+										<form action="/cancelFriendRequest" method="post">
+						    				<input type="hidden" name="userId" value="@pageOwner.objectId" />
+						    				<button class="btn friendRequestButton" type="submit">Cancel Friend Request</button>
+										</form>
+									}
+								}
+							}
+							<form id="myForm@pageOwner.objectId" action="/profile" method="post">
+						    	<input type="hidden" name="userId" value="@pageOwner.objectId" />
+						   		<a href="#" onclick="document.getElementById('myForm@pageOwner.objectId').submit();">
+						   			<h3 class="profileName">
+						   				@pageOwner.firstName @pageOwner.lastName
+									</h3>
+								</a>
+							</form>
+						</div>
+					</div>
+					<div class="otherInfoProfile fl">
+						<div class="aboutInfoProfile">
+							<a href="/about" class="linkToAbout">	
+								About
+							</a>
+						</div>
+						<div class="profileAboutList">
+							<ul class="profileAboutListInfo">
+								<li><i class="icon-briefcase fl"></i><div class="infoDiv">work?</div></li>
+								<li><i class="icon-book fl"></i><div class="infoDiv">School?</div></li>
+								<li><i class="icon-map-marker fl"></i><div class="infoDiv">From?</div></li>
+								<li><i class="icon-gift fl"></i><div class="infoDiv">Birthday?</div></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="usersPostProfile divborder fl boxShadow bg">
+						@if(role.equals("friend")||role.equals("owner")){
+							<form action="/wallPost" method="post">
+								<div class="newPost divborder">
+									<div class="newPostTextBox">
+										<textarea id="textAreaComment" name="content" class="postTextBox input-xxlarge" onkeyup="textAreaAdjust(this, 47)" rows="3" cols="55" placeholder="Post It Here!"></textarea>
+									</div>
+									<div class="postButton">
+										<button type="submit" class="postButtonProfile" >
+											<i class="icon-pencil"></i>Post
+										</button>
+									</div>
+								</div>
+    							<input type="hidden" name="userId" value="@pageOwner.objectId" />
+    						</form>
+						}else{
+							<h6>Sorry. Only @pageOwner.firstName's friends are able to see these wall posts.</h6>
+						}
+						<div class="recentPost homerecentPost">
+							<ul id="content" class="profilePostsUl">
+								@if(role.equals("friend")||role.equals("owner")){
+									@wallPostList.map{ wallPost =>
+										<li class="commentCss">
+											<div class="recentPost divborder">
+												<div class="recentPostUser">
+													<div><img src="@routes.Assets.at("images/batman.png")" class="profileUserPicturePost fl"/>
+													</div>
+													<div class="profileUsersNamePost fl">
+														@wallPost.postedBy.firstName @wallPost.postedBy.lastName
+													</div>
+													@if(user.objectId.equals(wallPost.postedBy.objectId)||role.equals("owner")){
+														<div class="deletePostButton">
+															<form action="/deleteWallPost" style="float:right" method="post">
+									    						<input type="hidden" name="userId" value="@wallPost.objectId" />
+									    						<button type="submit"><i class="icon-trash"></i></button>
+															</form>
+														</div>
+													}
+												</div>
+												<div class="profilePostContain">
+													@wallPost.content
+												</div>
+												<div class="likeAndComment">
+													<div id="likeButton" class="likeButton fl">
+														<a class="likeAndCommentButton" onclick="likeButton(1)">Like</a>
+													</div>
+													<div class="commentButton fl">
+														<a class="likeAndCommentButton" data-toggle="collapse" data-parent="#likeAndComment" href="#commentBox@wallPost.objectId">Comments</a>
+													</div>
+													<div id="likeButton" class="likeButton fl">
+														<i class="icon-star-empty"></i>
+													</div>
+													<br>
+													<div id="commentBox@wallPost.objectId" class="commentBox accordion-body collapse">
+														<hr class="commentLine" noshade size="4" width="100%">
+														<div class="commentContent">
+															<ul id="commentList" class="commentList">
+																@commentsList.map{ comment =>
+																	@if(comment.wallPost.objectId.equals(wallPost.objectId)){
+																		<li>
+																			<div class="commentName">@comment.user.firstName @comment.user.lastName</div>
+																			<div class="commentContent commentPadding">@comment.content</div>
+																		</li>
+																	}
+																}
+															</ul>
+														</div>
+														<form action="/addComment" method="post">
+															<textarea id="commentBox" name="content" class="commentTextBox input-xlarge accordion-inner" onkeyup="textAreaAdjust(this, 1)" rows="2" cols="55" placeholder="Post a Comment..."></textarea>
+															<br>
+															<div class="commentButtoneSubmit">
+																<input type="hidden" name="postId" value="@wallPost.objectId" />
+																<input type="hidden" name="userId" value="@pageOwner.objectId" />
+																<button>
+																	<i class="icon-comment"></i>Post
+																</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</li>
+									}
+								<div class="centered">
+				            		<button class="btn btn btn-large btn-block btn-primary top" id="showMore">Show More</button>
+								</div>
+								}
+							</ul>
+						</div>
+					</div>
+					<div class="rightProfile divborder fl boxShadow bg">
+						<div class="linkToFriends">
+							<a href="/friends">Friends</a>
+						</div>
+						@friendsList.map{ friend =>
+							<div class="usersFriendProfile fl">
+								<div id="friendsPhoto" class="friendsPhoto fl">
+									<img class="friendsPhoto divborder" src="@routes.Assets.at("images/batman.png")" alt="Jestine Banagbanag"/>
+								</div>
+								<div id="friendsInfo" class="friendsInfo fl">
+									<form id="myForm@friend.objectId" action="/profile" method="post">
+							    		<input type="hidden" name="userId" value="@friend.objectId" />
+							   			<a href="#" onclick="document.getElementById('myForm@friend.objectId').submit();"><h5>@friend.firstName @friend.lastName</h5></a>
+									</form>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 }

@@ -2,8 +2,9 @@ package controllers
 
 import models.User
 import models.Friend
-import models.FriendRequest
 import models.WallPost
+import models.Comment
+import models.FriendRequest
 import play.api._
 import play.api.mvc._
 import play.api.data._
@@ -13,6 +14,7 @@ import play.api.libs.json.JsObject
 import play.api.libs.json.Json
 import play.api.libs.json.JsValue
 import play.api.libs.json.JsString
+import plexus.deserializer.json.CommentDeserializer
 import plexus.deserializer.json.UserDeserializer
 import plexus.deserializer.json.FriendDeserializer
 import plexus.deserializer.json.FriendRequestDeserializer
@@ -23,8 +25,9 @@ import models.FriendRequest
 import models.FriendRequest
 import models.WallPost
 import java.util.concurrent.TimeUnit
+import plexus.deserializer.json.CommentDeserializer
 
-object Application extends Controller with Secured with UserDeserializer with FriendDeserializer with WallPostDeserializer with FriendRequestDeserializer{
+object Application extends Controller with Secured with UserDeserializer with FriendDeserializer with WallPostDeserializer with FriendRequestDeserializer with CommentDeserializer{
  
   val signUpForm = Form( //NO VALIDATIONS YET !!!!
       tuple(
@@ -40,6 +43,13 @@ object Application extends Controller with Secured with UserDeserializer with Fr
       tuple(
       "userId"->text,
       "content"->text
+      )
+  )
+  val commentForm = Form(
+      tuple(
+      "userId"->text,
+      "content"->text,
+      "postId"->text
       )
   )
   val idForm = Form(
@@ -82,8 +92,8 @@ object Application extends Controller with Secured with UserDeserializer with Fr
   }
   def index = IsAuthenticated {  username => implicit request =>
         val friendsObjectIdList = ListBuffer[String]()
-       	val requestsObjectIdList = ListBuffer[String]()
        	val friendsList = ListBuffer[User]()
+       	val requestsObjectIdList = ListBuffer[String]()
        	val requestsList = ListBuffer[User]()
        	val user = getUser("username",username)
        	get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
@@ -91,6 +101,11 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        			friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
        		}
        	}.await(20000, TimeUnit.MILLISECONDS ).get
+       	friendsObjectIdList.map{
+        	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
+       			result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+       		}.await(20000, TimeUnit.MILLISECONDS ).get
+       	}
        	get("FriendRequests?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
        			request => requestsObjectIdList += ((request \ "requester").as[JsObject] \ "objectId").as[String]
@@ -101,12 +116,35 @@ object Application extends Controller with Secured with UserDeserializer with Fr
        			result => requestsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
        		}.await(20000, TimeUnit.MILLISECONDS ).get
        	}
-       	friendsObjectIdList.map{
-        	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
-       			result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
-       		}.await(20000, TimeUnit.MILLISECONDS ).get
-       	}
        	Ok(views.html.home(user,friendsList,requestsList))
+  }
+  def userProfile() = IsAuthenticated { username => implicit request =>
+    val user = getUser("username",username)
+    val friendsObjectIdList = ListBuffer[String]()
+    val commentsList = ListBuffer[Comment]()
+    val friendsList = ListBuffer[User]()
+    get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+      result => (result.json \ "results").as[Seq[JsObject]].map{
+    	  friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
+      }
+    }.await(20000, TimeUnit.MILLISECONDS ).get
+   	friendsObjectIdList.map{
+      id => get("_User?","{\"objectId\":\""+id+"\"}").map{
+      	result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+      }.await(20000, TimeUnit.MILLISECONDS ).get
+    }
+    val wallPostsObjectIdList = ListBuffer[WallPost]()
+    	  get("WallPost?order=-createdAt&","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			wallPost => wallPostsObjectIdList += wallPost.as[WallPost]
+       		}
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    get("Comment?","{\"pageOwner\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+user.objectId+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			comment => commentsList += comment.as[Comment]
+       		}
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    Ok(views.html.profile(user, user, "owner", wallPostsObjectIdList, friendsList,commentsList))
   }
   def profile()=IsAuthenticated {  username => implicit request =>
     idForm.bindFromRequest.fold(
@@ -118,31 +156,45 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     		}
     	  val user = getUser("username",username)
     	  val pageOwner = getUser("objectId",id)
+    	  val friendsObjectIdList = ListBuffer[String]()
+    	  val friendsList = ListBuffer[User]()
+    	  val wallPostsList = ListBuffer[WallPost]()
+    	  val commentsList = ListBuffer[Comment]()
     	  val role = {
     	    if(user.objectId.equals(id)) "owner"
     	    else if (
     	        !getFriendOrRequest(user.objectId,"FriendsList?","friend",id).map{
-    	        	result => 
-    	        	  println(result.json)
-    	        	  (result.json\"results").as[List[JsObject]].isEmpty
+    	        	result => (result.json\"results").as[List[JsObject]].isEmpty
     	        }.await(20000, TimeUnit.MILLISECONDS ).get
     	    ) "friend"
     	    else if (
     	        getFriendOrRequest(id,"FriendRequests?","requester",user.objectId).map{
-    	        	result => 
-    	        	  println(result.json)
-    	        	  (result.json\"results").as[List[JsObject]].isEmpty
+    	        	result => (result.json\"results").as[List[JsObject]].isEmpty
     	        }.await(20000, TimeUnit.MILLISECONDS ).get
     	    ) "none"
     	    else "friendRequestSent"
     	  }
-    	  val wallPostsObjectIdList = ListBuffer[WallPost]()
-    	  get("Post?order=-createdAt&","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+    	  get("FriendsList?","{\"user\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+pageOwner.objectId+"\"}}").map{
        		result => (result.json \ "results").as[Seq[JsObject]].map{
-       			wallPost => wallPostsObjectIdList += wallPost.as[WallPost]
+       			friend => friendsObjectIdList += ((friend \ "friend").as[JsObject] \ "objectId").as[String]
        		}
     	  }.await(20000, TimeUnit.MILLISECONDS ).get
-    	  Ok(views.html.profile(pageOwner, user, role, wallPostsObjectIdList))
+    	  friendsObjectIdList.map{
+        	id => get("_User?","{\"objectId\":\""+id+"\"}").map{
+       			result => friendsList += (result.json \ "results").as[List[JsObject]].head.as[User] 
+       		}.await(20000, TimeUnit.MILLISECONDS ).get
+    	  }
+    	  get("WallPost?order=-createdAt&","{\"postedTo\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			wallPost => wallPostsList += wallPost.as[WallPost]
+       		}
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  get("Comment?","{\"pageOwner\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\""+id+"\"}}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].map{
+       			comment => commentsList += comment.as[Comment]
+       		}
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  Ok(views.html.profile(pageOwner, user, role, wallPostsList, friendsList,commentsList))
     	}
     )
   }
@@ -256,7 +308,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     )
   }
   def createWallPost=IsAuthenticated {  username => implicit request =>
-    idForm.bindFromRequest.fold(
+    postForm.bindFromRequest.fold(
     	errors => BadRequest,
     	value =>{
     	  val params = request.body.asFormUrlEncoded.get
@@ -273,7 +325,7 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
     	  }.await(20000, TimeUnit.MILLISECONDS ).get
     	  val data = Json.toJson(WallPost(content,postedTo,postedBy,null))
-    	  post("Post?",data)
+    	  post("WallPost?",data)
     	  Redirect(routes.Application.index)
     	}
     )
@@ -286,10 +338,39 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	  val id = params.get("userId") match{
     			case Some(a) => a.head
     	  }
-    	  delete("Post/",id)
+    	  delete("WallPost/",id)
     	  Redirect(routes.Application.index)
     	}
-    )//////////////////////////////////////////////////////////////////////////////
+    )
+  }
+  def addComment = IsAuthenticated {  username => implicit request =>
+    commentForm.bindFromRequest.fold(
+    	errors => BadRequest,
+    	value =>{
+    	  val params = request.body.asFormUrlEncoded.get
+    	  val id = params.get("userId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val postId = params.get("postId") match{
+    			case Some(a) => a.head
+    	  }
+    	  val content = params.get("content") match{
+    			case Some(a) => a.head
+    	  }
+    	  val user = get("_User?","{\"username\":\""+username+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  val pageOwner = get("_User?","{\"objectId\":\""+id+"\"}").map{
+    	    result =>(result.json \ "results").as[List[JsObject]].head.as[User]
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  val wallPost = get("WallPost?","{\"objectId\":\""+postId+"\"}").map{
+       		result => (result.json \ "results").as[Seq[JsObject]].head.as[WallPost]
+    	  }.await(20000, TimeUnit.MILLISECONDS ).get
+    	  val data = Json.toJson(Comment(content,pageOwner,user,wallPost,null))
+    	  post("Comment?",data)
+    	  Redirect(routes.Application.index)
+    	}
+    )
   }
   def editProfile = IsAuthenticated { username => implicit request =>
     Ok(views.html.edit_profile())

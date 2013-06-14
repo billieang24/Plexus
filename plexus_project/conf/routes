@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index
 GET    	/signUp						controllers.Application.signUp
 GET    	/editProfile				controllers.Application.editProfile
+GET		/userProfile				controllers.Application.userProfile
 POST    /signUp						controllers.Application.newUser
 POST	/search						controllers.Application.search
 POST	/profile					controllers.Application.profile
@@ -16,7 +17,7 @@ POST	/wallPost					controllers.Application.createWallPost
 POST	/cancelFriendRequest		controllers.Application.cancelFriendRequest
 POST	/deleteWallPost				controllers.Application.deleteWallPost
 POST	/ignoreFriendRequest		controllers.Application.ignoreFriendRequest
-
+POST	/addComment					controllers.Application.addComment
 
 # Authentication
 GET    	/login						controllers.Auth.login

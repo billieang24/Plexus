@@ -22,10 +22,10 @@
 				    	<img src="@routes.Assets.at("images/plexusBlue.png")" alt="header" height="40px" width="150px" class="fl"/>
 				    </div>
 				    <ul class="nav span3">
-				      <li class="active"><a href="/homePage">Home</a></li>
+				      <li><a href="/homePage">Home</a></li>
 				      <li><a href="/profile">Profile</a></li>
 				      <li><a href="/friends">Friends</a></li>
-				      <li><a href="/about">About</a></li>
+				      <li  class="active"><a href="/about">About</a></li>
 				    </ul>
 				 	<form class="form-inline offset3 span3">
 						  <input type="text" class="input-medium search-query">
@@ -75,6 +75,7 @@
 						    <h3 id="myModalLabel">Edit Information</h3>
 						  </div>
 						  <div class="modal-body">
+						  	<form>
 					<h4>Username:</h4><input type="text" id="address" class="address" value="" placeholder="Username" cols="20" rows="	2"/> 
 					<h4>Password:</h4><input type="password" id="address" class="address" value="" placeholder="Password" cols="20" rows="	2"/> 
 					<h4>E-mail:</h4><input type="text" id="address" class="address" value="" placeholder="E-mail" cols="20" rows="	2"/> 
@@ -202,10 +203,11 @@
 				<h4>Work and Education</h4>
 						<h4>School:</h4> <input type="text" id="address" class="address" value="" placeholder="School" cols="20" rows="	2"/> 
 							<h4>Work:</h4>	<input type="text" id="address" class="address" value="" placeholder="Work" cols="20" rows="	2"/>
+						</form>
 						 </div>
 						 	<div class="modal-footer">
 							    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							    <button class="btn btn-primary">Save changes</button>
+							    <button class="btn btn-primary" type="submit">Save changes</button>
 						 	</div>
 						</div>
 					</div><!--End Class="edit"-->

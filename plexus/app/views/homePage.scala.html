@@ -12,7 +12,19 @@
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")">
 	</script>
 	<script src="@routes.Assets.at("javascripts/jquery.js")"></script> 
-	<script src="@routes.Assets.at("javascripts/jpaginate.js")"></script> 
+	<script src="@routes.Assets.at("javascripts/jpaginate.js")"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.homerecentPost:gt(6)').hide().last().after(
+    		$("#showMore").click(function(){
+        		var a = this;
+        		$('.homerecentPost:not(:visible):lt(3)').fadeIn(function(){
+         		if ($('.homerecentPost:not(:visible)').length == 0) $(a).remove()
+        		}); return false;
+    		})
+		);
+		})
+	</script>
 </head>
 <body>
 	<div class=" containe">
@@ -252,16 +264,4 @@
 		</div>
 	</div> 
 </body>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('.homerecentPost:gt(6)').hide().last().after(
-    $("#showMore").click(function(){
-        var a = this;
-        $('.homerecentPost:not(:visible):lt(3)').fadeIn(function(){
-         if ($('.homerecentPost:not(:visible)').length == 0) $(a).remove()
-        }); return false;
-    })
-);
-})
-</script>
 </html>
