@@ -5,7 +5,7 @@
 #
 GET     /                           controllers.Application.index
 GET    	/signUp						controllers.Application.signUp
-GET    	/editProfile				controllers.Application.editProfile
+GET    	/friends					controllers.Application.friends
 GET		/userProfile				controllers.Application.userProfile
 POST    /signUp						controllers.Application.newUser
 POST	/search						controllers.Application.search

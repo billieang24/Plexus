@@ -364,8 +364,8 @@ object Application extends Controller with Secured with UserDeserializer with Fr
     	}
     )
   }
-  def editProfile = IsAuthenticated { username => implicit request =>
-    Ok(views.html.edit_profile())
+  def friends = Action {
+    Ok(views.html.friends())
   }
   def post (className: String, data: JsValue)={
     WS.url("https://api.parse.com/1/classes/"+className).withHeaders("X-Parse-Application-Id" ->  "nu0BVvz9z6IQjHTr1ihno16q5tVZTWuD0IH4oaTI","X-Parse-REST-API-Key" -> "8vaHXeKVeVFuJa6ZqSedLHsv57OatWjgiegD3vTo","Content-Type"-> "application/json").post(data)
